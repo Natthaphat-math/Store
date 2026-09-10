@@ -6,9 +6,22 @@
 <title>GradeCheck — ตรวจทานคะแนน Excel กับ SGS ก่อนประกาศผล</title>
 <meta name="description" content="GradeCheck คือโปรแกรมบนเครื่องคอมพิวเตอร์ที่เทียบไฟล์คะแนน Excel ของคุณครูกับรายงานคะแนน PDF จากระบบ SGS ทีละช่อง เพื่อหาข้อผิดพลาดก่อนที่คะแนนจะเป็นทางการ ใช้งานฟรี 3 ห้องเรียนแรก">
 <meta name="theme-color" content="#faf8f4">
-<meta property="og:title" content="GradeCheck — ตรวจทานคะแนน Excel กับ SGS ก่อนประกาศผล">
-<meta property="og:description" content="เทียบคะแนนทีละช่อง จับคู่นักเรียนด้วยเลขประจำตัว ทำงานออฟไลน์ 100% ใช้งานฟรี 3 ห้องเรียนแรก">
+<link rel="canonical" href="https://natthaphat-math.github.io/Store/gradecheck.html">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="เครื่องมือครู">
+<meta property="og:locale" content="th_TH">
+<meta property="og:title" content="GradeCheck — ตรวจทานคะแนน Excel กับ SGS ก่อนประกาศผล">
+<meta property="og:description" content="เทียบไฟล์คะแนน Excel กับรายงาน PDF จากระบบ SGS ทีละช่อง เพื่อหาข้อผิดพลาดก่อนคะแนนเป็นทางการ ฟรี 3 ห้องเรียนแรก">
+<meta property="og:url" content="https://natthaphat-math.github.io/Store/gradecheck.html">
+<meta property="og:image" content="https://natthaphat-math.github.io/Store/images/og-gradecheck.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GradeCheck — ตรวจทานคะแนน Excel กับ SGS ก่อนประกาศผล">
+<meta name="twitter:description" content="เทียบไฟล์คะแนน Excel กับรายงาน PDF จากระบบ SGS ทีละช่อง เพื่อหาข้อผิดพลาดก่อนคะแนนเป็นทางการ ฟรี 3 ห้องเรียนแรก">
+<meta name="twitter:image" content="https://natthaphat-math.github.io/Store/images/og-gradecheck.png">
 <style>
   :root{
     --paper:#faf8f4;
@@ -219,6 +232,9 @@
   /* download */
   .dl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
   @media (max-width:760px){.dl-grid{grid-template-columns:1fr}}
+  .dl-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:900px){.dl-grid.three{grid-template-columns:1fr}}
+  .dl .cta-row .btn{padding:11px 16px;font-size:14.5px}
   .dl{
     display:flex;flex-direction:column;gap:14px;
     background:#fff;border:1px solid var(--rule-2);border-radius:14px;padding:26px 26px 24px;
@@ -478,7 +494,7 @@
       <h2>ใช้งานฟรีทันที 3 ห้องเรียนแรก</h2>
       <p class="sec-intro">ไม่ต้องชำระเงิน ไม่ต้องสมัครสมาชิก ไม่ต้องกรอกอีเมล ดาวน์โหลด ติดตั้ง แล้วตรวจห้องแรกได้เลยในวันนี้</p>
 
-      <div class="dl-grid">
+      <div class="dl-grid three">
         <div class="dl">
           <div class="os">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
@@ -494,6 +510,19 @@
           </div>
           <p>ไฟล์บีบอัดนามสกุล .zip แตกไฟล์แล้วเปิดโปรแกรมได้ทันที ไม่ต้องติดตั้งเพิ่ม</p>
           <a class="btn btn-secondary" href="https://github.com/Natthaphat-math/gradecheck-releases/releases/latest/download/GradeCheck-windows.zip">ดาวน์โหลดสำหรับ Windows</a>
+        </div>
+        <div class="dl">
+          <div class="os"><h3>ไฟล์ตัวอย่างสำหรับทดลอง</h3></div>
+          <p>
+            ไฟล์คู่หนึ่งที่จงใจใส่ข้อผิดพลาดไว้ 6 จุด ทั้งตัวเลขสลับตำแหน่ง ช่องที่ยังไม่ได้กรอก
+            คะแนนรวมที่ไม่ได้คำนวณใหม่ และนักเรียนที่มีอยู่ในไฟล์เดียว ใช้ลองดูว่าโปรแกรมหาเจอไหม
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-secondary" href="./files/gradecheck-sample-teacher.xlsx"
+               download="GradeCheck-ไฟล์ครู.xlsx">ไฟล์ Excel ของครู</a>
+            <a class="btn btn-secondary" href="./files/gradecheck-sample-sgs-export.pdf"
+               download="GradeCheck-ไฟล์จากระบบ-SGS.pdf">ไฟล์ PDF จาก SGS</a>
+          </div>
         </div>
       </div>
 
