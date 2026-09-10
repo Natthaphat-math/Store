@@ -10,8 +10,12 @@
 
 **This output is generated. Do not edit it in the `Store` repo.**
 
-The pages are authored in the private `Claude-Code-projects` repo under
-`projects/store-page/`, and `.github/workflows/store-page-sync.yml` copies
+`projects/store-page/` in the private `Claude-Code-projects` repo is the only
+copy of these pages. `gradecheck.html` began life as `projects/gradecheck-landing/`,
+which was deleted when this became the source, so there is no second version of
+it to keep in step.
+
+The pages are authored there, and `.github/workflows/store-page-sync.yml` copies
 them to `Store` on every push to `main` that touches that folder. The sync
 mirrors deletions, so anything edited directly in `Store` is overwritten on
 the next run. Edit the source, push, and the site follows.
