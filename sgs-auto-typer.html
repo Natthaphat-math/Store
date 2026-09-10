@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ macOS</title>
-<meta name="description" content="SGS Auto-Typer อ่านคะแนนจากไฟล์ Excel หรือคลิปบอร์ด แล้วพิมพ์ลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติ ใช้งานฟรี สำหรับ macOS 13 ขึ้นไป">
+<meta name="description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
 <meta name="theme-color" content="#faf8f4">
 <link rel="canonical" href="https://natthaphat-math.github.io/Store/sgs-auto-typer.html">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -13,14 +13,14 @@
 <meta property="og:site_name" content="เครื่องมือครู">
 <meta property="og:locale" content="th_TH">
 <meta property="og:title" content="SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ macOS">
-<meta property="og:description" content="อ่านคะแนนจากไฟล์ Excel หรือคลิปบอร์ด แล้วพิมพ์ลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติ ใช้งานฟรี">
+<meta property="og:description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
 <meta property="og:url" content="https://natthaphat-math.github.io/Store/sgs-auto-typer.html">
 <meta property="og:image" content="https://natthaphat-math.github.io/Store/images/og-sgs.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ macOS">
-<meta name="twitter:description" content="อ่านคะแนนจากไฟล์ Excel หรือคลิปบอร์ด แล้วพิมพ์ลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติ ใช้งานฟรี">
+<meta name="twitter:description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
 <meta name="twitter:image" content="https://natthaphat-math.github.io/Store/images/og-sgs.png">
 <style>
 
@@ -317,6 +317,7 @@
       <a href="#features">ความสามารถ</a>
       <a href="#install">ติดตั้ง</a>
       <a href="#how">วิธีใช้งาน</a>
+      <a href="#modes">โหมด</a>
       <a class="btn-sm" href="#download">ดาวน์โหลด</a>
     </nav>
   </div>
@@ -332,8 +333,8 @@
           แล้วพิมพ์ลงหน้ากรอกคะแนนของ SGS ให้ทีละช่อง โดยจำลองการกดแป้นพิมพ์จริง
         </p>
         <div class="offer">
-          <strong>ใช้งานฟรี ไม่มีค่าใช้จ่าย</strong>
-          <span>ไม่ต้องสมัครสมาชิก ไม่ต้องกรอกอีเมล ดาวน์โหลดแล้วใช้ได้เลย</span>
+          <strong>โหมดผลการเรียน ใช้ฟรีถาวร</strong>
+          <span>และมีโหมดคุณลักษณะอันพึงประสงค์ กับโหมดการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้ด้วย</span>
         </div>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer.zip">
@@ -562,11 +563,60 @@
     </div>
   </section>
 
+  <section id="modes">
+    <div class="wrap">
+      <div class="sec-label">โหมดการทำงาน</div>
+      <h2>สามโหมด สำหรับสามหน้าใน SGS</h2>
+      <p class="sec-intro">
+        เลือกโหมดได้จากแถบด้านบนของหน้าต่าง โหมดเป็นตัวกำหนดว่าไฟล์ของคุณครูต้องมีอะไรบ้าง
+      </p>
+
+      <div class="dl-grid three">
+        <div class="dl">
+          <div class="os"><h3>ผลการเรียน</h3></div>
+          <p>
+            พิมพ์คะแนนจากคอลัมน์ที่เลือก ลงหน้ากรอกคะแนนตามลำดับที่ตั้งไว้
+            เป็นโหมดเดิมที่มีมาตั้งแต่แรก
+          </p>
+          <div class="chips"><span class="chip free">ใช้ฟรีถาวร ไม่จำกัดจำนวนครั้ง</span></div>
+        </div>
+        <div class="dl">
+          <div class="os"><h3>คุณลักษณะอันพึงประสงค์</h3></div>
+          <p>
+            นักเรียนหนึ่งคนมี 8 ช่อง และปกติทุกช่องใช้ระดับเดียวกัน
+            คุณครูกรอกในไฟล์แค่ช่องเดียวว่าได้ 1, 2 หรือ 3 แล้วโปรแกรมพิมพ์ซ้ำให้ครบทั้ง 8 ช่อง
+          </p>
+          <div class="chips"><span class="chip">ทดลองฟรี 1 ครั้ง</span></div>
+        </div>
+        <div class="dl">
+          <div class="os"><h3>การอ่าน คิดวิเคราะห์ และเขียน</h3></div>
+          <p>
+            นักเรียนหนึ่งคนมี 3 ช่อง โปรแกรมคิดระดับจากเกรดของวิชาให้เอง
+            เกรด 4, 3.5, 3 ได้ระดับ 3 · เกรด 2.5, 2 ได้ระดับ 2 · เกรด 1.5, 1, 0 ได้ระดับ 1
+          </p>
+          <div class="chips"><span class="chip">ทดลองฟรี 1 ครั้ง</span></div>
+        </div>
+      </div>
+
+      <p class="note">
+        สองโหมดหลังทดลองใช้ได้ฟรีโหมดละ 1 ครั้ง (นับเมื่อพิมพ์ลง SGS ไปแล้วจริง ๆ
+        กดเริ่มผิดหน้าต่างไม่นับ) หลังจากนั้นปลดล็อกด้วยไลเซนส์
+        <strong>49 บาท จ่ายครั้งเดียว ได้ทั้งสองโหมด</strong> ใช้ได้ตลอดไปและกับ Mac ทุกเครื่องของคุณครูเอง
+        ชำระผ่าน PromptPay จากในแอป — กดปุ่มปลดล็อกที่มุมขวาบน
+      </p>
+
+      <p class="note">
+        นักเรียนที่อ่านค่าในคอลัมน์ไม่ได้ เช่น ติด ร, มส, มผ หรือเว้นว่างไว้ จะถูกข้ามทั้งคน
+        และโปรแกรมจะบอกจำนวนคนที่ข้ามให้เห็นก่อนเริ่มพิมพ์ ไม่มีการเดาค่าให้
+      </p>
+    </div>
+  </section>
+
   <section id="download">
     <div class="wrap">
       <div class="sec-label">ดาวน์โหลด</div>
-      <h2>ใช้งานฟรี ไม่มีค่าใช้จ่าย</h2>
-      <p class="sec-intro">ไม่ต้องชำระเงิน ไม่ต้องสมัครสมาชิก ไม่ต้องกรอกอีเมล</p>
+      <h2>ดาวน์โหลดแล้วเริ่มใช้ได้เลย</h2>
+      <p class="sec-intro">ไม่ต้องสมัครสมาชิก ไม่ต้องกรอกอีเมล โหมดผลการเรียนใช้ได้ฟรีไม่จำกัด</p>
 
       <div class="dl-grid three">
         <div class="dl">
