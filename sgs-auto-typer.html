@@ -275,8 +275,11 @@
   .shot{border:1px solid var(--rule-2);border-radius:14px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
   .shot img{display:block;width:100%;height:auto}
   .shot figcaption{padding:12px 16px;font-size:13.5px;color:var(--ink-3);border-top:1px solid var(--rule);margin:0}
-  .shot.empty{display:grid;place-items:center;min-height:280px;border-style:dashed;
-    background:var(--paper-2);color:var(--ink-3);font-size:14px;text-align:center;padding:28px;line-height:1.7}
+  .shot picture{display:block}
+  .hero h1{max-width:17ch}
+  .hero .fineprint{max-width:60ch}
+  .hero .shot{margin-top:46px}
+  @media (max-width:940px){.hero .shot{margin-top:34px}}
   .spec{width:100%;border-collapse:collapse;margin-top:34px;font-size:15px}
   .spec th,.spec td{text-align:left;vertical-align:top;padding:12px 18px 12px 0;border-bottom:1px solid var(--rule)}
   .spec th{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
@@ -344,6 +347,15 @@
           หลังแตกไฟล์แล้วยังต้องตั้งค่าอีก 2 ขั้นตอนก่อนใช้ครั้งแรก
         </p>
       </div>
+
+      <figure class="shot">
+        <picture>
+          <source srcset="./images/sgs-auto-typer-main.webp" type="image/webp">
+          <img src="./images/sgs-auto-typer-main.png" width="1600" height="1205"
+               alt="หน้าจอโปรแกรม SGS Auto-Typer เปิดไฟล์คะแนนตัวอย่างไว้ แสดงคอลัมน์คะแนนสี่ช่องที่โปรแกรมตรวจพบเอง และตารางตรวจสอบข้อมูลก่อนเริ่มพิมพ์">
+        </picture>
+        <figcaption>หน้าจอหลักของโปรแกรม เปิดด้วยไฟล์คะแนนตัวอย่างที่ดาวน์โหลดได้จากหน้านี้</figcaption>
+      </figure>
 
     </div>
   </section>
