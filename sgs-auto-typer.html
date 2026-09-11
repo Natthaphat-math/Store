@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ</title>
+<title>SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ Windows และ Mac</title>
 <meta name="description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
 <meta name="theme-color" content="#faf8f4">
 <link rel="canonical" href="https://natthaphat-math.github.io/Store/sgs-auto-typer.html">
@@ -12,14 +12,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="เครื่องมือครู">
 <meta property="og:locale" content="th_TH">
-<meta property="og:title" content="SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ macOS">
+<meta property="og:title" content="SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ Windows และ Mac">
 <meta property="og:description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
 <meta property="og:url" content="https://natthaphat-math.github.io/Store/sgs-auto-typer.html">
 <meta property="og:image" content="https://natthaphat-math.github.io/Store/images/og-sgs.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ macOS">
+<meta name="twitter:title" content="SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ Windows และ Mac">
 <meta name="twitter:description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
 <meta name="twitter:image" content="https://natthaphat-math.github.io/Store/images/og-sgs.png">
 <style>
@@ -230,6 +230,15 @@
   .step h3{font-size:19px;color:#fff;margin-bottom:9px}
   .step p{color:#b9bcc1;font-size:15.5px;line-height:1.7}
 
+  /* Sits inside the dark install band, so it takes that band's white, not
+     the page ink -- which made it invisible. */
+  .platform-head{
+    font-size:17px;font-weight:650;letter-spacing:-.01em;
+    color:#fff;margin:52px 0 0;
+  }
+  .platform-head:first-of-type{margin-top:38px}
+  .platform-head + .steps{margin-top:18px}
+
   /* download */
   .dl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
   @media (max-width:760px){.dl-grid{grid-template-columns:1fr}}
@@ -341,11 +350,15 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
             ดาวน์โหลดสำหรับ macOS
           </a>
+          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-Windows.zip">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.6 10.1 4.6v7.1H3V5.6Zm8.5-1.2L21 3v8.7h-9.5V4.4ZM3 12.7h7.1v7.1L3 18.8v-6.1Zm8.5 0H21V21l-9.5-1.3v-7Z"/></svg>
+            ดาวน์โหลดสำหรับ Windows
+          </a>
           <a class="btn btn-secondary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/mock-form.html">หน้าทดสอบสำหรับซ้อม</a>
         </div>
         <p class="fineprint">
-          ต้องใช้ macOS 13 (Ventura) ขึ้นไป · ใช้ได้ทั้งชิป Apple และ Intel ·
-          หลังแตกไฟล์แล้วยังต้องตั้งค่าอีก 2 ขั้นตอนก่อนใช้ครั้งแรก
+          Windows 10 หรือ 11 (64 บิต) · macOS 13 (Ventura) ขึ้นไป ทั้งชิป Apple และ Intel ·
+          ไลเซนส์รหัสเดียวใช้ได้ทั้งสองระบบ
         </p>
       </div>
 
@@ -410,11 +423,40 @@
     <section>
       <div class="wrap">
         <div class="sec-label">ติดตั้ง</div>
-        <h2>สามขั้นตอน ทำครั้งเดียวตอนเริ่มใช้</h2>
+        <h2>ทำครั้งเดียวตอนเริ่มใช้</h2>
         <p class="sec-intro">
-          ขั้นตอนที่ 2 และ 3 เป็นเรื่องปกติของโปรแกรมที่ไม่ได้เซ็นด้วยบัญชี Apple Developer แบบเสียเงิน
+          ขั้นตอนพวกนี้เป็นเรื่องปกติของโปรแกรมที่ไม่ได้ซื้อใบรับรองผู้พัฒนา
           ทำครั้งเดียวแล้วครั้งต่อไปเปิดใช้ได้ตามปกติ
         </p>
+
+        <h3 class="platform-head">บน Windows — สองขั้นตอน</h3>
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <h3>แตกไฟล์แล้วเปิดได้เลย</h3>
+            <p>
+              คลิกขวาที่ไฟล์ .zip ที่ดาวน์โหลดมา เลือก <strong>Extract All</strong>
+              แล้วเปิด <strong>SGS-Auto-Typer.exe</strong> ในโฟลเดอร์ที่ได้
+              เก็บทั้งโฟลเดอร์ไว้ด้วยกัน อย่าย้ายเฉพาะไฟล์ .exe ออกมา
+            </p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h3>ผ่านคำเตือนของ Windows</h3>
+            <p>
+              ครั้งแรกอาจขึ้นหน้าจอสีน้ำเงิน “Windows protected your PC”
+              ให้กด <strong>More info</strong> แล้วกด <strong>Run anyway</strong>
+              ขึ้นเพราะยังไม่ได้ซื้อใบรับรองผู้พัฒนา ไม่ได้แปลว่าไฟล์มีปัญหา
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          บน Windows <strong>ไม่ต้องเปิดสิทธิ์อะไรเพิ่ม</strong> — โปรแกรมพิมพ์ให้ได้ทันทีที่เปิด
+          ต่างจากบน Mac ที่ต้องเปิดสิทธิ์ Accessibility ก่อนหนึ่งครั้ง
+        </p>
+
+        <h3 class="platform-head">บน Mac — สามขั้นตอน</h3>
         <div class="steps">
           <div class="step">
             <div class="n">1</div>
@@ -536,8 +578,15 @@
 
       <div class="features">
         <div class="feature">
-          <h3>กดเริ่มแล้วไม่มีอะไรเกิดขึ้น</h3>
+          <h3>กดเริ่มแล้วไม่มีอะไรเกิดขึ้น (Mac)</h3>
           <p>ยังไม่ได้เปิดสิทธิ์ Accessibility หรือเพิ่งเปิดแต่ยังไม่ได้ปิด-เปิดแอปใหม่ ดูขั้นตอนที่ 3 ของหัวข้อติดตั้ง</p>
+        </div>
+        <div class="feature">
+          <h3>กดเริ่มแล้วไม่มีอะไรเกิดขึ้น (Windows)</h3>
+          <p>
+            ถ้าเบราว์เซอร์ถูกเปิดแบบ <strong>Run as administrator</strong> Windows จะไม่ยอมให้โปรแกรมทั่วไปพิมพ์ลงไป
+            โปรแกรมจะขึ้นข้อความบอกให้ทราบ วิธีแก้คือปิดเบราว์เซอร์แล้วเปิดใหม่ตามปกติ
+          </p>
         </div>
         <div class="feature">
           <h3>คะแนนตกหล่นบางตัว</h3>
@@ -601,7 +650,7 @@
       <p class="note">
         สองโหมดหลังทดลองใช้ได้ฟรีโหมดละ 1 ครั้ง (นับเมื่อพิมพ์ลง SGS ไปแล้วจริง ๆ
         กดเริ่มผิดหน้าต่างไม่นับ) หลังจากนั้นปลดล็อกด้วยไลเซนส์
-        <strong>49 บาท จ่ายครั้งเดียว ได้ทั้งสองโหมด</strong> ใช้ได้ตลอดไปและกับ Mac ทุกเครื่องของคุณครูเอง
+        <strong>49 บาท จ่ายครั้งเดียว ได้ทั้งสองโหมด</strong> ใช้ได้ตลอดไป และใช้ได้กับเครื่อง Windows และ Mac ทุกเครื่องของคุณครูเอง
         ชำระผ่าน PromptPay จากในแอป — กดปุ่มปลดล็อกที่มุมขวาบน
       </p>
 
@@ -618,7 +667,7 @@
       <h2>ดาวน์โหลดแล้วเริ่มใช้ได้เลย</h2>
       <p class="sec-intro">ไม่ต้องสมัครสมาชิก ไม่ต้องกรอกอีเมล โหมดผลการเรียนใช้ได้ฟรีไม่จำกัด</p>
 
-      <div class="dl-grid three">
+      <div class="dl-grid">
         <div class="dl">
           <div class="os">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
@@ -627,6 +676,20 @@
           <p>ไฟล์บีบอัดนามสกุล .zip แตกไฟล์แล้วลากแอปไปไว้ในโฟลเดอร์ Applications ต้องใช้ macOS 13 ขึ้นไป</p>
           <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer.zip">ดาวน์โหลดสำหรับ macOS</a>
         </div>
+        <div class="dl">
+          <div class="os">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.6 10.1 4.6v7.1H3V5.6Zm8.5-1.2L21 3v8.7h-9.5V4.4ZM3 12.7h7.1v7.1L3 18.8v-6.1Zm8.5 0H21V21l-9.5-1.3v-7Z"/></svg>
+            <h3>Windows</h3>
+          </div>
+          <p>
+            ไฟล์ .zip แตกไฟล์แล้วเปิด <strong>SGS-Auto-Typer.exe</strong> ได้เลย ไม่ต้องติดตั้ง
+            และไม่ต้องเปิดสิทธิ์อะไรเพิ่ม ใช้ได้กับ Windows 10 และ 11 แบบ 64 บิต
+          </p>
+          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-Windows.zip">ดาวน์โหลดสำหรับ Windows</a>
+        </div>
+      </div>
+
+      <div class="dl-grid">
         <div class="dl">
           <div class="os"><h3>หน้าทดสอบสำหรับซ้อม</h3></div>
           <p>หน้าเว็บจำลองช่องกรอกคะแนน ใช้ซ้อมก่อนใช้กับคะแนนจริง หน้านี้มาพร้อมกับแอปแล้ว และดาวน์โหลดแยกได้ที่นี่</p>
@@ -648,8 +711,9 @@
       </div>
 
       <p class="note">
-        ยังไม่มีรุ่นสำหรับ Windows — บน Windows มีเครื่องมือชื่อ SGS Autofill อยู่แล้ว
-        โปรแกรมนี้เขียนขึ้นใหม่เพื่อให้คุณครูที่ใช้ Mac ทำงานแบบเดียวกันได้
+        ทั้งสองระบบเป็นโปรแกรมเดียวกัน ใช้งานเหมือนกันทุกอย่าง และ
+        <strong>ไลเซนส์รหัสเดียวใช้ได้ทั้งเครื่อง Windows และ Mac ของคุณครูเอง</strong>
+        ถ้าซื้อไว้แล้วจากเครื่องหนึ่ง ก็วางรหัสเดิมในอีกเครื่องได้เลย ไม่ต้องซื้อซ้ำ
       </p>
     </div>
   </section>
