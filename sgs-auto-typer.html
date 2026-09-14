@@ -270,6 +270,50 @@
     margin-top:14px;text-align:center;color:#b9bcc1;font-size:14.5px;line-height:1.7;
   }
 
+  /* Version history. Plain <details>, so it collapses and expands with no
+     script at all -- and a teacher with JavaScript off, or on a school machine
+     that blocks it, still gets every entry by clicking. */
+  .changelog{margin-top:40px;border-top:1px solid var(--rule)}
+  .changelog details{border-bottom:1px solid var(--rule)}
+  .changelog summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    padding:18px 40px 18px 0;position:relative;
+  }
+  /* Safari draws its own triangle through ::-webkit-details-marker. */
+  .changelog summary::-webkit-details-marker{display:none}
+  .changelog summary:hover .ver{color:var(--green-2)}
+  .changelog summary:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
+  .changelog .ver{font-size:17px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+  .changelog .when{font-size:14px;color:var(--ink-3)}
+  .changelog .tag-new{
+    font-size:12.5px;font-weight:600;color:var(--green-2);
+    background:#eaf3ee;border-radius:999px;padding:3px 10px;
+  }
+  /* The chevron, drawn rather than fetched, rotating on open. */
+  .changelog summary::after{
+    content:"";position:absolute;inset-inline-end:8px;top:24px;
+    width:9px;height:9px;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);
+    transform:rotate(45deg);transition:transform .18s ease;
+  }
+  .changelog details[open] summary::after{transform:rotate(-135deg);top:27px}
+  .changelog ul{
+    margin:0;padding:0 40px 24px 0;list-style:none;display:grid;gap:11px;max-width:80ch;
+  }
+  .changelog li{
+    font-size:15.5px;line-height:1.75;color:var(--ink-2);
+    padding-inline-start:18px;position:relative;
+  }
+  .changelog li::before{
+    content:"";position:absolute;inset-inline-start:0;top:12px;
+    width:6px;height:1px;background:var(--rule-2);
+  }
+  #history .fineprint{margin-top:26px}
+  @media (max-width:600px){
+    .changelog summary{gap:4px 12px;padding-right:32px}
+    .changelog ul{padding-right:0}
+  }
+
   /* download */
   .dl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
   @media (max-width:760px){.dl-grid{grid-template-columns:1fr}}
@@ -923,6 +967,146 @@
         ทั้งสองระบบเป็นโปรแกรมเดียวกัน ใช้งานเหมือนกันทุกอย่าง และ
         <strong>ไลเซนส์รหัสเดียวใช้ได้ทั้งเครื่อง Windows และ Mac ของคุณครูเอง</strong>
         ถ้าซื้อไว้แล้วจากเครื่องหนึ่ง ก็วางรหัสเดิมในอีกเครื่องได้เลย ไม่ต้องซื้อซ้ำ
+      </p>
+    </div>
+  </section>
+
+  <section id="history">
+    <div class="wrap">
+      <div class="sec-label">ประวัติการอัพเดท</div>
+      <h2>มีอะไรเปลี่ยนไปบ้างในแต่ละเวอร์ชั่น</h2>
+      <p class="sec-intro">
+        กดที่หัวข้อเวอร์ชั่นเพื่อดูรายละเอียด เรียงจากใหม่ไปเก่า
+        ทุกเวอร์ชั่นดาวน์โหลดได้ที่หน้า Releases และโปรแกรมจะบอกเองเมื่อมีเวอร์ชั่นใหม่
+      </p>
+
+      <div class="changelog">
+        <details>
+          <summary>
+            <span class="ver">เวอร์ชั่น 1.2.4</span>
+            <span class="when">14 กันยายน 2569</span>
+            <span class="tag-new">ล่าสุด</span>
+          </summary>
+          <ul>
+            <li>
+              <strong>แก้ปัญหาตัวเลขบางหลักหายไปในบางเครื่อง</strong> —
+              เดิมโปรแกรมกด ⌘A / Ctrl+A เลือกข้อความเดิมก่อนพิมพ์ทุกช่อง
+              แต่หน้า SGS เลือกให้เองอยู่แล้วเมื่อกด Tab มาถึงช่อง
+              การกดซ้ำจึงไม่จำเป็น และในบางเครื่อง (พบใน MacBook Air M3)
+              ทำให้คะแนนสองหลักเหลือแค่หลักสุดท้าย
+              ตอนนี้โปรแกรมเลือกเฉพาะช่องแรกที่คุณครูคลิกเอง
+            </li>
+            <li>
+              เพิ่มตัวเลือกในหน้าการตั้งค่าเป็นสามแบบ
+              <strong>ไม่เลือก / เฉพาะช่องแรก / ทุกช่อง</strong>
+              ค่าเริ่มต้นคือเฉพาะช่องแรก ถ้าหน้า SGS ของโรงเรียนไม่เลือกให้เอง
+              ให้เปลี่ยนเป็นทุกช่อง
+            </li>
+            <li>
+              แก้จำนวนครั้งที่กด Tab เพื่อไปนักเรียนคนถัดไป —
+              โหมดคุณลักษณะอันพึงประสงค์เป็น <strong>4 ครั้ง</strong> (เดิม 3)
+              และโหมดการอ่าน คิดวิเคราะห์ และเขียน เป็น <strong>5 ครั้ง</strong> (เดิม 4)
+            </li>
+            <li>เปลี่ยนคำในหน้าการตั้งค่า จาก “ทีละนักเรียน” เป็น “กรอกคะแนนนักเรียนทีละคน”</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            <span class="ver">เวอร์ชั่น 1.2.3</span>
+            <span class="when">14 กันยายน 2569</span>
+          </summary>
+          <ul>
+            <li>
+              ไม่มีอะไรเปลี่ยนสำหรับคุณครู ออกเวอร์ชั่นนี้เพื่อให้ทั้ง macOS และ Windows
+              สร้างมาจากโค้ดชุดเดียวกัน เลขเวอร์ชั่นเดียวกันจะได้หมายถึงโปรแกรมเดียวกันจริง ๆ
+            </li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            <span class="ver">เวอร์ชั่น 1.2.2</span>
+            <span class="when">13 กันยายน 2569</span>
+          </summary>
+          <ul>
+            <li>
+              <strong>บอกเมื่อมีเวอร์ชั่นใหม่</strong> — โปรแกรมตรวจวันละครั้งตอนเปิด
+              แล้วขึ้นแถบบอกพร้อมปุ่มไปหน้าดาวน์โหลด
+              <strong>ไม่ได้ติดตั้งให้เอง</strong> คุณครูเป็นคนตัดสินใจว่าจะโหลดหรือไม่
+            </li>
+            <li>
+              ปิดได้ในหน้าการตั้งค่า ถ้าปิดแล้วโปรแกรมจะไม่ต่ออินเทอร์เน็ตเลย
+              และการตรวจนี้ส่งแค่คำถามว่ามีเวอร์ชั่นใหม่หรือยัง ไม่มีข้อมูลของคุณครูหรือของนักเรียนส่งออกไป
+            </li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            <span class="ver">เวอร์ชั่น 1.2.1</span>
+            <span class="when">13 กันยายน 2569</span>
+          </summary>
+          <ul>
+            <li>ปรับราคาไลเซนส์เป็น <strong>99 บาท</strong> จ่ายครั้งเดียว ใช้ได้ทั้งเครื่อง Mac และ Windows ของคุณครูเอง</li>
+            <li>Windows: เพิ่ม QR สำหรับฟอร์มส่งหลักฐานการโอน ให้เหมือนกับ macOS</li>
+            <li>ปุ่ม “เปิดหน้าทดสอบเพื่อซ้อม” เปิดเป็นแท็บใหม่ในเบราว์เซอร์ ไม่ต้องดาวน์โหลดไฟล์ไปเปิดเอง</li>
+            <li>Windows: เพิ่มปุ่ม <strong>ปลดล็อก</strong> บนหน้าหลัก ให้หาเจอง่ายเหมือน macOS</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            <span class="ver">เวอร์ชั่น 1.2.0</span>
+            <span class="when">13 กันยายน 2569</span>
+          </summary>
+          <ul>
+            <li>
+              หน้าต่างแบบใหม่ที่ macOS ได้ไปใน 1.1.0 มาถึง <strong>Windows</strong> แล้ว
+              ทั้งสองระบบจึงหน้าตาเหมือนกันและใช้เลขเวอร์ชั่นเดียวกันตั้งแต่นี้ไป
+            </li>
+            <li>สำหรับ macOS ไม่มีอะไรเปลี่ยนจาก 1.1.0</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            <span class="ver">เวอร์ชั่น 1.1.0</span>
+            <span class="when">13 กันยายน 2569</span>
+          </summary>
+          <ul>
+            <li>
+              <strong>เพิ่มสองโหมดใหม่</strong> — คุณลักษณะอันพึงประสงค์
+              และ การอ่าน คิดวิเคราะห์ และเขียน จากเดิมที่มีแต่โหมดผลการเรียน
+            </li>
+            <li>
+              <strong>ออกแบบหน้าต่างใหม่เป็นสี่ขั้นตอน</strong> — เลือกโหมด ใส่คะแนน
+              ตรวจสอบข้อมูล แล้วเริ่มพิมพ์ ทำตามจากบนลงล่างได้เลย
+            </li>
+            <li>สีพื้นหลังเปลี่ยนตามโหมดที่เลือก เหลือง ชมพู และฟ้า เพื่อไม่ให้พิมพ์ผิดหน้า</li>
+            <li>เลือกคอลัมน์ด้วยการติ๊กที่หัวตารางตัวอย่างโดยตรง แทนหัวข้อเลือกคอลัมน์แยกต่างหาก</li>
+            <li>พิมพ์เร็วขึ้นมาก จากเดิมที่ช้ากว่าโปรแกรมอื่นอย่างเห็นได้ชัด</li>
+            <li>เพิ่ม QR สำหรับฟอร์มส่งหลักฐานการโอน แทนการส่งสลิปทางอื่น</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>
+            <span class="ver">เวอร์ชั่น 1.0.0</span>
+            <span class="when">10 กันยายน 2569</span>
+          </summary>
+          <ul>
+            <li><strong>เวอร์ชั่นแรก</strong> มีเฉพาะโหมดผลการเรียน ใช้ฟรีไม่จำกัดจำนวนครั้ง</li>
+            <li>อ่านไฟล์ .xlsx, .csv และ .tsv หรือคัดลอกช่วงเซลล์จาก Excel และ Google ชีต มาวางตรง ๆ ก็ได้</li>
+            <li>มีหน้าทดสอบมาพร้อมแอป ใช้ซ้อมก่อนใช้กับคะแนนจริง</li>
+            <li>สลับภาษาไทยและอังกฤษได้ และมีปุ่มหยุดหลายทางระหว่างที่โปรแกรมกำลังพิมพ์</li>
+          </ul>
+        </details>
+      </div>
+
+      <p class="fineprint">
+        รายละเอียดทางเทคนิคและไฟล์ของทุกเวอร์ชั่นอยู่ที่
+        <a href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases" target="_blank" rel="noopener">หน้า Releases บน GitHub</a>
       </p>
     </div>
   </section>
