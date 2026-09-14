@@ -285,6 +285,14 @@
   .shot img{display:block;width:100%;height:auto}
   .shot figcaption{padding:12px 16px;font-size:13.5px;color:var(--ink-3);border-top:1px solid var(--rule);margin:0}
   .shot picture{display:block}
+  /* These captures carry the window's own drop shadow in their alpha, so the
+     card frame comes off: a border and radius around them would sit inside
+     the shadow and read as two windows, one drawn on the other. */
+  .shot.bare{border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+  .shot.bare figcaption{border-top:0;padding:12px 2px 0}
+  .mode-shot{margin:0 0 16px}
+  .mode-shot picture{display:block}
+  .mode-shot img{display:block;width:100%;height:auto}
   .hero h1{max-width:17ch}
   .hero .fineprint{max-width:60ch}
   .hero .shot{margin-top:46px}
@@ -323,10 +331,10 @@
     </a>
     <nav class="nav">
       <a href="./index.html">เครื่องมือครูทั้งหมด</a>
+      <a href="#modes">โหมด</a>
       <a href="#features">ความสามารถ</a>
       <a href="#install">ติดตั้ง</a>
       <a href="#how">วิธีใช้งาน</a>
-      <a href="#modes">โหมด</a>
       <a class="btn-sm" href="#download">ดาวน์โหลด</a>
     </nav>
   </div>
@@ -362,15 +370,85 @@
         </p>
       </div>
 
-      <figure class="shot">
+      <figure class="shot bare">
         <picture>
-          <source srcset="./images/sgs-auto-typer-main.webp" type="image/webp">
-          <img src="./images/sgs-auto-typer-main.png" width="1600" height="1205"
-               alt="หน้าจอโปรแกรม SGS Auto-Typer เปิดไฟล์คะแนนตัวอย่างไว้ แสดงคอลัมน์คะแนนสี่ช่องที่โปรแกรมตรวจพบเอง และตารางตรวจสอบข้อมูลก่อนเริ่มพิมพ์">
+          <source srcset="./images/v.1.2.1-sgs-mode1.webp" type="image/webp">
+          <img src="./images/v.1.2.1-sgs-mode1.png" width="1896" height="1900"
+               alt="หน้าต่างโปรแกรมพิมพ์คะแนน SGS โหมดผลการเรียน แสดงสี่ขั้นตอน เลือกโหมด ใส่คะแนน ตรวจสอบข้อมูล และเริ่มพิมพ์">
         </picture>
-        <figcaption>หน้าจอหลักของโปรแกรม เปิดด้วยไฟล์คะแนนตัวอย่างที่ดาวน์โหลดได้จากหน้านี้</figcaption>
+        <figcaption>หน้าจอหลักของโปรแกรม ทำตามสี่ขั้นตอนจากบนลงล่าง</figcaption>
       </figure>
 
+    </div>
+  </section>
+
+  <section id="modes">
+    <div class="wrap">
+      <div class="sec-label">โหมดการทำงาน</div>
+      <h2>สามโหมด สำหรับสามหน้าใน SGS</h2>
+      <p class="sec-intro">
+        เลือกโหมดได้จากแถบด้านบนของหน้าต่าง โหมดเป็นตัวกำหนดว่าไฟล์ของคุณครูต้องมีอะไรบ้าง
+      </p>
+
+      <div class="dl-grid three">
+        <div class="dl">
+          <figure class="mode-shot">
+            <picture>
+              <source srcset="./images/v.1.2.1-sgs-mode1.webp" type="image/webp">
+              <img src="./images/v.1.2.1-sgs-mode1.png" width="1896" height="1900"
+                   loading="lazy" alt="โหมดผลการเรียน หน้าต่างเป็นสีเหลือง">
+            </picture>
+          </figure>
+          <div class="os"><h3>ผลการเรียน</h3></div>
+          <p>
+            พิมพ์คะแนนจากคอลัมน์ที่เลือก ลงหน้ากรอกคะแนนตามลำดับที่ตั้งไว้
+            เป็นโหมดเดิมที่มีมาตั้งแต่แรก
+          </p>
+          <div class="chips"><span class="chip free">ใช้ฟรีถาวร ไม่จำกัดจำนวนครั้ง</span></div>
+        </div>
+        <div class="dl">
+          <figure class="mode-shot">
+            <picture>
+              <source srcset="./images/v.1.2.1-sgs-mode2.webp" type="image/webp">
+              <img src="./images/v.1.2.1-sgs-mode2.png" width="1896" height="1900"
+                   loading="lazy" alt="โหมดคุณลักษณะอันพึงประสงค์ หน้าต่างเป็นสีชมพู">
+            </picture>
+          </figure>
+          <div class="os"><h3>คุณลักษณะอันพึงประสงค์</h3></div>
+          <p>
+            นักเรียนหนึ่งคนมี 8 ช่อง และปกติทุกช่องใช้ระดับเดียวกัน
+            คุณครูกรอกในไฟล์แค่ช่องเดียวว่าได้ 1, 2 หรือ 3 แล้วโปรแกรมพิมพ์ซ้ำให้ครบทั้ง 8 ช่อง
+          </p>
+          <div class="chips"><span class="chip">ทดลองฟรี 1 ครั้ง</span></div>
+        </div>
+        <div class="dl">
+          <figure class="mode-shot">
+            <picture>
+              <source srcset="./images/v.1.2.1-sgs-mode3.webp" type="image/webp">
+              <img src="./images/v.1.2.1-sgs-mode3.png" width="1896" height="1900"
+                   loading="lazy" alt="โหมดการอ่าน คิดวิเคราะห์ และเขียน หน้าต่างเป็นสีฟ้า">
+            </picture>
+          </figure>
+          <div class="os"><h3>การอ่าน คิดวิเคราะห์ และเขียน</h3></div>
+          <p>
+            นักเรียนหนึ่งคนมี 3 ช่อง โปรแกรมคิดระดับจากเกรดของวิชาให้เอง
+            เกรด 4, 3.5, 3 ได้ระดับ 3 · เกรด 2.5, 2 ได้ระดับ 2 · เกรด 1.5, 1, 0 ได้ระดับ 1
+          </p>
+          <div class="chips"><span class="chip">ทดลองฟรี 1 ครั้ง</span></div>
+        </div>
+      </div>
+
+      <p class="note">
+        สองโหมดหลังทดลองใช้ได้ฟรีโหมดละ 1 ครั้ง (นับเมื่อพิมพ์ลง SGS ไปแล้วจริง ๆ
+        กดเริ่มผิดหน้าต่างไม่นับ) หลังจากนั้นปลดล็อกด้วยไลเซนส์
+        <strong>99 บาท จ่ายครั้งเดียว ได้ทั้งสองโหมด</strong> ใช้ได้ตลอดไป และใช้ได้กับเครื่อง Windows และ Mac ทุกเครื่องของคุณครูเอง
+        ชำระผ่าน PromptPay จากในแอป — กดปุ่มปลดล็อกที่มุมขวาบน
+      </p>
+
+      <p class="note">
+        นักเรียนที่อ่านค่าในคอลัมน์ไม่ได้ เช่น ติด ร, มส, มผ หรือเว้นว่างไว้ จะถูกข้ามทั้งคน
+        และโปรแกรมจะบอกจำนวนคนที่ข้ามให้เห็นก่อนเริ่มพิมพ์ ไม่มีการเดาค่าให้
+      </p>
     </div>
   </section>
 
@@ -603,55 +681,6 @@
           <p>กดปุ่ม <kbd>?</kbd> มุมขวาบน แล้วกดเปิดหน้าทดสอบเพื่อซ้อม หน้าทดสอบมาพร้อมกับแอปแล้ว</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="modes">
-    <div class="wrap">
-      <div class="sec-label">โหมดการทำงาน</div>
-      <h2>สามโหมด สำหรับสามหน้าใน SGS</h2>
-      <p class="sec-intro">
-        เลือกโหมดได้จากแถบด้านบนของหน้าต่าง โหมดเป็นตัวกำหนดว่าไฟล์ของคุณครูต้องมีอะไรบ้าง
-      </p>
-
-      <div class="dl-grid three">
-        <div class="dl">
-          <div class="os"><h3>ผลการเรียน</h3></div>
-          <p>
-            พิมพ์คะแนนจากคอลัมน์ที่เลือก ลงหน้ากรอกคะแนนตามลำดับที่ตั้งไว้
-            เป็นโหมดเดิมที่มีมาตั้งแต่แรก
-          </p>
-          <div class="chips"><span class="chip free">ใช้ฟรีถาวร ไม่จำกัดจำนวนครั้ง</span></div>
-        </div>
-        <div class="dl">
-          <div class="os"><h3>คุณลักษณะอันพึงประสงค์</h3></div>
-          <p>
-            นักเรียนหนึ่งคนมี 8 ช่อง และปกติทุกช่องใช้ระดับเดียวกัน
-            คุณครูกรอกในไฟล์แค่ช่องเดียวว่าได้ 1, 2 หรือ 3 แล้วโปรแกรมพิมพ์ซ้ำให้ครบทั้ง 8 ช่อง
-          </p>
-          <div class="chips"><span class="chip">ทดลองฟรี 1 ครั้ง</span></div>
-        </div>
-        <div class="dl">
-          <div class="os"><h3>การอ่าน คิดวิเคราะห์ และเขียน</h3></div>
-          <p>
-            นักเรียนหนึ่งคนมี 3 ช่อง โปรแกรมคิดระดับจากเกรดของวิชาให้เอง
-            เกรด 4, 3.5, 3 ได้ระดับ 3 · เกรด 2.5, 2 ได้ระดับ 2 · เกรด 1.5, 1, 0 ได้ระดับ 1
-          </p>
-          <div class="chips"><span class="chip">ทดลองฟรี 1 ครั้ง</span></div>
-        </div>
-      </div>
-
-      <p class="note">
-        สองโหมดหลังทดลองใช้ได้ฟรีโหมดละ 1 ครั้ง (นับเมื่อพิมพ์ลง SGS ไปแล้วจริง ๆ
-        กดเริ่มผิดหน้าต่างไม่นับ) หลังจากนั้นปลดล็อกด้วยไลเซนส์
-        <strong>99 บาท จ่ายครั้งเดียว ได้ทั้งสองโหมด</strong> ใช้ได้ตลอดไป และใช้ได้กับเครื่อง Windows และ Mac ทุกเครื่องของคุณครูเอง
-        ชำระผ่าน PromptPay จากในแอป — กดปุ่มปลดล็อกที่มุมขวาบน
-      </p>
-
-      <p class="note">
-        นักเรียนที่อ่านค่าในคอลัมน์ไม่ได้ เช่น ติด ร, มส, มผ หรือเว้นว่างไว้ จะถูกข้ามทั้งคน
-        และโปรแกรมจะบอกจำนวนคนที่ข้ามให้เห็นก่อนเริ่มพิมพ์ ไม่มีการเดาค่าให้
-      </p>
     </div>
   </section>
 

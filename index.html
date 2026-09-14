@@ -124,47 +124,14 @@
   .btn-secondary:hover{border-color:var(--ink-3);transform:translateY(-1px)}
   .fineprint{font-size:14px;color:var(--ink-3);margin-top:18px}
 
-  /* ---------- mock window ---------- */
-  .mock{
-    background:var(--card);border:1px solid var(--rule-2);border-radius:14px;
-    box-shadow:0 2px 4px rgba(23,24,26,.04), 0 26px 50px -28px rgba(23,24,26,.35);
-    overflow:hidden;
+  /* ---------- hero screenshot ---------- */
+  .hero-shot{margin:0}
+  .hero-shot img{
+    display:block;width:100%;height:auto;
+    /* The capture includes the window's own drop shadow in its alpha, so no
+       border, radius or box-shadow here: they would sit outside the shadow. */
   }
-  .mock-bar{
-    display:flex;align-items:center;gap:8px;padding:11px 14px;
-    border-bottom:1px solid var(--rule);background:#fcfbf9;
-  }
-  .dot{width:9px;height:9px;border-radius:50%;background:#ddd8ce}
-  .mock-title{font-size:13px;color:var(--ink-3);margin-inline-start:8px;letter-spacing:.01em}
-  .mock-head{padding:18px 20px 14px;border-bottom:1px solid var(--rule)}
-  .mock-head h3{font-size:16px;margin-bottom:5px;font-weight:640}
-  .mock-sub{font-size:13.5px;color:var(--ink-3)}
-  .mock-sub b{color:var(--flag);font-weight:640}
-  .rows{padding:6px 8px 10px}
-  .row{
-    display:grid;grid-template-columns:76px minmax(0,1fr) 58px 58px;
-    gap:10px;align-items:center;padding:11px 12px;border-radius:9px;
-    font-size:14px;font-variant-numeric:tabular-nums;
-  }
-  .row + .row{border-top:1px solid var(--paper-2)}
-  .row.head{color:var(--ink-3);font-size:12px;letter-spacing:.06em;padding-bottom:4px;border:0}
-  .row .id{color:var(--ink-3);font-size:13px}
-  .row .field{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .row .v{text-align:end;font-weight:620}
-  .row.bad{background:var(--flag-tint)}
-  .row.bad + .row{border-top-color:transparent}
-  .row.bad .v.x{color:var(--flag)}
-  .row.ok .v{color:var(--ink-3);font-weight:560}
-  .tagline-row{
-    display:flex;gap:8px;align-items:center;padding:2px 12px 12px;
-    font-size:12.5px;color:var(--flag);
-  }
-  .tagline-row.ok{color:var(--ink-3)}
-  .mock-foot{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:13px 20px;border-top:1px solid var(--rule);background:#fcfbf9;
-    font-size:13px;color:var(--ink-3);
-  }
+
   .chip{
     border:1px solid var(--rule-2);border-radius:7px;padding:5px 11px;
     background:#fff;font-size:12.5px;color:var(--ink-2);font-weight:600;
@@ -286,14 +253,6 @@
   .prog:hover h3{color:var(--green)}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chips .chip.free{border-color:#cfe0d7;background:var(--green-tint);color:var(--green-2)}
-  .sheet{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
-  .sheet th{font-size:11.5px;letter-spacing:.05em;color:var(--ink-3);font-weight:600;
-    text-align:right;padding:0 16px 10px 0;white-space:nowrap}
-  .sheet th:first-child{text-align:left;padding-left:22px}
-  .sheet td{text-align:right;padding:10px 16px 10px 0;color:var(--ink-2);border-top:1px solid var(--rule)}
-  .sheet td:first-child{text-align:left;color:var(--ink-3);padding-left:22px}
-  .sheet tr.bad td{background:var(--flag-tint)}
-  .sheet tr.bad td.v{color:var(--flag);font-weight:700}
 </style>
 </head>
 <body>
@@ -335,28 +294,13 @@
         <p class="fineprint">ทำงานบนเครื่องของคุณครูแบบออฟไลน์ · ข้อมูลนักเรียนไม่ถูกส่งออกไปที่ใดทั้งสิ้น</p>
       </div>
 
-      <div class="mock">
-        <div class="mock-head">
-          <div class="mock-title">ม.2/3 · คณิตศาสตร์พื้นฐาน · ภาคเรียนที่ 1</div>
-          <div class="mock-sub">คะแนนในไฟล์ Excel เทียบกับที่กรอกไว้ใน SGS</div>
-        </div>
-        <table class="sheet">
-          <thead>
-            <tr><th>เลขที่</th><th>ก่อนกลางภาค</th><th>กลางภาค</th><th>ปลายภาค</th><th style="padding-right:22px">รวม</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>18</td><td>17</td><td>26</td><td style="padding-right:22px">61</td></tr>
-            <tr><td>2</td><td>16</td><td>15</td><td>28</td><td style="padding-right:22px">59</td></tr>
-            <tr class="bad"><td>3</td><td>19</td><td class="v">8</td><td>27</td><td style="padding-right:22px">54</td></tr>
-            <tr><td>4</td><td>15</td><td>16</td><td>24</td><td style="padding-right:22px">55</td></tr>
-            <tr><td>5</td><td>20</td><td>18</td><td>29</td><td style="padding-right:22px">67</td></tr>
-          </tbody>
-        </table>
-        <div class="mock-foot">
-          <span>เลขที่ 3 ในไฟล์คะแนนเป็น 18 แต่ใน SGS เป็น 8</span>
-          <span class="chip">พบไม่ตรงกัน 1 รายการ</span>
-        </div>
-      </div>
+      <figure class="hero-shot">
+        <picture>
+          <source srcset="./images/v.1.2.1-sgs-mode1.webp" type="image/webp">
+          <img src="./images/v.1.2.1-sgs-mode1.png" width="1896" height="1900"
+               alt="หน้าต่างโปรแกรมพิมพ์คะแนน SGS โหมดผลการเรียน แสดงสี่ขั้นตอน เลือกโหมด ใส่คะแนน ตรวจสอบข้อมูล และเริ่มพิมพ์">
+        </picture>
+      </figure>
     </div>
   </section>
 
@@ -380,7 +324,7 @@
             <span class="chip free">โหมดผลการเรียนฟรีถาวร</span>
             <span class="chip">โหมดคุณลักษณะ อ่านคิดวิเคราะห์ ทดลองฟรี</span>
           </div>
-          <span class="btn btn-secondary">ดูรายละเอียดและดาวน์โหลด</span>
+          <span class="btn btn-primary">ดูรายละเอียดและดาวน์โหลด</span>
         </a>
 
         <a class="dl prog" href="./gradecheck.html" target="_blank" rel="noopener">
@@ -394,7 +338,7 @@
             <span class="chip free">ฟรี 3 ห้องเรียนแรก</span>
             <span class="chip">เต็มรูปแบบ 49 บาท</span>
           </div>
-          <span class="btn btn-secondary">ดูรายละเอียดและดาวน์โหลด</span>
+          <span class="btn btn-primary">ดูรายละเอียดและดาวน์โหลด</span>
         </a>
       </div>
     </div>
