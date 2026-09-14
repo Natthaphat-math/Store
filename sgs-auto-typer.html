@@ -239,6 +239,37 @@
   .platform-head:first-of-type{margin-top:38px}
   .platform-head + .steps{margin-top:18px}
 
+  /* The Mac walkthrough: two columns rather than three, because a settings
+     window at one third of 1064px is a picture of text nobody can read.
+     Every shot is also a link to its own full-size file, which is the only
+     zoom a page with no script can offer. */
+  .steps.two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:34px}
+  @media (max-width:820px){.steps.two{grid-template-columns:1fr;column-gap:0}}
+  .step-intro{
+    color:#b9bcc1;font-size:15.5px;line-height:1.75;max-width:68ch;margin-top:14px;
+  }
+  .step-shot{
+    display:block;margin-top:20px;border-radius:10px;
+    transition:opacity .15s ease;
+  }
+  .step-shot:hover{opacity:.86}
+  /* These captures carry the window's own shadow in their alpha, so they sit
+     straight on the dark band -- a frame of our own would read as a second
+     window drawn around the first. */
+  .step-shot picture{display:block}
+  .step-shot img{display:block;width:100%;height:auto}
+  .step .warn{
+    display:block;margin-top:7px;font-style:normal;
+    color:#f0b64c;font-size:14.5px;
+  }
+  .done-shot{
+    margin:44px auto 0;max-width:640px;
+  }
+  .done-shot picture,.done-shot img{display:block;width:100%;height:auto}
+  .done-shot figcaption{
+    margin-top:14px;text-align:center;color:#b9bcc1;font-size:14.5px;line-height:1.7;
+  }
+
   /* download */
   .dl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
   @media (max-width:760px){.dl-grid{grid-template-columns:1fr}}
@@ -528,41 +559,166 @@
           ต่างจากบน Mac ที่ต้องเปิดสิทธิ์ Accessibility ก่อนหนึ่งครั้ง
         </p>
 
-        <h3 class="platform-head">บน Mac — สามขั้นตอน</h3>
-        <div class="steps">
+        <h3 class="platform-head">บน Mac — ทำตามภาพทีละขั้น</h3>
+        <p class="step-intro">
+          <strong>ก่อนอื่น</strong> แตกไฟล์ .zip ที่ดาวน์โหลดมา แล้วลาก
+          <strong>SGS Auto-Typer.app</strong> ไปไว้ในโฟลเดอร์
+          <strong>แอปพลิเคชัน (Applications)</strong> ก่อนเสมอ
+          เพราะแอปที่ยังอยู่ในโฟลเดอร์ดาวน์โหลดจะถูกบล็อกซ้ำทุกครั้งที่เปิด จากนั้นทำตามภาพทีละขั้น
+        </p>
+        <p class="step-intro">
+          ภาพทุกภาพมาจาก macOS ภาษาไทย ปุ่มที่ต้องกดวงไว้ด้วยกรอบสีเขียว
+          กดที่ภาพเพื่อดูขนาดเต็ม ชื่อปุ่มภาษาอังกฤษอยู่ในวงเล็บ เผื่อเครื่องของคุณครูตั้งเป็นภาษาอังกฤษ
+        </p>
+        <div class="steps two">
           <div class="step">
             <div class="n">1</div>
-            <h3>ย้ายไปที่ Applications</h3>
-            <p>แตกไฟล์ zip ที่ดาวน์โหลดมา แล้วลาก <strong>SGS Auto-Typer.app</strong> ไปไว้ในโฟลเดอร์ <strong>Applications</strong></p>
+            <h3>เปิดครั้งแรก แล้วกด เสร็จสิ้น</h3>
+            <p>
+              ดับเบิลคลิกที่แอป จะขึ้นกล่องข้อความว่า <strong>ไม่ได้เปิด “SGS Auto-Typer.app”</strong>
+              ให้กด <strong>เสร็จสิ้น (Done)</strong>
+              กล่องนี้ขึ้นเพราะแอปยังไม่ได้ซื้อใบรับรองผู้พัฒนาจาก Apple ไม่ได้แปลว่าไฟล์มีปัญหา
+              <em class="warn">อย่ากดปุ่มสีฟ้า ย้ายไปยังถังขยะ (Move to Trash)</em>
+            </p>
+            <a class="step-shot" href="./images/v.1.2.1-sgs-setup1.png" target="_blank" rel="noopener">
+              <picture>
+                <source srcset="./images/v.1.2.1-sgs-setup1.webp" type="image/webp">
+                <img src="./images/v.1.2.1-sgs-setup1.png" width="604" height="594" loading="lazy"
+                     alt="กล่องข้อความ ไม่ได้เปิด SGS Auto-Typer.app มีปุ่ม เสร็จสิ้น วงไว้ด้วยกรอบสีเขียว">
+              </picture>
+            </a>
           </div>
           <div class="step">
             <div class="n">2</div>
-            <h3>เปิดครั้งแรก</h3>
+            <h3>เปิดการตั้งค่าระบบ แล้วกด ยืนยันจะเปิด</h3>
             <p>
-              macOS จะเตือนว่ามาจาก “นักพัฒนาที่ไม่ระบุตัวตน”<br>
-              <strong>macOS 13–14:</strong> คลิกขวาที่ไอคอนแอป เลือก Open แล้วกด Open อีกครั้ง<br>
-              <strong>macOS 15 ขึ้นไป:</strong> ดับเบิลคลิกหนึ่งครั้ง จะโดนบล็อก จากนั้นเปิด การตั้งค่าระบบ (System Settings) → ความเป็นส่วนตัวและความปลอดภัย (Privacy &amp; Security) กด <strong>ยืนยันจะเปิด (Open Anyway)</strong>
+              ไปที่ <strong>การตั้งค่าระบบ (System Settings)</strong> →
+              <strong>ความเป็นส่วนตัวและความปลอดภัย (Privacy &amp; Security)</strong>
+              เลื่อนลงไปที่หัวข้อ <strong>ความปลอดภัย (Security)</strong>
+              จะเห็นบรรทัดว่า “SGS Auto-Typer.app” ถูกปิดกั้นเพื่อปกป้อง Mac ของคุณ
+              ให้กดปุ่ม <strong>ยืนยันจะเปิด (Open Anyway)</strong> ที่ท้ายบรรทัด
             </p>
+            <a class="step-shot" href="./images/v.1.2.1-sgs-setup2.png" target="_blank" rel="noopener">
+              <picture>
+                <source srcset="./images/v.1.2.1-sgs-setup2.webp" type="image/webp">
+                <img src="./images/v.1.2.1-sgs-setup2.png" width="1834" height="1710" loading="lazy"
+                     alt="หน้าการตั้งค่าระบบ หัวข้อความเป็นส่วนตัวและความปลอดภัย มีปุ่ม ยืนยันจะเปิด วงไว้ด้วยกรอบสีเขียว">
+              </picture>
+            </a>
           </div>
           <div class="step">
             <div class="n">3</div>
-            <h3>เปิดสิทธิ์ Accessibility</h3>
-            <p>ในแอปกดปุ่ม <kbd>?</kbd> มุมขวาบน แล้วในขั้นตอนที่ 1 กด <strong>ขอสิทธิ์และเปิดการตั้งค่า</strong> macOS จะเปิดหน้าตั้งค่าให้ จากนั้นเลื่อนหาโปรแกรม SGS Auto-Typer แล้วเปิดสวิตช์</p>
+            <h3>ยืนยันอีกครั้ง</h3>
+            <p>
+              จะมีกล่องถามซ้ำว่า <strong>เปิด “SGS Auto-Typer.app” หรือไม่</strong>
+              ให้กด <strong>ยืนยันจะเปิด (Open Anyway)</strong> ซึ่งเป็นปุ่มกลาง
+              <em class="warn">ปุ่มสีฟ้าด้านบนคือ ย้ายไปยังถังขยะ (Move to Trash) อย่ากดปุ่มนั้น</em>
+            </p>
+            <a class="step-shot" href="./images/v.1.2.1-sgs-setup3.png" target="_blank" rel="noopener">
+              <picture>
+                <source srcset="./images/v.1.2.1-sgs-setup3.webp" type="image/webp">
+                <img src="./images/v.1.2.1-sgs-setup3.png" width="604" height="760" loading="lazy"
+                     alt="กล่องข้อความ เปิด SGS Auto-Typer.app หรือไม่ มีปุ่ม ยืนยันจะเปิด วงไว้ด้วยกรอบสีเขียว">
+              </picture>
+            </a>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <h3>ใส่รหัสผ่านหรือใช้ Touch ID</h3>
+            <p>
+              macOS จะขอให้ยืนยันตัวตนด้วย <strong>Touch ID</strong>
+              หรือกด <strong>ใช้รหัสผ่าน… (Use Password…)</strong> แล้วพิมพ์รหัสผ่านเครื่อง
+              ต้องเป็นรหัสของผู้ดูแลระบบเครื่องนั้น หลังจากขั้นนี้แอปจะเปิดขึ้นมา
+              และครั้งต่อ ๆ ไปจะเปิดได้เลยโดยไม่ต้องทำขั้นที่ 1 ถึง 4 อีก
+            </p>
+            <a class="step-shot" href="./images/v.1.2.1-sgs-setup4.png" target="_blank" rel="noopener">
+              <picture>
+                <source srcset="./images/v.1.2.1-sgs-setup4.webp" type="image/webp">
+                <img src="./images/v.1.2.1-sgs-setup4.png" width="587" height="682" loading="lazy"
+                     alt="กล่องขอ Touch ID หรือรหัสผ่านของผู้ดูแลระบบ">
+              </picture>
+            </a>
+          </div>
+          <div class="step">
+            <div class="n">5</div>
+            <h3>ในแอป กด เปิดการตั้งค่าระบบ</h3>
+            <p>
+              แอปจะขึ้นกรอบสีส้มด้านบนว่า <strong>ต้องอนุญาตการเข้าถึงก่อน</strong>
+              เพราะยังไม่ได้รับอนุญาตให้ควบคุมเครื่องแทนคุณครู จึงยังพิมพ์คะแนนให้ไม่ได้
+              ให้กดปุ่มสีฟ้า <strong>เปิดการตั้งค่าระบบ (Open System Settings)</strong> ในกรอบนั้น
+              แอปจะพาไปหน้าที่ถูกต้องและเพิ่มชื่อตัวเองให้เอง
+            </p>
+            <a class="step-shot" href="./images/v.1.2.1-sgs-setup5.png" target="_blank" rel="noopener">
+              <picture>
+                <source srcset="./images/v.1.2.1-sgs-setup5.webp" type="image/webp">
+                <img src="./images/v.1.2.1-sgs-setup5.png" width="1896" height="1900" loading="lazy"
+                     alt="หน้าต่างโปรแกรม มีกรอบสีส้ม ต้องอนุญาตการเข้าถึงก่อน และปุ่ม เปิดการตั้งค่าระบบ วงไว้ด้วยกรอบสีเขียว">
+              </picture>
+            </a>
+          </div>
+          <div class="step">
+            <div class="n">6</div>
+            <h3>กด เปิดการตั้งค่าระบบ ในกล่องที่ขึ้นมา</h3>
+            <p>
+              macOS จะถามซ้ำในกล่องชื่อ <strong>การควบคุมอุปกรณ์และการเข้าถึงข้อมูล</strong>
+              ว่า “SGS Auto-Typer.app” ต้องการที่จะควบคุม Mac เครื่องนี้และเข้าถึงข้อมูลของคุณ
+              ให้กด <strong>เปิดการตั้งค่าระบบ (Open System Settings)</strong>
+              <em class="warn">ไม่ใช่ปุ่มสีฟ้า ปฏิเสธ (Deny)</em>
+            </p>
+            <a class="step-shot" href="./images/v.1.2.1-sgs-setup6.png" target="_blank" rel="noopener">
+              <picture>
+                <source srcset="./images/v.1.2.1-sgs-setup6.webp" type="image/webp">
+                <img src="./images/v.1.2.1-sgs-setup6.png" width="1146" height="586" loading="lazy"
+                     alt="กล่องการควบคุมอุปกรณ์และการเข้าถึงข้อมูล มีปุ่ม เปิดการตั้งค่าระบบ และปุ่มสีฟ้า ปฏิเสธ">
+              </picture>
+            </a>
+          </div>
+          <div class="step">
+            <div class="n">7</div>
+            <h3>เปิดสวิตช์หน้าชื่อแอป</h3>
+            <p>
+              ในรายการ <strong>การควบคุมอุปกรณ์และการเข้าถึงข้อมูล
+              (Device Control and Data Access)</strong>
+              เลื่อนหา <strong>SGS Auto-Typer.app</strong> แล้วเปิดสวิตช์ให้เป็นสีฟ้า
+              ถ้าไม่พบชื่อแอปในรายการ กดปุ่ม <strong>+</strong> มุมล่างซ้าย
+              แล้วเลือกแอปจากโฟลเดอร์ Applications
+            </p>
+            <a class="step-shot" href="./images/v.1.2.1-sgs-setup7.png" target="_blank" rel="noopener">
+              <picture>
+                <source srcset="./images/v.1.2.1-sgs-setup7.webp" type="image/webp">
+                <img src="./images/v.1.2.1-sgs-setup7.png" width="1834" height="1596" loading="lazy"
+                     alt="รายการแอปในหัวข้อการควบคุมอุปกรณ์และการเข้าถึงข้อมูล สวิตช์ของ SGS Auto-Typer.app เปิดอยู่">
+              </picture>
+            </a>
           </div>
         </div>
 
+        <figure class="done-shot">
+          <a href="./images/v.1.2.1-sgs-setup8-complete.png" target="_blank" rel="noopener">
+            <picture>
+              <source srcset="./images/v.1.2.1-sgs-setup8-complete.webp" type="image/webp">
+              <img src="./images/v.1.2.1-sgs-setup8-complete.png" width="1896" height="1900" loading="lazy"
+                   alt="หน้าต่างโปรแกรมหลังตั้งค่าเสร็จ ไม่มีกรอบสีส้มแล้ว เริ่มใช้งานได้">
+            </picture>
+          </a>
+          <figcaption>
+            เสร็จแล้วหน้าตาจะเป็นแบบนี้ กรอบสีส้มหายไป เหลือแค่สี่ขั้นตอนการใช้งาน
+            ถ้ากรอบยังอยู่ทั้งที่เปิดสวิตช์แล้ว ให้ปิดโปรแกรมแล้วเปิดใหม่อีกครั้ง
+          </figcaption>
+        </figure>
+
         <p class="note">
-          <strong>หาหัวข้อ Accessibility ในรายการไม่เจอ?</strong>
-          บน macOS รุ่นใหม่ Apple เปลี่ยนชื่อรายการนี้เป็น <strong>Device Control and Data Access</strong>
-          จึงไม่มีคำว่า Accessibility ให้เห็น วิธีที่ได้ผลทุกรุ่นคือพิมพ์ <strong>accessibility</strong>
-          ในช่องค้นหามุมซ้ายบนของ System Settings แล้วเลือกผลลัพธ์
-          “Allow assistive applications to control the computer” ที่มีคำว่า Privacy &amp; Security อยู่ใต้ชื่อ
-          จากนั้นเลื่อนหา SGS Auto-Typer.app แล้วเปิดสวิตช์ ถ้าไม่มีชื่อแอปในรายการ กดปุ่ม + มุมล่างซ้าย
-          แล้วเลือกแอปจากโฟลเดอร์ Applications — ระวังสับสนกับหมวดตั้งค่าใหญ่ชื่อ Accessibility
-          (VoiceOver, ซูม, ขนาดตัวอักษร) ซึ่งเป็นคนละอันกัน
+          <strong>บน macOS รุ่นเก่ากว่านี้</strong> หน้าตาจะต่างไปบ้าง
+          บน macOS 13–14 ให้คลิกขวาที่ไอคอนแอปแล้วเลือก เปิด (Open) แล้วกด เปิด (Open) อีกครั้ง
+          แทนขั้นที่ 1 ถึง 4 และรายการสิทธิ์ในขั้นที่ 7 จะใช้ชื่อว่า
+          <strong>การเข้าถึง (Accessibility)</strong> แทน
+          ถ้าหาไม่เจอ ให้พิมพ์ <strong>accessibility</strong> ในช่องค้นหามุมซ้ายบนของการตั้งค่าระบบ
+          แล้วเลือกผลลัพธ์ “Allow assistive applications to control the computer”
+          ที่มีคำว่า Privacy &amp; Security อยู่ใต้ชื่อ —
+          ระวังสับสนกับหมวดตั้งค่าใหญ่ชื่อ การเข้าถึง (Accessibility)
+          ที่มี VoiceOver ซูม และขนาดตัวอักษร ซึ่งเป็นคนละอันกัน
           และทุกครั้งที่ดาวน์โหลดแอปเวอร์ชันใหม่ อาจต้องเปิดสวิตช์นี้ใหม่อีกครั้ง
         </p>
-
       </div>
     </section>
   </div>
@@ -651,7 +807,7 @@
       <div class="features">
         <div class="feature">
           <h3>กดเริ่มแล้วไม่มีอะไรเกิดขึ้น (Mac)</h3>
-          <p>ยังไม่ได้เปิดสิทธิ์ Accessibility หรือเพิ่งเปิดแต่ยังไม่ได้ปิด-เปิดแอปใหม่ ดูขั้นตอนที่ 3 ของหัวข้อติดตั้ง</p>
+          <p>ยังไม่ได้เปิดสิทธิ์ให้แอปควบคุมเครื่อง หรือเพิ่งเปิดแต่ยังไม่ได้ปิด-เปิดแอปใหม่ ดูขั้นตอนที่ 5 ถึง 7 ของหัวข้อติดตั้ง</p>
         </div>
         <div class="feature">
           <h3>กดเริ่มแล้วไม่มีอะไรเกิดขึ้น (Windows)</h3>
