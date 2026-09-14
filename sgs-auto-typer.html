@@ -324,6 +324,29 @@
   .mode-shot{margin:0 0 16px}
   .mode-shot picture{display:block}
   .mode-shot img{display:block;width:100%;height:auto}
+
+  /* The intro video. Nothing is requested from YouTube until a teacher
+     actually clicks: until then this is our own screenshot and a play badge.
+     That keeps the page free of third-party requests for the many visitors
+     who only read it, and keeps it quick on a school connection.
+     With no script the anchor is still a plain link to the video. */
+  .video .play{display:block;position:relative;text-decoration:none;border:0}
+  .video picture,.video img{display:block;width:100%;height:auto}
+  .video .play-btn{
+    position:absolute;inset:0;margin:auto;width:78px;height:78px;
+    display:grid;place-items:center;border-radius:50%;
+    background:rgba(17,19,22,.74);color:#fff;
+    box-shadow:0 6px 24px rgba(0,0,0,.28);
+    transition:transform .15s ease,background .15s ease;
+  }
+  .video .play-btn svg{width:34px;height:34px;margin-inline-start:4px}
+  .video .play:hover .play-btn{transform:scale(1.07);background:rgba(17,19,22,.88)}
+  .video .frame{
+    position:relative;width:100%;aspect-ratio:16/9;max-width:100%;
+    border-radius:12px;overflow:hidden;background:#000;
+  }
+  .video .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  @media (max-width:600px){.video .play-btn{width:60px;height:60px}.video .play-btn svg{width:26px;height:26px}}
   .hero h1{max-width:17ch}
   .hero .fineprint{max-width:60ch}
   .hero .shot{margin-top:46px}
@@ -401,13 +424,20 @@
         </p>
       </div>
 
-      <figure class="shot bare">
-        <picture>
-          <source srcset="./images/v.1.2.1-sgs-mode1.webp" type="image/webp">
-          <img src="./images/v.1.2.1-sgs-mode1.png" width="1896" height="1900"
-               alt="หน้าต่างโปรแกรมพิมพ์คะแนน SGS โหมดผลการเรียน แสดงสี่ขั้นตอน เลือกโหมด ใส่คะแนน ตรวจสอบข้อมูล และเริ่มพิมพ์">
-        </picture>
-        <figcaption>หน้าจอหลักของโปรแกรม ทำตามสี่ขั้นตอนจากบนลงล่าง</figcaption>
+      <figure class="shot bare video">
+        <a class="play" href="https://www.youtube.com/watch?v=hqLa-E2iau8"
+           target="_blank" rel="noopener"
+           data-video="hqLa-E2iau8" aria-label="เล่นวิดีโอแนะนำโปรแกรมพิมพ์คะแนน SGS">
+          <picture>
+            <source srcset="./images/v.1.2.1-sgs-mode1.webp" type="image/webp">
+            <img src="./images/v.1.2.1-sgs-mode1.png" width="1896" height="1900"
+                 alt="หน้าต่างโปรแกรมพิมพ์คะแนน SGS โหมดผลการเรียน แสดงสี่ขั้นตอน เลือกโหมด ใส่คะแนน ตรวจสอบข้อมูล และเริ่มพิมพ์">
+          </picture>
+          <span class="play-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          </span>
+        </a>
+        <figcaption>วิดีโอแนะนำ กดเพื่อเล่น — เห็นทั้งสี่ขั้นตอนและตอนโปรแกรมพิมพ์ลงหน้า SGS จริง</figcaption>
       </figure>
 
     </div>
@@ -750,7 +780,7 @@
         <div class="step">
           <div class="n">4</div>
           <h3>กดเริ่มพิมพ์</h3>
-          <p>กดเริ่มพิมพ์ แล้วรีบสลับไปที่เบราว์เซอร์และคลิกในช่องคะแนนช่องแรกก่อนหมดเวลานับถอยหลัง ค่าเริ่มต้น 5 วินาที ปรับได้</p>
+          <p>กดเริ่มพิมพ์ แล้วรีบสลับไปที่เบราว์เซอร์และคลิกในช่องคะแนนช่องแรกก่อนหมดเวลานับถอยหลัง ค่าเริ่มต้น 10 วินาที ปรับได้ที่ลูกศรข้างปุ่ม</p>
         </div>
         <div class="step">
           <div class="n">5</div>
@@ -787,12 +817,12 @@
       <table class="spec">
         <thead><tr><th>การตั้งค่า</th><th>ค่าเริ่มต้น</th><th>ปรับเมื่อไร</th></tr></thead>
         <tbody>
-          <tr><td>หน่วงเวลาต่อตัวอักษร</td><td>120 ms</td><td>เพิ่มเป็น 180–250 ms ถ้าตัวเลขตกหล่นหรือหน้าเว็บช้า</td></tr>
-          <tr><td>หน่วงเวลาระหว่างช่อง</td><td>200 ms</td><td>เพิ่มเป็น 300–400 ms ถ้าหน้าเว็บใช้เวลาโหลดช่องถัดไป</td></tr>
+          <tr><td>หน่วงเวลาต่อตัวอักษร</td><td>15 ms</td><td>เพิ่มเป็น 60–120 ms ถ้าตัวเลขตกหล่นหรือหน้าเว็บช้า</td></tr>
+          <tr><td>หน่วงเวลาระหว่างช่อง</td><td>60 ms</td><td>เพิ่มเป็น 150–300 ms ถ้าหน้าเว็บใช้เวลาโหลดช่องถัดไป</td></tr>
           <tr><td>ปุ่มเลื่อนช่อง</td><td>Tab</td><td>เปลี่ยนเป็น Enter ถ้าหน้า SGS ใช้ Enter</td></tr>
           <tr><td>เลือกข้อความเดิมก่อนพิมพ์</td><td>เปิด</td><td>ปิดถ้าไม่ต้องการให้คะแนนเดิมถูกแทนที่</td></tr>
-          <tr><td>ลำดับการพิมพ์</td><td>ทีละนักเรียน</td><td>เปลี่ยนเป็นทีละคอลัมน์ ถ้าหน้าเว็บวิ่งลงคอลัมน์</td></tr>
-          <tr><td>นับถอยหลัง</td><td>5 วินาที</td><td>เพิ่มถ้าสลับหน้าต่างไม่ทัน</td></tr>
+          <tr><td>ลำดับการพิมพ์</td><td>กรอกคะแนนนักเรียนทีละคน</td><td>เปลี่ยนเป็นทีละคอลัมน์ ถ้าหน้าเว็บวิ่งลงคอลัมน์</td></tr>
+          <tr><td>นับถอยหลัง</td><td>10 วินาที</td><td>ปรับได้ที่ลูกศรข้างปุ่มเริ่มพิมพ์ ลดลงได้ถ้าสลับหน้าต่างทัน</td></tr>
         </tbody>
       </table>
       <p class="fineprint">สลับภาษาไทย/อังกฤษได้จากปุ่ม TH / EN มุมขวาบน และจะถูกจำไว้ให้ครั้งต่อไป</p>
@@ -924,5 +954,27 @@
   </div>
 </footer>
 
+<script>
+  // Swap the poster for the real player on click. Until then YouTube has not
+  // been contacted at all. nocookie is the same video without the tracking
+  // cookie a teacher never asked for.
+  document.querySelectorAll('.video .play').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      var id = link.dataset.video;
+      if (!id) return;                     // no id: let the plain link work
+      event.preventDefault();
+      var frame = document.createElement('div');
+      frame.className = 'frame';
+      var player = document.createElement('iframe');
+      player.src = 'https://www.youtube-nocookie.com/embed/' + id +
+                   '?autoplay=1&rel=0&modestbranding=1';
+      player.title = 'วิดีโอแนะนำโปรแกรมพิมพ์คะแนน SGS';
+      player.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
+      player.allowFullscreen = true;
+      frame.appendChild(player);
+      link.replaceWith(frame);
+    });
+  });
+</script>
 </body>
 </html>
