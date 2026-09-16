@@ -347,6 +347,11 @@
     margin-top:26px;font-size:14.5px;color:var(--ink-3);
     border-inline-start:2px solid var(--rule-2);padding-inline-start:16px;max-width:62ch;line-height:1.7;
   }
+  /* --ink-3 is a paper colour: 4.69:1 there, but only 3.57:1 on the dark
+     install band, under what normal text needs. The band's own body grey
+     reads at 9.33:1, and these notes carry the Gatekeeper and update
+     instructions -- the last text on the page that should be squinted at. */
+  .steps-wrap .note{color:#b9bcc1;border-inline-start-color:#4a4e55}
 
   /* contact */
   .contact{background:var(--paper-2)}
@@ -804,7 +809,54 @@
           ที่มีคำว่า Privacy &amp; Security อยู่ใต้ชื่อ —
           ระวังสับสนกับหมวดตั้งค่าใหญ่ชื่อ การเข้าถึง (Accessibility)
           ที่มี VoiceOver ซูม และขนาดตัวอักษร ซึ่งเป็นคนละอันกัน
-          และทุกครั้งที่ดาวน์โหลดแอปเวอร์ชันใหม่ อาจต้องเปิดสวิตช์นี้ใหม่อีกครั้ง
+        </p>
+
+        <h3 class="platform-head">อัพเดทเป็นเวอร์ชั่นใหม่</h3>
+
+        <p class="note">
+          บน <strong>Windows</strong> ไม่มีขั้นตอนพิเศษ — แตกไฟล์ .zip ของเวอร์ชันใหม่
+          แล้วใช้แทนโฟลเดอร์เดิมได้เลย รหัสไลเซนส์และการตั้งค่ายังอยู่ครบ
+          สามขั้นด้านล่างนี้เป็นของ <strong>Mac</strong> เท่านั้น
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="n">1</div>
+            <h3>ลากแอปตัวเก่าไปถังขยะ</h3>
+            <p>
+              ปิดแอปให้เรียบร้อยก่อน แล้วเปิดโฟลเดอร์ <strong>Applications</strong>
+              ลาก <strong>SGS Auto-Typer</strong> ตัวเดิมไปที่ถังขยะ
+              คะแนนและรหัสไลเซนส์ไม่ได้เก็บอยู่ในตัวแอป จึงไม่หายไปด้วย
+            </p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h3>เอาสิทธิ์เดิมออกจากรายการ</h3>
+            <p>
+              ไปที่ การตั้งค่าระบบ → ความเป็นส่วนตัวและความปลอดภัย →
+              <strong>การช่วยการเข้าถึง (Accessibility)</strong>
+              เลือก SGS Auto-Typer ในรายการ แล้วกดปุ่ม <strong>−</strong> เพื่อเอาออก
+              ขั้นนี้ข้ามไม่ได้ ถ้าปล่อยรายการเดิมไว้ ตัวใหม่จะเปิดสิทธิ์ไม่ติด
+            </p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <h3>ดาวน์โหลดเวอร์ชันใหม่</h3>
+            <p>
+              โหลดไฟล์ใหม่จากปุ่มดาวน์โหลด แล้วทำตามขั้นตอนติดตั้งของ Mac ด้านบนอีกครั้ง
+              รวมถึงการเปิดสิทธิ์ Accessibility ให้ตัวใหม่
+            </p>
+          </div>
+        </div>
+
+        <p class="note">
+          <strong>สองอย่างที่จะเจอตอนเปิดครั้งแรกหลังอัพเดท</strong> —
+          ต้องเปิดสิทธิ์ Accessibility ให้ใหม่อีกครั้ง
+          และ macOS จะถามรหัสผ่านของเครื่องหนึ่งครั้ง
+          เพื่อให้เวอร์ชันใหม่อ่านรหัสไลเซนส์ที่เก็บไว้เดิมได้
+          ทั้งสองอย่างเกิดจากการที่แอปยังไม่ได้ซื้อใบรับรองผู้พัฒนา
+          macOS จึงนับแอปแต่ละเวอร์ชันเป็นคนละตัวกัน
+          <strong>ไม่ได้แปลว่าต้องซื้อไลเซนส์ใหม่</strong> — รหัสเดิมยังใช้ได้ตามปกติ
         </p>
       </div>
     </section>
