@@ -409,6 +409,34 @@
   }
   .video .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   @media (max-width:600px){.video .play-btn{width:60px;height:60px}.video .play-btn svg{width:26px;height:26px}}
+
+  /* The install video sits in the dark band and has no poster file of its own.
+     Pulling YouTube's thumbnail would contact YouTube on page load, which is
+     the one thing the facade exists to avoid, so the closed state is drawn
+     here in the band's own colours instead. */
+  .video.panel{margin:0;max-width:720px}
+  .video.panel .play{
+    display:grid;place-items:center;align-content:center;gap:16px;
+    aspect-ratio:16/9;border-radius:12px;
+    border:1px solid #3a3e44;background:#1b1e22;
+    transition:background .15s ease,border-color .15s ease;
+  }
+  .video.panel .play:hover{background:#212529;border-color:#4a4e55}
+  .video.panel .play:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  /* The shared rule centres the button over a poster with absolute + margin
+     auto; here it is a grid item, so it lays itself out. */
+  .video.panel .play-btn{
+    position:static;margin:0;background:#f4f2ee;color:#16181b;
+    box-shadow:0 6px 24px rgba(0,0,0,.34);
+  }
+  .video.panel .play:hover .play-btn{background:#fff}
+  .video.panel .label{
+    color:#f4f2ee;font-size:16.5px;font-weight:620;letter-spacing:-.01em;
+    text-align:center;padding:0 22px;
+  }
+  .video.panel figcaption{color:#b9bcc1;font-size:14.5px;line-height:1.7;margin-top:12px}
+  .platform-head + .video.panel{margin-top:18px}
+  .video.panel + .steps{margin-top:30px}
   .hero h1{max-width:17ch}
   .hero .fineprint{max-width:60ch}
   .hero .shot{margin-top:46px}
@@ -625,6 +653,19 @@
         </p>
 
         <h3 class="platform-head">บน Windows — สองขั้นตอน</h3>
+        <figure class="video panel">
+          <a class="play" href="https://www.youtube.com/watch?v=yqMCaaaZi8A"
+             target="_blank" rel="noopener"
+             data-video="yqMCaaaZi8A"
+             data-video-title="วิดีโอวิธีติดตั้งโปรแกรมพิมพ์คะแนน SGS บน Windows"
+             aria-label="เล่นวิดีโอวิธีติดตั้งโปรแกรมพิมพ์คะแนน SGS บน Windows">
+            <span class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </span>
+            <span class="label">ดูวิดีโอวิธีติดตั้งบน Windows</span>
+          </a>
+          <figcaption>กดเพื่อเล่น — เห็นทั้งสองขั้นตอนข้างล่างนี้ ตั้งแต่แตกไฟล์ .zip จนผ่านคำเตือนของ Windows</figcaption>
+        </figure>
         <div class="steps">
           <div class="step">
             <div class="n">1</div>
@@ -1538,7 +1579,7 @@
       var player = document.createElement('iframe');
       player.src = 'https://www.youtube-nocookie.com/embed/' + id +
                    '?autoplay=1&rel=0&modestbranding=1';
-      player.title = 'วิดีโอแนะนำโปรแกรมพิมพ์คะแนน SGS';
+      player.title = link.dataset.videoTitle || 'วิดีโอแนะนำโปรแกรมพิมพ์คะแนน SGS';
       player.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture';
       player.allowFullscreen = true;
       frame.appendChild(player);
