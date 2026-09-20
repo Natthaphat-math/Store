@@ -254,23 +254,15 @@
      with enough over for the jump not to look like it undershot. */
   #install-windows,#install-mac{scroll-margin-top:86px}
 
-  /* No still exists for the Mac video yet, so its closed state is drawn in
-     the band's own colours. The Windows one has a real frame from the video
-     and uses the plain .panel above. */
-  .video.panel.noposter .play{
-    display:grid;place-items:center;align-content:center;gap:16px;
-    aspect-ratio:16/9;background:#1b1e22;border:1px solid #3a3e44;
-  }
-  .video.panel.noposter .play:hover{background:#212529;border-color:#4a4e55;opacity:1}
-  .video.panel.noposter .play-btn{
-    position:static;margin:0;background:#f4f2ee;color:#16181b;
-    box-shadow:0 6px 24px rgba(0,0,0,.34);
-  }
-  .video.panel.noposter .play:hover .play-btn{background:#fff}
-  .video.panel.noposter .label{
-    color:#f4f2ee;font-size:16.5px;font-weight:620;letter-spacing:-.01em;
-    text-align:center;padding:0 22px;
-  }
+  /* The Mac still is 3322x2160, not the player's 16:9, so it is cropped to
+     the player's shape rather than letterboxed: the box must not resize when
+     the click swaps the poster for the iframe. The 13% this takes off the
+     height is padding above and below the settings pane -- the blocked-app
+     row and its ยืนยันจะเปิด button, which is the step the video is about,
+     sits well inside what is kept. */
+  .video.panel.crop .play{aspect-ratio:16/9}
+  .video.panel.crop picture{height:100%}
+  .video.panel.crop img{height:100%;object-fit:cover}
 
   /* ---------- install detail windows ---------- */
   /* Each walkthrough moved into a <dialog>, so the section reads as: watch the
@@ -794,16 +786,20 @@
         </p>
 
         <h3 class="platform-head" id="install-mac">วิธีติดตั้งบน Mac</h3>
-        <figure class="video panel noposter">
+        <figure class="video panel crop">
           <a class="play" href="https://www.youtube.com/watch?v=7jfo5P83P7I"
              target="_blank" rel="noopener"
              data-video="7jfo5P83P7I"
              data-video-title="วิดีโอวิธีติดตั้งโปรแกรมพิมพ์คะแนน SGS บน Mac"
              aria-label="เล่นวิดีโอวิธีติดตั้งโปรแกรมพิมพ์คะแนน SGS บน Mac">
-          <span class="play-btn" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
-          </span>
-          <span class="label">ดูวิดีโอวิธีติดตั้งบน Mac</span>
+            <picture>
+              <source srcset="./images/macos/macOS-installation-permission_still.webp" type="image/webp">
+              <img src="./images/macos/macOS-installation-permission_still.jpeg" width="3322" height="2160" loading="lazy"
+                   alt="ภาพจากวิดีโอ หน้าการตั้งค่าระบบ หัวข้อความปลอดภัย แสดงบรรทัด SGS Auto-Typer ถูกปิดกั้นเพื่อปกป้อง Mac ของคุณ พร้อมปุ่ม ยืนยันจะเปิด">
+            </picture>
+            <span class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </span>
           </a>
           <figcaption>กดเพื่อเล่น — เห็นครบตั้งแต่ลากแอปเข้าโฟลเดอร์แอปพลิเคชัน จนเปิดสิทธิ์ Accessibility เสร็จ</figcaption>
         </figure>
