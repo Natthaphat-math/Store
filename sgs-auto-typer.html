@@ -249,6 +249,10 @@
   }
   .platform-head:first-of-type{margin-top:38px}
   .platform-head + .steps{margin-top:18px}
+  /* The download buttons jump here, and the header is sticky at 63px, so a
+     heading scrolled to the very top lands behind it. This keeps it clear,
+     with enough over for the jump not to look like it undershot. */
+  #install-windows,#install-mac{scroll-margin-top:86px}
 
   /* The Mac walkthrough: two columns rather than three, because a settings
      window at one third of 1064px is a picture of text nobody can read.
@@ -486,11 +490,11 @@
           <span>และมีโหมดคุณลักษณะอันพึงประสงค์ กับโหมดการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้ด้วย</span>
         </div>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer.zip">
+          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer.zip" data-jump="install-mac">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
             ดาวน์โหลดสำหรับ macOS
           </a>
-          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-Windows.zip">
+          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-Windows.zip" data-jump="install-windows">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.6 10.1 4.6v7.1H3V5.6Zm8.5-1.2L21 3v8.7h-9.5V4.4ZM3 12.7h7.1v7.1L3 18.8v-6.1Zm8.5 0H21V21l-9.5-1.3v-7Z"/></svg>
             ดาวน์โหลดสำหรับ Windows
           </a>
@@ -640,7 +644,7 @@
           ทำครั้งเดียวแล้วครั้งต่อไปเปิดใช้ได้ตามปกติ
         </p>
 
-        <h3 class="platform-head">วิธีติดตั้งบน Windows</h3>
+        <h3 class="platform-head" id="install-windows">วิธีติดตั้งบน Windows</h3>
         <figure class="video panel">
           <a class="play" href="https://www.youtube.com/watch?v=yqMCaaaZi8A"
              target="_blank" rel="noopener"
@@ -684,7 +688,7 @@
           ต่างจากบน Mac ที่ต้องเปิดสิทธิ์ Accessibility ก่อนหนึ่งครั้ง
         </p>
 
-        <h3 class="platform-head">วิธีติดตั้งบน Mac</h3>
+        <h3 class="platform-head" id="install-mac">วิธีติดตั้งบน Mac</h3>
         <p class="step-intro">
           <strong>ก่อนอื่น</strong> แตกไฟล์ .zip ที่ดาวน์โหลดมา แล้วลาก
           <strong>SGS Auto-Typer.app</strong> ไปไว้ในโฟลเดอร์
@@ -1043,7 +1047,7 @@
             <h3>macOS</h3>
           </div>
           <p>ไฟล์บีบอัดนามสกุล .zip แตกไฟล์แล้วลากแอปไปไว้ในโฟลเดอร์ Applications ต้องใช้ macOS 13 ขึ้นไป</p>
-          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer.zip">ดาวน์โหลดสำหรับ macOS</a>
+          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer.zip" data-jump="install-mac">ดาวน์โหลดสำหรับ macOS</a>
         </div>
         <div class="dl">
           <div class="os">
@@ -1054,7 +1058,7 @@
             ไฟล์ .zip แตกไฟล์แล้วเปิด <strong>SGS-Auto-Typer.exe</strong> ได้เลย ไม่ต้องติดตั้ง
             และไม่ต้องเปิดสิทธิ์อะไรเพิ่ม ใช้ได้กับ Windows 10 และ 11 แบบ 64 บิต
           </p>
-          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-Windows.zip">ดาวน์โหลดสำหรับ Windows</a>
+          <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-Windows.zip" data-jump="install-windows">ดาวน์โหลดสำหรับ Windows</a>
         </div>
       </div>
 
@@ -1576,6 +1580,21 @@
       player.allowFullscreen = true;
       frame.appendChild(player);
       link.replaceWith(frame);
+    });
+  });
+
+  // The release links answer with Content-Disposition: attachment, so the
+  // browser downloads without leaving the page -- which frees the same click
+  // to carry the teacher to the steps for the system they just downloaded
+  // for. Not preventDefault: cancelling the click would cancel the download.
+  //
+  // scrollIntoView rather than setting location.hash, because a hash adds a
+  // history entry, and then Back scrolls the page up again instead of going
+  // where they expected.
+  document.querySelectorAll('[data-jump]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.dataset.jump);
+      if (target) target.scrollIntoView();   // html{scroll-behavior:smooth} does the rest
     });
   });
 </script>
