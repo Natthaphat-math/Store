@@ -254,6 +254,84 @@
      with enough over for the jump not to look like it undershot. */
   #install-windows,#install-mac{scroll-margin-top:86px}
 
+  /* No still exists for the Mac video yet, so its closed state is drawn in
+     the band's own colours. The Windows one has a real frame from the video
+     and uses the plain .panel above. */
+  .video.panel.noposter .play{
+    display:grid;place-items:center;align-content:center;gap:16px;
+    aspect-ratio:16/9;background:#1b1e22;border:1px solid #3a3e44;
+  }
+  .video.panel.noposter .play:hover{background:#212529;border-color:#4a4e55;opacity:1}
+  .video.panel.noposter .play-btn{
+    position:static;margin:0;background:#f4f2ee;color:#16181b;
+    box-shadow:0 6px 24px rgba(0,0,0,.34);
+  }
+  .video.panel.noposter .play:hover .play-btn{background:#fff}
+  .video.panel.noposter .label{
+    color:#f4f2ee;font-size:16.5px;font-weight:620;letter-spacing:-.01em;
+    text-align:center;padding:0 22px;
+  }
+
+  /* ---------- install detail windows ---------- */
+  /* Each walkthrough moved into a <dialog>, so the section reads as: watch the
+     video, open the steps only if you want them.
+     Everything here is gated behind .has-dialog, set by a script in <head>
+     only when the browser has <dialog>. Without it -- script off, or a browser
+     too old -- the rules below never apply and the steps stay laid out on the
+     page as ordinary flow. A teacher cannot end up with a button that does
+     nothing, or with the install steps unreachable.
+     The dialog also stays where it was in the DOM, inside .steps-wrap, so
+     every dark-band rule above still applies to the steps inside it: the top
+     layer changes where a dialog paints, not what it matches. */
+  .detail-cta{display:none}
+  .detail{display:block}
+  .detail-head,.detail-foot{display:none}
+
+  .has-dialog .detail-cta{display:block;margin-top:18px}
+  .has-dialog .detail:not([open]){display:none}
+  .has-dialog .detail{
+    width:min(1040px,94vw);max-height:88vh;padding:0;overflow:hidden;
+    border:1px solid #33363b;border-radius:14px;
+    background:var(--ink);color:#f4f2ee;
+  }
+  .has-dialog .detail::backdrop{background:rgba(8,9,11,.66)}
+  /* Sticky, because the Mac walkthrough is seven steps of screenshots and the
+     way out should not be seven screens up. */
+  .has-dialog .detail-head{
+    position:sticky;top:0;z-index:2;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:16px 22px;background:var(--ink);border-bottom:1px solid #33363b;
+  }
+  .has-dialog .detail-foot{
+    display:block;margin:30px 0 24px;border-top:1px solid #33363b;padding-top:24px;
+  }
+  .has-dialog .detail-body{overflow-y:auto;max-height:calc(88vh - 69px);padding:0 22px 8px}
+  /* The moved blocks carry page-flow margins that are too big under a header. */
+  .has-dialog .detail-body > :first-child{margin-top:20px}
+  .has-dialog .detail-body .steps{margin-top:20px}
+
+  .detail-head h3{font-size:18px;color:#fff}
+  .detail-open,.detail-dismiss{
+    font:inherit;font-weight:620;cursor:pointer;
+    background:transparent;color:#f4f2ee;border-color:#4a4e55;
+  }
+  .detail-open:hover,.detail-dismiss:hover{
+    border-color:#8d9299;background:rgba(255,255,255,.05);transform:translateY(-1px);
+  }
+  .detail-open svg{width:17px;height:17px;flex:none}
+  .detail-close{
+    flex:none;width:36px;height:36px;border-radius:9px;cursor:pointer;
+    display:grid;place-items:center;
+    border:1px solid #4a4e55;background:transparent;color:#f4f2ee;
+  }
+  .detail-close:hover{border-color:#8d9299;background:rgba(255,255,255,.07)}
+  .detail-close svg{width:16px;height:16px}
+  /* On a phone the walkthrough is the whole job, so give it the whole screen. */
+  @media (max-width:600px){
+    .has-dialog .detail{width:100vw;max-width:100vw;max-height:100dvh;border:0;border-radius:0}
+    .has-dialog .detail-body{max-height:calc(100dvh - 69px);padding:0 20px 8px}
+  }
+
   /* The Mac walkthrough: two columns rather than three, because a settings
      window at one third of 1064px is a picture of text nobody can read.
      Every shot is also a link to its own full-size file, which is the only
@@ -454,6 +532,11 @@
   .sheet tr.bad td{background:var(--flag-tint)}
   .sheet tr.bad td.v{color:var(--flag);font-weight:700}
 </style>
+
+<!-- Sets the flag before the first paint, so the walkthroughs never flash
+     inline before collapsing. Everything modal is gated behind this class:
+     no script, or no <dialog>, and the steps simply stay on the page. -->
+<script>if (window.HTMLDialogElement) document.documentElement.classList.add('has-dialog');</script>
 </head>
 <body>
 
@@ -662,6 +745,23 @@
           </a>
           <figcaption>กดเพื่อเล่น — เห็นทั้งสองขั้นตอนข้างล่างนี้ ตั้งแต่แตกไฟล์ .zip จนผ่านคำเตือนของ Windows</figcaption>
         </figure>
+        <p class="detail-cta">
+          <button type="button" class="btn detail-open" data-detail="detail-windows">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            ดูรายละเอียดวิธีติดตั้ง
+          </button>
+        </p>
+        <dialog class="detail" id="detail-windows" aria-labelledby="detail-windows-title">
+          <div class="detail-head">
+            <h3 id="detail-windows-title">วิธีติดตั้งบน Windows — ทีละขั้น</h3>
+            <button type="button" class="detail-close" data-detail-close aria-label="ปิดหน้าต่างรายละเอียด">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+            </button>
+          </div>
+          <div class="detail-body">
         <div class="steps">
           <div class="step">
             <div class="n">1</div>
@@ -682,6 +782,11 @@
             </p>
           </div>
         </div>
+            <p class="detail-foot">
+              <button type="button" class="btn detail-dismiss" data-detail-close>ปิดหน้าต่างนี้</button>
+            </p>
+          </div>
+        </dialog>
 
         <p class="note">
           บน Windows <strong>ไม่ต้องเปิดสิทธิ์อะไรเพิ่ม</strong> — โปรแกรมพิมพ์ให้ได้ทันทีที่เปิด
@@ -689,6 +794,36 @@
         </p>
 
         <h3 class="platform-head" id="install-mac">วิธีติดตั้งบน Mac</h3>
+        <figure class="video panel noposter">
+          <a class="play" href="https://www.youtube.com/watch?v=7jfo5P83P7I"
+             target="_blank" rel="noopener"
+             data-video="7jfo5P83P7I"
+             data-video-title="วิดีโอวิธีติดตั้งโปรแกรมพิมพ์คะแนน SGS บน Mac"
+             aria-label="เล่นวิดีโอวิธีติดตั้งโปรแกรมพิมพ์คะแนน SGS บน Mac">
+          <span class="play-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>
+          </span>
+          <span class="label">ดูวิดีโอวิธีติดตั้งบน Mac</span>
+          </a>
+          <figcaption>กดเพื่อเล่น — เห็นครบตั้งแต่ลากแอปเข้าโฟลเดอร์แอปพลิเคชัน จนเปิดสิทธิ์ Accessibility เสร็จ</figcaption>
+        </figure>
+        <p class="detail-cta">
+          <button type="button" class="btn detail-open" data-detail="detail-mac">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            ดูรายละเอียดวิธีติดตั้ง
+          </button>
+        </p>
+        <dialog class="detail" id="detail-mac" aria-labelledby="detail-mac-title">
+          <div class="detail-head">
+            <h3 id="detail-mac-title">วิธีติดตั้งบน Mac — ทีละขั้น</h3>
+            <button type="button" class="detail-close" data-detail-close aria-label="ปิดหน้าต่างรายละเอียด">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+            </button>
+          </div>
+          <div class="detail-body">
         <p class="step-intro">
           <strong>ก่อนอื่น</strong> แตกไฟล์ .zip ที่ดาวน์โหลดมา แล้วลาก
           <strong>SGS Auto-Typer.app</strong> ไปไว้ในโฟลเดอร์
@@ -835,7 +970,6 @@
             ถ้ากรอบยังอยู่ทั้งที่เปิดสวิตช์แล้ว ให้ปิดโปรแกรมแล้วเปิดใหม่อีกครั้ง
           </figcaption>
         </figure>
-
         <p class="note">
           <strong>บน macOS เวอร์ชั่นเก่ากว่านี้</strong> หน้าตาจะต่างไปบ้าง
           บน macOS 13–14 ให้คลิกขวาที่ไอคอนแอปแล้วเลือก เปิด (Open) แล้วกด เปิด (Open) อีกครั้ง
@@ -847,6 +981,12 @@
           ระวังสับสนกับหมวดตั้งค่าใหญ่ชื่อ การเข้าถึง (Accessibility)
           ที่มี VoiceOver ซูม และขนาดตัวอักษร ซึ่งเป็นคนละอันกัน
         </p>
+
+            <p class="detail-foot">
+              <button type="button" class="btn detail-dismiss" data-detail-close>ปิดหน้าต่างนี้</button>
+            </p>
+          </div>
+        </dialog>
 
         <h3 class="platform-head">อัพเดทเป็นเวอร์ชั่นใหม่</h3>
 
@@ -1595,6 +1735,31 @@
     btn.addEventListener('click', function () {
       var target = document.getElementById(btn.dataset.jump);
       if (target) target.scrollIntoView();   // html{scroll-behavior:smooth} does the rest
+    });
+  });
+
+  // The walkthroughs live in <dialog>s. showModal is what makes it a real
+  // window: focus is trapped inside, Esc closes it, and the page behind is
+  // inert -- none of which a hand-rolled div would give us for free.
+  document.querySelectorAll('[data-detail]').forEach(function (opener) {
+    var dlg = document.getElementById(opener.dataset.detail);
+    if (!dlg || !dlg.showModal) return;    // .has-dialog was never set, so the
+                                           // steps are still laid out inline
+    var body = dlg.querySelector('.detail-body');
+    opener.addEventListener('click', function () {
+      dlg.showModal();
+      // After showModal, not on close: a closed dialog is display:none, has no
+      // layout box, and scrollTop set on it goes nowhere -- so reopening would
+      // drop the next reader wherever the last one stopped.
+      if (body) body.scrollTop = 0;
+    });
+    dlg.querySelectorAll('[data-detail-close]').forEach(function (btn) {
+      btn.addEventListener('click', function () { dlg.close(); });
+    });
+    // A click that lands on the dialog element itself, rather than on anything
+    // inside it, is a click on the backdrop.
+    dlg.addEventListener('click', function (event) {
+      if (event.target === dlg) dlg.close();
     });
   });
 </script>
