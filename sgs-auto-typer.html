@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ Windows และ Mac</title>
-<meta name="description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
+<meta name="description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ การอ่าน คิดวิเคราะห์ และเขียน และสมรรถนะสำคัญของผู้เรียน 5 ด้าน ให้ทดลองใช้">
 <meta name="theme-color" content="#faf8f4">
 <link rel="canonical" href="https://natthaphat-math.github.io/Store/sgs-auto-typer.html">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -13,14 +13,14 @@
 <meta property="og:site_name" content="เครื่องมือครู">
 <meta property="og:locale" content="th_TH">
 <meta property="og:title" content="SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ Windows และ Mac">
-<meta property="og:description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
+<meta property="og:description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ การอ่าน คิดวิเคราะห์ และเขียน และสมรรถนะสำคัญของผู้เรียน 5 ด้าน ให้ทดลองใช้">
 <meta property="og:url" content="https://natthaphat-math.github.io/Store/sgs-auto-typer.html">
 <meta property="og:image" content="https://natthaphat-math.github.io/Store/images/og-sgs.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SGS Auto-Typer — พิมพ์คะแนนลง SGS อัตโนมัติ สำหรับ Windows และ Mac">
-<meta name="twitter:description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้">
+<meta name="twitter:description" content="พิมพ์คะแนนลงหน้ากรอกคะแนนของ SGS ให้อัตโนมัติจากไฟล์ Excel หรือคลิปบอร์ด โหมดผลการเรียนใช้ฟรีถาวร พร้อมโหมดคุณลักษณะอันพึงประสงค์ การอ่าน คิดวิเคราะห์ และเขียน และสมรรถนะสำคัญของผู้เรียน 5 ด้าน ให้ทดลองใช้">
 <meta name="twitter:image" content="https://natthaphat-math.github.io/Store/images/og-sgs.png">
 <style>
 
@@ -360,6 +360,20 @@
   /* Version history. Plain <details>, so it collapses and expands with no
      script at all -- and a teacher with JavaScript off, or on a school machine
      that blocks it, still gets every entry by clicking. */
+  /* สมรรถนะ: the one mode that fills Excel, not SGS. Its own card under the
+     three, in the purple the app washes its window with. */
+  .dl.mode-new{
+    margin-top:22px;border-left:4px solid #a77ce0;
+    background:linear-gradient(90deg,rgba(167,124,224,.10),#fff 60%);
+  }
+  .chip.new{background:#efe6fb;color:#6b3fb0;margin-left:8px;vertical-align:middle}
+  .price-table{margin-top:22px;border:1px solid var(--rule);border-radius:12px;overflow:hidden;max-width:640px}
+  .price-row{display:flex;justify-content:space-between;gap:16px;padding:13px 18px;border-top:1px solid var(--rule)}
+  .price-row:first-child{border-top:none}
+  .price-row strong{white-space:nowrap}
+  .price-row.best{background:#eaf3ee}
+  .price-row.upgrade{color:var(--ink-3);font-size:14.5px}
+
   .changelog{margin-top:40px;border-top:1px solid var(--rule)}
   .changelog details{border-bottom:1px solid var(--rule)}
   .changelog summary{
@@ -562,7 +576,7 @@
         </p>
         <div class="offer">
           <strong>โหมดผลการเรียน ใช้ฟรีถาวร</strong>
-          <span>และมีโหมดคุณลักษณะอันพึงประสงค์ กับโหมดการอ่าน คิดวิเคราะห์ และเขียน ให้ทดลองใช้ด้วย</span>
+          <span>และมีโหมดคุณลักษณะอันพึงประสงค์ โหมดการอ่าน คิดวิเคราะห์ และเขียน และโหมดใหม่ สมรรถนะ 5 ด้าน ให้ทดลองใช้ด้วย</span>
         </div>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer.zip" data-jump="install-mac">
@@ -603,7 +617,7 @@
   <section id="modes">
     <div class="wrap">
       <div class="sec-label">โหมดการทำงาน</div>
-      <h2>สามโหมด สำหรับสามหน้าใน SGS</h2>
+      <h2>สี่โหมด สำหรับสามหน้าใน SGS และไฟล์ Excel ของโรงเรียน</h2>
       <p class="sec-intro">
         เลือกโหมดได้จากแถบด้านบนของหน้าต่าง โหมดเป็นตัวกำหนดว่าไฟล์ของคุณครูต้องมีอะไรบ้าง
       </p>
@@ -656,10 +670,32 @@
         </div>
       </div>
 
+      <div class="dl mode-new">
+        <div class="os"><h3>สมรรถนะสำคัญของผู้เรียน 5 ด้าน <span class="chip new">ใหม่ใน 2.0.0</span></h3></div>
+        <p>
+          โหมดเดียวที่ไม่ได้พิมพ์ลง SGS แต่พิมพ์ลง<strong>ไฟล์ Excel ของโรงเรียน</strong>
+          นักเรียนหนึ่งคนมี 24 ช่อง แบ่งเป็น 5 ด้าน (4, 4, 5, 6 และ 5 ช่อง)
+          สร้างชุดคะแนนไว้ แล้วให้นักเรียนตามเลขที่ ไม่ต้องใช้ไฟล์คะแนน —
+          มีชุด A ถึง E ให้เริ่มใช้ได้เลย
+        </p>
+        <p>
+          เลือกได้ทีละช่องว่าจะใช้ค่าจากชุด ให้คะแนนตามเกรดของนักเรียน
+          หรือข้ามไว้ให้คุณครูกรอกเอง ก่อนกดเริ่ม ให้คลิกช่องแรกของนักเรียนคนแรกในไฟล์ Excel
+        </p>
+        <div class="chips"><span class="chip">ทดลองฟรี 3 ครั้ง</span></div>
+      </div>
+
+      <div class="price-table" aria-label="ราคาไลเซนส์">
+        <div class="price-row"><span>คุณลักษณะอันพึงประสงค์ + การอ่าน คิดวิเคราะห์ และเขียน</span><strong>99 บาท</strong></div>
+        <div class="price-row"><span>สมรรถนะสำคัญของผู้เรียน 5 ด้าน</span><strong>49 บาท</strong></div>
+        <div class="price-row best"><span>ทั้งสามโหมด</span><strong>119 บาท</strong></div>
+        <div class="price-row upgrade"><span>มีไลเซนส์ 99 บาทอยู่แล้ว เพิ่มสมรรถนะ 5 ด้าน</span><strong>20 บาท</strong></div>
+      </div>
+
       <p class="note">
-        สองโหมดหลังทดลองใช้ได้ฟรีโหมดละ 3 ครั้ง (นับเมื่อพิมพ์ลง SGS ไปแล้วจริง ๆ
-        กดเริ่มผิดหน้าต่างไม่นับ) หลังจากนั้นปลดล็อกด้วยไลเซนส์
-        <strong>99 บาท จ่ายครั้งเดียว ได้ทั้งสองโหมด</strong> ใช้ได้ตลอดไป และใช้ได้กับเครื่อง Windows และ Mac ทุกเครื่องของคุณครูเอง
+        โหมดที่ต้องใช้ไลเซนส์ ทดลองใช้ได้ฟรีโหมดละ 3 ครั้ง (นับเมื่อพิมพ์ไปแล้วจริง ๆ
+        กดเริ่มผิดหน้าต่างไม่นับ) ไลเซนส์<strong>จ่ายครั้งเดียว</strong> ใช้ได้ตลอดไป
+        และใช้ได้กับเครื่อง Windows และ Mac ทุกเครื่องของคุณครูเอง
         ชำระผ่าน PromptPay จากในแอป — กดปุ่มปลดล็อกที่มุมขวาบน
       </p>
 
@@ -1239,9 +1275,38 @@
       <div class="changelog">
         <details open>
           <summary>
+            <span class="ver">เวอร์ชั่น 2.0.0</span>
+            <span class="when">กันยายน 2569</span>
+            <span class="tag-new">ล่าสุด</span>
+          </summary>
+          <ul>
+            <li>
+              <strong>โหมดใหม่ สมรรถนะสำคัญของผู้เรียน 5 ด้าน</strong> —
+              โหมดแรกที่พิมพ์ลง<strong>ไฟล์ Excel ของโรงเรียน</strong> ไม่ใช่ SGS
+              นักเรียนหนึ่งคนมี 24 ช่อง ใน 5 ด้าน โปรแกรมกด tab ข้ามช่องว่างระหว่างด้านให้เอง
+              และขึ้นแถวของนักเรียนคนถัดไปให้เอง หน้าต่างเป็นสีม่วงอ่อน
+            </li>
+            <li>
+              <strong>สองรูปแบบการกรอก</strong> — เลือกเป็นชุด (มีชุด A ถึง E ให้เริ่มใช้ได้เลย
+              ติ๊ก A กับ B ไว้ให้แล้ว) และ เลือกเป็นชุด + ให้คะแนนตามเกรด
+              ที่เลือกได้ว่าช่องไหนให้คิดจากเกรดของนักเรียน วางเกรดจาก Excel หรือเลือกไฟล์ก็ได้
+              ช่องไหนอยากกรอกเอง ตั้งเป็น "ข้าม" ไว้ได้
+            </li>
+            <li>
+              <strong>ไลเซนส์แยกสำหรับโหมดใหม่</strong> — สมรรถนะ 5 ด้าน 49 บาท ·
+              ทั้งสามโหมด 119 บาท · ใครมีไลเซนส์ 99 บาทอยู่แล้ว เพิ่มโหมดใหม่ได้ในราคา 20 บาท
+              ใส่รหัสใหม่ได้เลย รหัสเดิมยังอยู่ ทดลองฟรีได้ 3 ครั้งเหมือนโหมดอื่น
+            </li>
+            <li>
+              <strong>ไลเซนส์เดิมยังใช้ได้เหมือนเดิม</strong> —
+              ปลดล็อกคุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน เหมือนที่ซื้อไว้
+            </li>
+          </ul>
+        </details>
+        <details>
+          <summary>
             <span class="ver">เวอร์ชั่น 1.8.0</span>
             <span class="when">21 กันยายน 2569</span>
-            <span class="tag-new">ล่าสุด</span>
           </summary>
           <ul>
             <li>
