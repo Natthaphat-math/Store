@@ -537,6 +537,63 @@
   .sheet td:first-child{text-align:left;color:var(--ink-3);padding-left:22px}
   .sheet tr.bad td{background:var(--flag-tint)}
   .sheet tr.bad td.v{color:var(--flag);font-weight:700}
+  /* ---------- where it's used (Thailand map) ---------- */
+  /* A one-hue ramp off the page's own green, light to dark, with the paper
+     tone for "none yet". The two middle steps are new; they sit between
+     --paper-2 and --green-2 and were checked for separation under the three
+     common colour-vision deficiencies. Contrast against the white card is low
+     for the lightest steps, so every province also has a border, and the
+     same numbers are in the table under the map. */
+  :root{
+    --heat-0:var(--paper-2);
+    --heat-1:#9fc8b4;
+    --heat-2:#4e9277;
+    --heat-3:var(--green-2);
+  }
+  .geo-notice{font-size:13.5px;color:var(--ink-3);margin-top:10px;line-height:1.6}
+  .geo-notice a{color:var(--ink-2)}
+  #download .geo-notice{margin-top:14px}
+  .geo-card{
+    margin-top:40px;background:#fff;border:1px solid var(--rule-2);border-radius:14px;
+    box-shadow:var(--shadow);padding:30px;
+    display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:48px;align-items:start;
+  }
+  @media (max-width:820px){.geo-card{grid-template-columns:1fr;gap:28px;padding:22px 20px}}
+  .geo-map{position:relative;aspect-ratio:400/720;max-width:380px;width:100%;margin:0 auto}
+  .geo-map svg{display:block;width:100%;height:100%}
+  .geo-map path{stroke:#fff;stroke-width:.7;stroke-linejoin:round;fill:var(--heat-0);transition:fill .3s ease}
+  .geo-map path.h0{fill:var(--heat-0);stroke:var(--rule-2)}
+  .geo-map path.h1{fill:var(--heat-1)}
+  .geo-map path.h2{fill:var(--heat-2)}
+  .geo-map path.h3{fill:var(--heat-3)}
+  .geo-map path.on{stroke:var(--ink);stroke-width:1.6}
+  .geo-status{
+    position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+    font-size:14px;color:var(--ink-3);padding:20px;
+  }
+  .geo-status[hidden]{display:none}
+  .geo-tip{
+    position:absolute;z-index:3;pointer-events:none;
+    background:var(--ink);color:#f4f2ee;border-radius:9px;padding:8px 12px;
+    font-size:13.5px;line-height:1.5;white-space:nowrap;box-shadow:var(--shadow);
+  }
+  .geo-tip[hidden]{display:none}
+  .geo-tip b{display:block;font-weight:650;color:#fff}
+  .geo-tip span{color:#b9bcc1}
+  .geo-side h3{font-size:19px;letter-spacing:-.015em;margin-bottom:6px}
+  .geo-side > p{font-size:15px;color:var(--ink-2)}
+  .geo-legend{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
+  .geo-legend li{display:flex;align-items:center;gap:11px;font-size:15px;color:var(--ink-2)}
+  .geo-legend i{width:16px;height:16px;border-radius:4px;flex:none;border:1px solid rgba(23,24,26,.08)}
+  .geo-top{margin-top:26px;border-top:1px solid var(--rule)}
+  .geo-top .price-row{font-size:15px;font-variant-numeric:tabular-nums}
+  .geo-top .price-row:first-child{border-top:none}
+  .geo-top .price-row span{color:var(--ink-2)}
+  .geo-more{margin-top:18px}
+  .geo-more summary{cursor:pointer;font-size:14.5px;color:var(--green-2);font-weight:600}
+  .geo-more .spec{margin-top:14px;font-size:14.5px}
+  .geo-more .spec td:last-child,.geo-more .spec th:last-child{text-align:right;padding-right:0}
+  #geo-privacy{scroll-margin-top:86px}
 </style>
 
 <!-- Sets the flag before the first paint, so the walkthroughs never flash
@@ -593,6 +650,7 @@
           Windows 10 หรือ 11 (64 บิต) · macOS 13 (Ventura) ขึ้นไป ทั้งชิป Apple และ Intel ·
           ไลเซนส์รหัสเดียวใช้ได้ทั้งสองระบบ
         </p>
+        <p class="geo-notice">เมื่อกดดาวน์โหลด เว็บนี้จะบันทึกตำแหน่งโดยประมาณระดับจังหวัดจาก IP (ไม่เก็บ IP) เพื่อนับสถิติ · <a href="#geo-privacy">รายละเอียด</a></p>
       </div>
 
       <figure class="shot bare video">
@@ -1233,6 +1291,7 @@
           <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-Windows.zip" data-jump="install-windows">ดาวน์โหลดสำหรับ Windows</a>
         </div>
       </div>
+      <p class="geo-notice">เมื่อกดดาวน์โหลด เว็บนี้จะบันทึกตำแหน่งโดยประมาณระดับจังหวัดจาก IP (ไม่เก็บ IP) เพื่อนับสถิติ · <a href="#geo-privacy">รายละเอียด</a></p>
 
       <div class="dl-grid">
         <div class="dl">
@@ -1259,6 +1318,55 @@
         ทั้งสองระบบเป็นโปรแกรมเดียวกัน ใช้งานเหมือนกันทุกอย่าง และ
         <strong>ไลเซนส์รหัสเดียวใช้ได้ทั้งเครื่อง Windows และ Mac ของคุณครูเอง</strong>
         ถ้าซื้อไว้แล้วจากเครื่องหนึ่ง ก็วางรหัสเดิมในอีกเครื่องได้เลย ไม่ต้องซื้อซ้ำ
+      </p>
+    </div>
+  </section>
+
+  <section id="reach">
+    <div class="wrap">
+      <div class="sec-label">ผู้ใช้ทั่วประเทศ</div>
+      <h2>คุณครูจังหวัดไหนดาวน์โหลดไปใช้แล้วบ้าง</h2>
+      <p class="sec-intro" id="geo-intro">
+        นับจากการกดดาวน์โหลดบนหน้านี้ในประเทศไทย ทั้ง 77 จังหวัด
+      </p>
+
+      <div class="geo-card">
+        <div class="geo-map" id="geo-map">
+          <p class="geo-status" id="geo-status">กำลังโหลดแผนที่…</p>
+          <div class="geo-tip" id="geo-tip" hidden></div>
+        </div>
+
+        <div class="geo-side">
+          <h3 id="geo-headline">กำลังโหลดตัวเลข…</h3>
+          <p>แตะหรือชี้ที่จังหวัดเพื่อดูจำนวนครั้ง สีเข้มคือจังหวัดที่ดาวน์โหลดกันมากเมื่อเทียบกับจังหวัดอื่น</p>
+
+          <ul class="geo-legend">
+            <li><i style="background:var(--heat-0)"></i>ยังไม่มีคนดาวน์โหลด</li>
+            <li><i style="background:var(--heat-1)"></i>มีคนดาวน์โหลดบ้างแล้ว</li>
+            <li><i style="background:var(--heat-2)"></i>ดาวน์โหลดกันต่อเนื่อง</li>
+            <li><i style="background:var(--heat-3)"></i>ใช้กันเยอะที่สุด</li>
+          </ul>
+
+          <div class="geo-top" id="geo-top" hidden></div>
+
+          <details class="geo-more" id="geo-more" hidden>
+            <summary>ดูตัวเลขทุกจังหวัด</summary>
+            <table class="spec">
+              <thead><tr><th>จังหวัด</th><th>ดาวน์โหลด</th></tr></thead>
+              <tbody id="geo-table"></tbody>
+            </table>
+          </details>
+        </div>
+      </div>
+
+      <p class="note" id="geo-privacy">
+        <strong>ข้อมูลที่เก็บเมื่อกดดาวน์โหลด</strong> —
+        หน้านี้ส่ง IP ของคุณไปที่ ipapi.co เพื่อหาตำแหน่งโดยประมาณ
+        ถ้าอยู่ในประเทศไทย จะบันทึกเฉพาะจังหวัด ชื่อเมืองหรืออำเภอโดยประมาณ พิกัดแบบหยาบ (ปัดเหลือราว 10 กม.) และเวลาที่กด
+        ไม่เก็บ IP ชื่อ อีเมล หรือข้อมูลที่ระบุตัวคุณ และแผนที่นี้แสดงแค่ยอดรวมรายจังหวัด
+        ถ้าเบราว์เซอร์เปิด Global Privacy Control หรือ Do Not Track ไว้ หน้านี้จะไม่บันทึกอะไรเลย
+        อยากให้ลบข้อมูลหรือสอบถามเพิ่ม <a href="#contact">ติดต่อผู้พัฒนา</a> ได้
+        · ขอบเขตจังหวัดจาก geoBoundaries / © ผู้ร่วมพัฒนา OpenStreetMap (ODbL)
       </p>
     </div>
   </section>
@@ -1864,6 +1972,342 @@
       if (event.target === dlg) dlg.close();
     });
   });
+  // ---------- Where it's used: Thailand downloads map ----------
+  //
+  // Two halves. On a download click we ask ipapi.co where the visitor is and,
+  // if that is Thailand, send the province to a Google Apps Script web app,
+  // which appends a row to a sheet. When the map section comes near the
+  // viewport we load D3, the province outlines (./data/, vendored so they
+  // never move under us) and the per-province totals from the same web app.
+  //
+  // Until GEO_ENDPOINT is a real deployment URL both halves are switched off:
+  // nothing is sent, and the map draws every province in the "none yet" tone.
+  // The deployment steps are in tracking/README.md.
+  var GEO_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwUYRW714gvvltb7i777p4FD-BBTnOmoZGZv6WuhOfNPsiKumL9Xbr2c7lKFF7ZOS1TQg/exec';
+  var GEO_LIVE = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(GEO_ENDPOINT);
+
+  // <province-lookup>
+  // The 77 provinces: ISO 3166-2 code, the English name the sheet stores (and
+  // the Apps Script accepts -- tracking/Code.gs keeps the same list), the Thai
+  // name the page shows, then other spellings. ipapi.co mostly returns the
+  // province as `region`, but sometimes only a city or district, and spells
+  // names several ways ("Chonburi", "Chon Buri", "Changwat Chon Buri"), so
+  // everything is compared after normalizeGeoName() strips spacing, case and
+  // the usual prefixes. Aliases are town and district names that land in
+  // that province.
+  var TH_PROVINCES = [
+    ['TH-10','Bangkok','กรุงเทพมหานคร',['Krung Thep','Krung Thep Maha Nakhon','Bangkok Metropolis','Phra Nakhon','Thon Buri','Don Mueang','Lat Krabang','Bang Kapi','Chatuchak','Bang Khen','Min Buri','Nong Chok','Bang Na','Khlong Toei','กรุงเทพ','กทม']],
+    ['TH-11','Samut Prakan','สมุทรปราการ',['Samut Prakarn','Paknam','Bang Phli','Phra Pradaeng','Bang Bo','Bang Sao Thong','Bang Phli Yai']],
+    ['TH-12','Nonthaburi','นนทบุรี',['Pak Kret','Bang Bua Thong','Bang Yai','Bang Kruai','Sai Noi']],
+    ['TH-13','Pathum Thani','ปทุมธานี',['Rangsit','Khlong Luang','Thanyaburi','Lam Luk Ka','Lat Lum Kaeo']],
+    ['TH-14','Phra Nakhon Si Ayutthaya','พระนครศรีอยุธยา',['Ayutthaya','Ayudhya','Ayuthaya','อยุธยา']],
+    ['TH-15','Ang Thong','อ่างทอง',[]],
+    ['TH-16','Lopburi','ลพบุรี',['Lop Buri']],
+    ['TH-17','Sing Buri','สิงห์บุรี',[]],
+    ['TH-18','Chai Nat','ชัยนาท',[]],
+    ['TH-19','Saraburi','สระบุรี',['Kaeng Khoi']],
+    ['TH-20','Chon Buri','ชลบุรี',['Pattaya','Si Racha','Sriracha','Bang Lamung','Bang Saen','Sattahip','Laem Chabang','Phanat Nikhom','พัทยา']],
+    ['TH-21','Rayong','ระยอง',['Map Ta Phut','Ban Chang']],
+    ['TH-22','Chanthaburi','จันทบุรี',[]],
+    ['TH-23','Trat','ตราด',[]],
+    ['TH-24','Chachoengsao','ฉะเชิงเทรา',['Bang Pakong']],
+    ['TH-25','Prachin Buri','ปราจีนบุรี',['Kabin Buri']],
+    ['TH-26','Nakhon Nayok','นครนายก',[]],
+    ['TH-27','Sa Kaeo','สระแก้ว',['Aranyaprathet']],
+    ['TH-30','Nakhon Ratchasima','นครราชสีมา',['Korat','Khorat','Pak Chong','โคราช']],
+    ['TH-31','Buri Ram','บุรีรัมย์',[]],
+    ['TH-32','Surin','สุรินทร์',[]],
+    ['TH-33','Si Sa Ket','ศรีสะเกษ',['Sisaket']],
+    ['TH-34','Ubon Ratchathani','อุบลราชธานี',['Ubon','Warin Chamrap']],
+    ['TH-35','Yasothon','ยโสธร',[]],
+    ['TH-36','Chaiyaphum','ชัยภูมิ',[]],
+    ['TH-37','Amnat Charoen','อำนาจเจริญ',[]],
+    ['TH-38','Bueng Kan','บึงกาฬ',['Beung Kan','Bungkan']],
+    ['TH-39','Nong Bua Lam Phu','หนองบัวลำภู',[]],
+    ['TH-40','Khon Kaen','ขอนแก่น',[]],
+    ['TH-41','Udon Thani','อุดรธานี',['Udon']],
+    ['TH-42','Loei','เลย',[]],
+    ['TH-43','Nong Khai','หนองคาย',[]],
+    ['TH-44','Maha Sarakham','มหาสารคาม',['Mahasarakham']],
+    ['TH-45','Roi Et','ร้อยเอ็ด',[]],
+    ['TH-46','Kalasin','กาฬสินธุ์',[]],
+    ['TH-47','Sakon Nakhon','สกลนคร',[]],
+    ['TH-48','Nakhon Phanom','นครพนม',[]],
+    ['TH-49','Mukdahan','มุกดาหาร',[]],
+    ['TH-50','Chiang Mai','เชียงใหม่',['San Sai','Hang Dong','San Kamphaeng','Mae Rim','Saraphi']],
+    ['TH-51','Lamphun','ลำพูน',[]],
+    ['TH-52','Lampang','ลำปาง',[]],
+    ['TH-53','Uttaradit','อุตรดิตถ์',[]],
+    ['TH-54','Phrae','แพร่',[]],
+    ['TH-55','Nan','น่าน',[]],
+    ['TH-56','Phayao','พะเยา',[]],
+    ['TH-57','Chiang Rai','เชียงราย',['Mae Sai','Chiang Saen']],
+    ['TH-58','Mae Hong Son','แม่ฮ่องสอน',['Pai']],
+    ['TH-60','Nakhon Sawan','นครสวรรค์',[]],
+    ['TH-61','Uthai Thani','อุทัยธานี',[]],
+    ['TH-62','Kamphaeng Phet','กำแพงเพชร',[]],
+    ['TH-63','Tak','ตาก',['Mae Sot']],
+    ['TH-64','Sukhothai','สุโขทัย',[]],
+    ['TH-65','Phitsanulok','พิษณุโลก',[]],
+    ['TH-66','Phichit','พิจิตร',[]],
+    ['TH-67','Phetchabun','เพชรบูรณ์',[]],
+    ['TH-70','Ratchaburi','ราชบุรี',['Ban Pong']],
+    ['TH-71','Kanchanaburi','กาญจนบุรี',[]],
+    ['TH-72','Suphan Buri','สุพรรณบุรี',[]],
+    ['TH-73','Nakhon Pathom','นครปฐม',['Sam Phran','Salaya','Phutthamonthon']],
+    ['TH-74','Samut Sakhon','สมุทรสาคร',['Mahachai','Krathum Baen','Ban Phaeo']],
+    ['TH-75','Samut Songkhram','สมุทรสงคราม',['Amphawa']],
+    ['TH-76','Phetchaburi','เพชรบุรี',['Petchaburi','Cha-am']],
+    ['TH-77','Prachuap Khiri Khan','ประจวบคีรีขันธ์',['Hua Hin','หัวหิน']],
+    ['TH-80','Nakhon Si Thammarat','นครศรีธรรมราช',[]],
+    ['TH-81','Krabi','กระบี่',['Ao Nang']],
+    ['TH-82','Phang Nga','พังงา',['Khao Lak','Takua Pa']],
+    ['TH-83','Phuket','ภูเก็ต',['Patong','Kathu','Thalang']],
+    ['TH-84','Surat Thani','สุราษฎร์ธานี',['Ko Samui','Koh Samui','Samui','Ko Pha Ngan','Koh Phangan']],
+    ['TH-85','Ranong','ระนอง',[]],
+    ['TH-86','Chumphon','ชุมพร',[]],
+    ['TH-90','Songkhla','สงขลา',['Hat Yai','หาดใหญ่']],
+    ['TH-91','Satun','สตูล',[]],
+    ['TH-92','Trang','ตรัง',[]],
+    ['TH-93','Phatthalung','พัทลุง',[]],
+    ['TH-94','Pattani','ปัตตานี',[]],
+    ['TH-95','Yala','ยะลา',['Betong']],
+    ['TH-96','Narathiwat','นราธิวาส',['Sungai Kolok','Su-ngai Kolok']]
+  ];
+
+  // "Changwat Chon Buri", "Chonburi Province", "Mueang Chon Buri" and
+  // "จ.ชลบุรี" all come out as "chonburi" / "ชลบุรี".
+  function normalizeGeoName(s) {
+    return String(s || '').normalize('NFKC').toLowerCase()
+      .replace(/\b(changwat|chang wat|province|amphoe|amphur|khet|mueang|muang|city|metropolis)\b/g, ' ')
+      .replace(/^(จังหวัด|จ\.|อำเภอ|อ\.|เขต|เมือง)/, '')
+      .replace(/[^a-z฀-๿]/g, '');
+  }
+
+  var GEO_BY_KEY = {}, GEO_BY_ISO = {}, GEO_BY_NAME = {};
+  TH_PROVINCES.forEach(function (p) {
+    var info = { iso: p[0], en: p[1], th: p[2] };
+    GEO_BY_ISO[p[0]] = info;
+    GEO_BY_NAME[p[1]] = info;
+    [p[1], p[2]].concat(p[3]).forEach(function (name) { GEO_BY_KEY[normalizeGeoName(name)] = info; });
+  });
+
+  // Region first, because that is the province when ipapi has one. Then the
+  // city, for when it only knows the town. The ISO code last, and only as a
+  // bare "50" or "TH-50": other code systems exist and would mis-file.
+  function matchProvince(region, city, regionCode) {
+    var hit = GEO_BY_KEY[normalizeGeoName(region)] || GEO_BY_KEY[normalizeGeoName(city)];
+    if (hit) return hit;
+    var m = /^(?:TH-?)?(\d{2})$/i.exec(String(regionCode || '').trim());
+    return (m && GEO_BY_ISO['TH-' + m[1]]) || null;
+  }
+  // </province-lookup>
+
+  // ---- part 1: record a download ----
+  // Fire-and-forget. The download itself is the link's default action and
+  // starts whatever happens here: a blocked ipapi, a rate limit or a slow
+  // network only means this one isn't counted.
+  var lastGeoSend = 0;
+  function recordDownload() {
+    if (!GEO_LIVE || !window.fetch) return;
+    if (navigator.globalPrivacyControl === true || navigator.doNotTrack === '1') return;
+    var now = Date.now();
+    if (now - lastGeoSend < 5000) return;          // a double click is one download
+    lastGeoSend = now;
+
+    fetch('https://ipapi.co/json/', { credentials: 'omit' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (g) {
+        if (!g || g.error || g.country_code !== 'TH') return;
+        var p = matchProvince(g.region, g.city, g.region_code);
+        if (!p) return;
+        // One decimal is about 11 km -- a district, not a street. The IP
+        // location is no better than that anyway.
+        var round = function (x) { return typeof x === 'number' && isFinite(x) ? Math.round(x * 10) / 10 : null; };
+        var payload = JSON.stringify({
+          province: p.en,
+          city: String(g.city || '').slice(0, 80),
+          lat: round(g.latitude),
+          lon: round(g.longitude),
+          timestamp: new Date().toISOString()
+        });
+        // A string body goes as text/plain, a "simple" request, so the
+        // browser sends it without a CORS preflight -- which Apps Script
+        // cannot answer. sendBeacon also survives the tab being closed.
+        if (!(navigator.sendBeacon && navigator.sendBeacon(GEO_ENDPOINT, payload))) {
+          fetch(GEO_ENDPOINT, { method: 'POST', mode: 'no-cors', keepalive: true, body: payload });
+        }
+      })
+      .catch(function () {});
+  }
+  document.querySelectorAll('a[data-jump]').forEach(function (btn) {
+    btn.addEventListener('click', recordDownload);
+  });
+
+  // ---- part 2: the map ----
+  var D3_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js';
+  var D3_SRI = 'sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i';
+
+  function loadD3() {
+    return new Promise(function (resolve, reject) {
+      if (window.d3) return resolve(window.d3);
+      var s = document.createElement('script');
+      s.src = D3_SRC; s.integrity = D3_SRI; s.crossOrigin = 'anonymous';
+      s.onload = function () { window.d3 ? resolve(window.d3) : reject(); };
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
+
+  // Counts come back as [{province, count}]. Only names in the table above
+  // are kept and counts are forced to whole numbers, so whatever the sheet
+  // holds can only ever colour a known province -- nothing from it is
+  // written into the page as markup.
+  function loadCounts() {
+    if (!GEO_LIVE) return Promise.resolve(null);
+    return fetch(GEO_ENDPOINT, { credentials: 'omit' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (rows) {
+        var counts = {};
+        (Array.isArray(rows) ? rows : []).forEach(function (row) {
+          var p = row && GEO_BY_NAME[row.province];
+          var n = Math.floor(Number(row && row.count));
+          if (p && n > 0) counts[p.iso] = (counts[p.iso] || 0) + n;
+        });
+        return counts;
+      });
+  }
+
+  // Relative to the busiest province, so the map stays readable at 10
+  // downloads or 10,000, with floors so a single download is never a
+  // "hotspot".
+  function heatBucket(n, max) {
+    if (!n) return 0;
+    if (n >= Math.max(5, max * 0.5)) return 3;
+    if (n >= Math.max(2, max * 0.15)) return 2;
+    return 1;
+  }
+
+  var fmt = new Intl.NumberFormat('th-TH');
+  function countText(n) { return n ? 'ดาวน์โหลด ' + fmt.format(n) + ' ครั้ง' : 'ยังไม่มีการดาวน์โหลด'; }
+
+  function drawMap(d3, geo) {
+    var box = document.getElementById('geo-map');
+    var tip = document.getElementById('geo-tip');
+    var W = 400, H = 720;
+    var projection = d3.geoMercator().fitExtent([[8, 8], [W - 8, H - 8]], geo);
+    var path = d3.geoPath(projection);
+    var svg = d3.select(box).insert('svg', ':first-child')
+      .attr('viewBox', '0 0 ' + W + ' ' + H)
+      .attr('role', 'img')
+      .attr('aria-label', 'แผนที่ประเทศไทย 77 จังหวัด แสดงจำนวนการดาวน์โหลดรายจังหวัด ตัวเลขทั้งหมดอยู่ในตารางข้างแผนที่');
+    var counts = {};
+
+    var shapes = svg.append('g').selectAll('path')
+      .data(geo.features.filter(function (f) { return GEO_BY_ISO[f.properties.iso]; }))
+      .join('path')
+      .attr('d', path)
+      .attr('class', 'h0');
+
+    function show(event, f) {
+      var p = GEO_BY_ISO[f.properties.iso];
+      shapes.classed('on', function (g) { return g === f; });
+      // Raise, so the outline isn't hidden under its neighbours' edges.
+      if (this.parentNode.lastChild !== this) this.parentNode.appendChild(this);
+      tip.textContent = '';
+      var b = document.createElement('b'); b.textContent = p.th;
+      var s = document.createElement('span'); s.textContent = countText(counts[p.iso] || 0);
+      tip.appendChild(b); tip.appendChild(s);
+      tip.hidden = false;
+      var r = box.getBoundingClientRect();
+      var x = event.clientX - r.left, y = event.clientY - r.top;
+      var tw = tip.offsetWidth, th = tip.offsetHeight;
+      tip.style.left = Math.max(0, Math.min(r.width - tw, x - tw / 2)) + 'px';
+      tip.style.top = (y - th - 14 < 0 ? y + 18 : y - th - 14) + 'px';
+    }
+    function hide() { tip.hidden = true; shapes.classed('on', false); }
+    // Pointer events cover mouse, pen and touch: a tap shows the tooltip, a
+    // tap outside the map clears it.
+    shapes.on('pointermove', show).on('pointerdown', show).on('pointerleave', function (e) {
+      if (e.pointerType === 'mouse') hide();
+    });
+    document.addEventListener('pointerdown', function (e) { if (!box.contains(e.target)) hide(); });
+
+    return function colour(next) {
+      counts = next;
+      var max = 0;
+      for (var k in counts) max = Math.max(max, counts[k]);
+      shapes.attr('class', function (f) { return 'h' + heatBucket(counts[f.properties.iso] || 0, max); });
+    };
+  }
+
+  function renderSummary(counts) {
+    var head = document.getElementById('geo-headline');
+    var intro = document.getElementById('geo-intro');
+    if (!counts) {
+      head.textContent = GEO_LIVE ? 'ยังโหลดตัวเลขไม่ได้ ลองใหม่ภายหลัง' : 'เริ่มนับเร็ว ๆ นี้';
+      return;
+    }
+    var rows = Object.keys(counts).map(function (iso) { return { p: GEO_BY_ISO[iso], n: counts[iso] }; })
+      .sort(function (a, b) { return b.n - a.n || a.p.th.localeCompare(b.p.th, 'th'); });
+    var total = rows.reduce(function (t, r) { return t + r.n; }, 0);
+    head.textContent = rows.length + ' จาก 77 จังหวัด มีคุณครูดาวน์โหลดไปแล้ว';
+    intro.textContent = 'นับจากการกดดาวน์โหลดบนหน้านี้ในประเทศไทย ตอนนี้ดาวน์โหลดแล้ว ' +
+      fmt.format(total) + ' ครั้ง และยังเพิ่มขึ้นเรื่อย ๆ';
+    if (!rows.length) return;
+
+    var top = document.getElementById('geo-top');
+    rows.slice(0, 5).forEach(function (r) {
+      var line = document.createElement('div'); line.className = 'price-row';
+      var name = document.createElement('span'); name.textContent = r.p.th;
+      var n = document.createElement('strong'); n.textContent = fmt.format(r.n);
+      line.appendChild(name); line.appendChild(n); top.appendChild(line);
+    });
+    top.hidden = false;
+
+    var body = document.getElementById('geo-table');
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      var a = document.createElement('td'); a.textContent = r.p.th;
+      var b = document.createElement('td'); b.textContent = fmt.format(r.n);
+      tr.appendChild(a); tr.appendChild(b); body.appendChild(tr);
+    });
+    if (rows.length < 77) {
+      var tr = document.createElement('tr');
+      var a = document.createElement('td'); a.textContent = 'อีก ' + (77 - rows.length) + ' จังหวัด';
+      var b = document.createElement('td'); b.textContent = '0';
+      tr.appendChild(a); tr.appendChild(b); body.appendChild(tr);
+    }
+    document.getElementById('geo-more').hidden = false;
+  }
+
+  // Nothing is fetched -- not D3, not the outlines, not the counts -- until
+  // the section is about to scroll into view: most visitors never get this
+  // far, and the page has kept third-party requests to the ones a teacher
+  // asks for.
+  function startMap() {
+    var status = document.getElementById('geo-status');
+    var counts = loadCounts().catch(function () { return null; });
+    Promise.all([loadD3(), fetch('./data/thailand-provinces.geojson').then(function (r) { return r.json(); })])
+      .then(function (res) {
+        var colour = drawMap(res[0], res[1]);
+        status.hidden = true;
+        return counts.then(function (c) { if (c) colour(c); renderSummary(c); });
+      })
+      .catch(function () {
+        status.textContent = 'โหลดแผนที่ไม่สำเร็จ ลองรีเฟรชหน้านี้อีกครั้ง';
+        counts.then(renderSummary);
+      });
+  }
+  (function () {
+    var section = document.getElementById('reach');
+    if (!section) return;
+    if (!('IntersectionObserver' in window)) return startMap();
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); startMap(); }
+    }, { rootMargin: '600px 0px' });
+    io.observe(section);
+  })();
 </script>
 </body>
 </html>

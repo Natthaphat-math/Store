@@ -41,3 +41,26 @@ resolves to the newest published build, so a new release needs no edit here:
 |---|---|
 | SGS Auto-Typer | `Natthaphat-math/sgs-auto-typer-releases` |
 | GradeCheck | `Natthaphat-math/gradecheck-releases` |
+
+### Thailand downloads map
+
+`sgs-auto-typer.html` has a "ผู้ใช้ทั่วประเทศ" section: a map of the 77
+provinces coloured by how many downloads came from each.
+
+- A click on either app download button asks `ipapi.co` for the visitor's
+  approximate location. If it is Thailand, the province (plus city and
+  coordinates rounded to ~11 km) is sent to a Google Apps Script web app,
+  which appends a row to a Google Sheet. Nothing is sent when the browser
+  has Global Privacy Control or Do Not Track on. The notice under the
+  download buttons and the note under the map say what is collected.
+- The map loads D3 from cdnjs, the outlines from `data/`, and the totals from
+  the same web app, and only when the section is about to scroll into view.
+- `GEO_ENDPOINT` near the bottom of the page is the web app URL. Until it is
+  set, nothing is sent and every province draws as "none yet".
+- `tracking/` holds the Apps Script (`Code.gs`), its deployment steps, and a
+  test that the page, the script and the map agree on the 77 provinces
+  (`node projects/store-page/tracking/test-province-lookup.mjs`). The sync
+  leaves it out of `Store`.
+- `data/thailand-provinces.geojson` is geoBoundaries `THA ADM1` (OpenStreetMap,
+  ODbL), simplified to 6% with mapshaper and rewound so outer rings run
+  clockwise, which is what D3 expects. Each feature keeps only its ISO code.
