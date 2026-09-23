@@ -594,6 +594,12 @@
   .geo-more .spec{margin-top:14px;font-size:14.5px}
   .geo-more .spec td:last-child,.geo-more .spec th:last-child{text-align:right;padding-right:0}
   #geo-privacy{scroll-margin-top:86px}
+  /* The map sits in the hero, between the download buttons and the intro
+     video, so it is one of the first things a visitor sees. */
+  .hero .reach{margin-top:64px;padding-top:56px;border-top:1px solid var(--rule)}
+  @media (max-width:940px){.hero .reach{margin-top:44px;padding-top:40px}}
+  .hero .reach .geo-card{margin-top:32px}
+  .hero .reach + .shot{margin-top:56px}
 </style>
 
 <!-- Sets the flag before the first paint, so the walkthroughs never flash
@@ -651,6 +657,53 @@
           ไลเซนส์รหัสเดียวใช้ได้ทั้งสองระบบ
         </p>
         <p class="geo-notice">เมื่อกดดาวน์โหลด เว็บนี้จะบันทึกตำแหน่งโดยประมาณระดับจังหวัดจาก IP (ไม่เก็บ IP) เพื่อนับสถิติ · <a href="#geo-privacy">รายละเอียด</a></p>
+      </div>
+
+      <div class="reach" id="reach">
+        <div class="sec-label">ผู้ใช้ทั่วประเทศ</div>
+        <h2>คุณครูจังหวัดไหนดาวน์โหลดไปใช้แล้วบ้าง</h2>
+        <p class="sec-intro" id="geo-intro">
+          นับจากการดาวน์โหลดในประเทศไทย ทั้ง 77 จังหวัด
+        </p>
+
+        <div class="geo-card">
+          <div class="geo-map" id="geo-map">
+            <p class="geo-status" id="geo-status">กำลังโหลดแผนที่…</p>
+            <div class="geo-tip" id="geo-tip" hidden></div>
+          </div>
+
+          <div class="geo-side">
+            <h3 id="geo-headline">กำลังโหลดตัวเลข…</h3>
+            <p>แตะหรือชี้ที่จังหวัดเพื่อดูจำนวนครั้ง สีเข้มคือจังหวัดที่ดาวน์โหลดกันมากเมื่อเทียบกับจังหวัดอื่น</p>
+
+            <ul class="geo-legend">
+              <li><i style="background:var(--heat-0)"></i>ยังไม่มีคนดาวน์โหลด</li>
+              <li><i style="background:var(--heat-1)"></i>มีคนดาวน์โหลดบ้างแล้ว</li>
+              <li><i style="background:var(--heat-2)"></i>ดาวน์โหลดกันต่อเนื่อง</li>
+              <li><i style="background:var(--heat-3)"></i>ใช้กันเยอะที่สุด</li>
+            </ul>
+
+            <div class="geo-top" id="geo-top" hidden></div>
+
+            <details class="geo-more" id="geo-more" hidden>
+              <summary>ดูตัวเลขทุกจังหวัด</summary>
+              <table class="spec">
+                <thead><tr><th>จังหวัด</th><th>ดาวน์โหลด</th></tr></thead>
+                <tbody id="geo-table"></tbody>
+              </table>
+            </details>
+          </div>
+        </div>
+
+        <p class="note" id="geo-privacy">
+          <strong>ข้อมูลที่เก็บเมื่อกดดาวน์โหลด</strong> —
+          หน้านี้ส่ง IP ของคุณไปที่ ipapi.co เพื่อหาตำแหน่งโดยประมาณ
+          ถ้าอยู่ในประเทศไทย จะบันทึกเฉพาะจังหวัด ชื่อเมืองหรืออำเภอโดยประมาณ พิกัดแบบหยาบ (ปัดเหลือราว 10 กม.) และเวลาที่กด
+          ไม่เก็บ IP ชื่อ อีเมล หรือข้อมูลที่ระบุตัวคุณ และแผนที่นี้แสดงแค่ยอดรวมรายจังหวัด
+          ถ้าเบราว์เซอร์เปิด Global Privacy Control หรือ Do Not Track ไว้ หน้านี้จะไม่บันทึกอะไรเลย
+          อยากให้ลบข้อมูลหรือสอบถามเพิ่ม <a href="#contact">ติดต่อผู้พัฒนา</a> ได้
+          · ขอบเขตจังหวัดจาก geoBoundaries / © ผู้ร่วมพัฒนา OpenStreetMap (ODbL)
+        </p>
       </div>
 
       <figure class="shot bare video">
@@ -1318,55 +1371,6 @@
         ทั้งสองระบบเป็นโปรแกรมเดียวกัน ใช้งานเหมือนกันทุกอย่าง และ
         <strong>ไลเซนส์รหัสเดียวใช้ได้ทั้งเครื่อง Windows และ Mac ของคุณครูเอง</strong>
         ถ้าซื้อไว้แล้วจากเครื่องหนึ่ง ก็วางรหัสเดิมในอีกเครื่องได้เลย ไม่ต้องซื้อซ้ำ
-      </p>
-    </div>
-  </section>
-
-  <section id="reach">
-    <div class="wrap">
-      <div class="sec-label">ผู้ใช้ทั่วประเทศ</div>
-      <h2>คุณครูจังหวัดไหนดาวน์โหลดไปใช้แล้วบ้าง</h2>
-      <p class="sec-intro" id="geo-intro">
-        นับจากการกดดาวน์โหลดบนหน้านี้ในประเทศไทย ทั้ง 77 จังหวัด
-      </p>
-
-      <div class="geo-card">
-        <div class="geo-map" id="geo-map">
-          <p class="geo-status" id="geo-status">กำลังโหลดแผนที่…</p>
-          <div class="geo-tip" id="geo-tip" hidden></div>
-        </div>
-
-        <div class="geo-side">
-          <h3 id="geo-headline">กำลังโหลดตัวเลข…</h3>
-          <p>แตะหรือชี้ที่จังหวัดเพื่อดูจำนวนครั้ง สีเข้มคือจังหวัดที่ดาวน์โหลดกันมากเมื่อเทียบกับจังหวัดอื่น</p>
-
-          <ul class="geo-legend">
-            <li><i style="background:var(--heat-0)"></i>ยังไม่มีคนดาวน์โหลด</li>
-            <li><i style="background:var(--heat-1)"></i>มีคนดาวน์โหลดบ้างแล้ว</li>
-            <li><i style="background:var(--heat-2)"></i>ดาวน์โหลดกันต่อเนื่อง</li>
-            <li><i style="background:var(--heat-3)"></i>ใช้กันเยอะที่สุด</li>
-          </ul>
-
-          <div class="geo-top" id="geo-top" hidden></div>
-
-          <details class="geo-more" id="geo-more" hidden>
-            <summary>ดูตัวเลขทุกจังหวัด</summary>
-            <table class="spec">
-              <thead><tr><th>จังหวัด</th><th>ดาวน์โหลด</th></tr></thead>
-              <tbody id="geo-table"></tbody>
-            </table>
-          </details>
-        </div>
-      </div>
-
-      <p class="note" id="geo-privacy">
-        <strong>ข้อมูลที่เก็บเมื่อกดดาวน์โหลด</strong> —
-        หน้านี้ส่ง IP ของคุณไปที่ ipapi.co เพื่อหาตำแหน่งโดยประมาณ
-        ถ้าอยู่ในประเทศไทย จะบันทึกเฉพาะจังหวัด ชื่อเมืองหรืออำเภอโดยประมาณ พิกัดแบบหยาบ (ปัดเหลือราว 10 กม.) และเวลาที่กด
-        ไม่เก็บ IP ชื่อ อีเมล หรือข้อมูลที่ระบุตัวคุณ และแผนที่นี้แสดงแค่ยอดรวมรายจังหวัด
-        ถ้าเบราว์เซอร์เปิด Global Privacy Control หรือ Do Not Track ไว้ หน้านี้จะไม่บันทึกอะไรเลย
-        อยากให้ลบข้อมูลหรือสอบถามเพิ่ม <a href="#contact">ติดต่อผู้พัฒนา</a> ได้
-        · ขอบเขตจังหวัดจาก geoBoundaries / © ผู้ร่วมพัฒนา OpenStreetMap (ODbL)
       </p>
     </div>
   </section>
@@ -2252,7 +2256,7 @@
       .sort(function (a, b) { return b.n - a.n || a.p.th.localeCompare(b.p.th, 'th'); });
     var total = rows.reduce(function (t, r) { return t + r.n; }, 0);
     head.textContent = rows.length + ' จาก 77 จังหวัด มีคุณครูดาวน์โหลดไปแล้ว';
-    intro.textContent = 'นับจากการกดดาวน์โหลดบนหน้านี้ในประเทศไทย ตอนนี้ดาวน์โหลดแล้ว ' +
+    intro.textContent = 'นับจากการดาวน์โหลดในประเทศไทย ตอนนี้ดาวน์โหลดแล้ว ' +
       fmt.format(total) + ' ครั้ง และยังเพิ่มขึ้นเรื่อย ๆ';
     if (!rows.length) return;
 
@@ -2282,9 +2286,9 @@
   }
 
   // Nothing is fetched -- not D3, not the outlines, not the counts -- until
-  // the section is about to scroll into view: most visitors never get this
-  // far, and the page has kept third-party requests to the ones a teacher
-  // asks for.
+  // the map is about to scroll into view. It sits in the hero, so on most
+  // screens that is straight away, but the page's first paint never waits
+  // on any of it.
   function startMap() {
     var status = document.getElementById('geo-status');
     var counts = loadCounts().catch(function () { return null; });

@@ -44,8 +44,9 @@ resolves to the newest published build, so a new release needs no edit here:
 
 ### Thailand downloads map
 
-`sgs-auto-typer.html` has a "ผู้ใช้ทั่วประเทศ" section: a map of the 77
-provinces coloured by how many downloads came from each.
+`sgs-auto-typer.html` has a "ผู้ใช้ทั่วประเทศ" block in the hero, between
+the download buttons and the intro video: a map of the 77 provinces coloured
+by how many downloads came from each.
 
 - A click on either app download button asks `ipapi.co` for the visitor's
   approximate location. If it is Thailand, the province (plus city and
@@ -59,8 +60,9 @@ provinces coloured by how many downloads came from each.
   set, nothing is sent and every province draws as "none yet".
 - `tracking/` holds the Apps Script (`Code.gs`), its deployment steps, and a
   test that the page, the script and the map agree on the 77 provinces
-  (`node projects/store-page/tracking/test-province-lookup.mjs`). The sync
-  leaves it out of `Store`.
+  (`node projects/store-page/tracking/test-province-lookup.mjs`), plus
+  `test-code-gs.mjs`, which runs the script against stand-ins for Google's
+  services. The sync leaves `tracking/` out of `Store`.
 - `data/thailand-provinces.geojson` is geoBoundaries `THA ADM1` (OpenStreetMap,
   ODbL), simplified to 6% with mapshaper and rewound so outer rings run
   clockwise, which is what D3 expects. Each feature keeps only its ISO code.
