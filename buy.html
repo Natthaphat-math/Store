@@ -177,11 +177,12 @@
           <p class="amount" id="amount"></p>
           <p class="payee">ชื่อบัญชี: นาย ณัฐภาส ทองโสม</p>
           <p class="payee">ธนาคารกสิกรไทย (K PLUS) · รับเงินได้จากทุกธนาคาร</p>
-          <div class="row"><a class="btn btn-secondary" id="saveQr" download="promptpay-sgs-auto-typer.gif" href="#">บันทึกรูป QR</a></div>
+          <div class="row"><button class="btn btn-secondary" id="saveQr" type="button">บันทึกรูป QR</button></div>
         </div>
       </div>
       <p class="note">
-        ใช้มือถือเปิดหน้านี้อยู่? กด “บันทึกรูป QR” แล้วเปิดแอปธนาคาร เลือกสแกนจากรูปในเครื่อง
+        ใช้มือถือเปิดหน้านี้อยู่? กด “บันทึกรูป QR” แล้วเลือก “บันทึกรูปภาพ” (หรือกดค้างที่รูป QR)
+        จากนั้นเปิดแอปธนาคาร เลือกสแกนจากรูปในเครื่อง
         ยอดเงินกรอกไว้ให้แล้ว โอนตามยอดนี้พอดี แล้วเก็บสลิปไว้สำหรับขั้นตอนถัดไป
       </p>
     </section>
@@ -286,9 +287,66 @@
     img.alt = 'QR PromptPay ' + baht(amount);
     img.src = qr.createDataURL(8, 16);
     box.appendChild(img);
-    $('saveQr').href = img.src;
     $('amount').textContent = baht(amount);
+    qrPicture = null;
+    // The picture that gets saved: the QR with the amount and payee under
+    // it, as a PNG -- Photos takes a PNG, and a bank app scanning from the
+    // gallery reads it like a screenshot. The on-page image becomes the same
+    // picture, so a long press saves it too.
+    var drawn = qrCard(qr, amount);
+    drawn.toBlob(function (blob) {
+      qrPicture = blob;
+      img.src = URL.createObjectURL(blob);
+    }, 'image/png');
   }
+
+  var qrPicture = null;
+
+  function qrCard(qr, amount) {
+    var cells = qr.getModuleCount();
+    var cell = 12, pad = 48, size = cells * cell;
+    var c = document.createElement('canvas');
+    c.width = size + pad * 2;
+    c.height = size + pad * 2 + 150;
+    var x = c.getContext('2d');
+    x.fillStyle = '#ffffff';
+    x.fillRect(0, 0, c.width, c.height);
+    x.fillStyle = '#000000';
+    for (var r = 0; r < cells; r++) {
+      for (var k = 0; k < cells; k++) {
+        if (qr.isDark(r, k)) x.fillRect(pad + k * cell, pad + r * cell, cell, cell);
+      }
+    }
+    var font = getComputedStyle(document.body).fontFamily;
+    x.textAlign = 'center';
+    x.fillStyle = '#17181a';
+    x.font = '700 44px ' + font;
+    x.fillText(baht(amount), c.width / 2, size + pad + 70);
+    x.fillStyle = '#3f434a';
+    x.font = '26px ' + font;
+    x.fillText('นาย ณัฐภาส ทองโสม · SGS Auto-Typer', c.width / 2, size + pad + 118);
+    return c;
+  }
+
+  // On a phone, the share sheet is what reaches Photos ("บันทึกรูปภาพ" /
+  // "Save Image"); a download only reaches Files, where a bank app will not
+  // look. A computer without file sharing just downloads the PNG.
+  $('saveQr').addEventListener('click', function () {
+    if (!qrPicture) return;
+    var name = 'promptpay-sgs-auto-typer-' + price() + '.png';
+    var file = null;
+    try { file = new File([qrPicture], name, { type: 'image/png' }); } catch (err) { file = null; }
+    if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], title: 'QR PromptPay ' + baht(price()) }).catch(function () {});
+      return;
+    }
+    var link = document.createElement('a');
+    link.href = URL.createObjectURL(qrPicture);
+    link.download = name;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  });
 
   // ---- email, twice
   function email() { return $('email').value.trim(); }
