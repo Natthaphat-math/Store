@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>เช็กสถานะรหัสไลเซนส์ — เครื่องมือครู</title>
+<meta name="description" content="ซื้อไลเซนส์ SGS Auto-Typer หรือ GradeCheck แล้วยังไม่เห็นอีเมล? เช็กได้ที่นี่ว่าส่งรหัสให้แล้วหรือยัง และวิธีหาอีเมลที่ตกไปอยู่ในกล่องสแปม">
+<meta name="theme-color" content="#faf8f4">
+<link rel="canonical" href="https://natthaphat-math.github.io/Store/license-status.html">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --paper:#faf8f4;
+    --paper-2:#f2eee7;
+    --card:#ffffff;
+    --ink:#17181a;
+    --ink-2:#3f434a;
+    --ink-3:#6b7079;
+    --rule:#e2ddd3;
+    --rule-2:#d3ccbf;
+    --green:#155c46;
+    --green-2:#0f4635;
+    --green-tint:#e8f0ec;
+    --flag:#a63a24;
+    --flag-tint:#fbeeea;
+    --amber:#8a6412;
+    --amber-tint:#fbf3e2;
+    --shadow:0 1px 2px rgba(23,24,26,.05), 0 8px 24px -12px rgba(23,24,26,.18);
+    --font-th:"Sukhumvit Set","IBM Plex Sans Thai","Noto Sans Thai","Leelawadee UI","Thonburi","Tahoma",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --maxw:760px;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-th);font-size:17px;line-height:1.75;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{line-height:1.35;margin:0;font-weight:650;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  @media (max-width:600px){.wrap{padding:0 20px}}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,248,244,.86);
+    backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);
+    border-bottom:1px solid var(--rule);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;height:62px;max-width:1120px}
+  .mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:650;letter-spacing:-.02em;font-size:17px}
+  .mark .glyph{width:26px;height:26px;border-radius:7px;background:var(--green);display:grid;place-items:center;flex:none}
+  .mark .glyph svg{width:15px;height:15px;display:block}
+  .nav{display:flex;align-items:center;gap:22px;font-size:15px;color:var(--ink-2)}
+  .nav a{text-decoration:none}
+  .nav a:hover{color:var(--green)}
+  @media (max-width:600px){.nav a.wide{display:none}}
+
+  main{padding:56px 0 72px}
+  .sec-label{
+    font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:650;margin-bottom:14px;
+  }
+  h1{font-size:clamp(28px,4.2vw,38px);letter-spacing:-.025em;margin-bottom:14px}
+  .lede{color:var(--ink-2);font-size:17.5px;max-width:56ch}
+
+  .card{
+    margin-top:30px;background:var(--card);border:1px solid var(--rule-2);border-radius:14px;
+    box-shadow:var(--shadow);padding:26px;
+  }
+  @media (max-width:600px){.card{padding:20px}}
+  label{display:block;font-weight:620;margin-bottom:8px}
+  .ask{display:flex;gap:10px;flex-wrap:wrap}
+  input[type=email]{
+    flex:1 1 260px;min-width:0;font:inherit;font-size:16px;
+    padding:11px 14px;border-radius:10px;border:1px solid var(--rule-2);background:#fff;color:var(--ink);
+  }
+  input[type=email]:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font:inherit;font-weight:620;font-size:16px;text-decoration:none;cursor:pointer;
+    padding:11px 20px;border-radius:10px;border:1px solid transparent;
+    background:var(--green);color:#fff;box-shadow:var(--shadow);
+  }
+  .btn:hover{background:var(--green-2)}
+  .btn[disabled]{opacity:.6;cursor:progress}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--rule-2);box-shadow:none}
+  .btn-secondary:hover{background:#fff;border-color:var(--ink-3)}
+  .fineprint{font-size:14px;color:var(--ink-3);margin-top:12px}
+
+  .result{margin-top:22px}
+  .result[hidden]{display:none}
+  .result .for{font-size:14.5px;color:var(--ink-3);margin-bottom:10px}
+  .order{
+    display:flex;gap:14px;align-items:flex-start;
+    border:1px solid var(--rule);border-radius:12px;padding:14px 16px;
+  }
+  .order + .order{margin-top:10px}
+  .order .icon{font-size:22px;line-height:1.3;flex:none}
+  .order strong{display:block}
+  .order span{display:block;font-size:15px;color:var(--ink-2)}
+  .order.sent{background:var(--green-tint);border-color:#cfe0d7}
+  .order.waiting{background:var(--amber-tint);border-color:#ecdcb8}
+  .message{border-radius:12px;padding:14px 16px;background:var(--paper-2);color:var(--ink-2);font-size:15.5px}
+  .message.flag{background:var(--flag-tint);color:var(--flag)}
+
+  h2{font-size:22px;letter-spacing:-.015em;margin:44px 0 14px}
+  ol.tips{margin:0;padding-inline-start:22px;display:grid;gap:10px;color:var(--ink-2);font-size:16px}
+  ol.tips strong{color:var(--ink)}
+  .note{
+    margin-top:22px;font-size:15px;color:var(--ink-3);
+    border-inline-start:2px solid var(--rule-2);padding-inline-start:16px;line-height:1.7;
+  }
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+  footer{padding:30px 0 40px;border-top:1px solid var(--rule)}
+  .foot{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:14px;color:var(--ink-3);max-width:1120px}
+  .foot a{text-decoration:none}
+  .foot a:hover{color:var(--green)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="./index.html">
+      <span class="glyph" aria-hidden="true">
+        <svg viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5l4.5 4.5L17 5"/></svg>
+      </span>
+      เครื่องมือครู
+    </a>
+    <nav class="nav">
+      <a class="wide" href="./sgs-auto-typer.html">SGS Auto-Typer</a>
+      <a class="wide" href="./gradecheck.html">GradeCheck</a>
+      <a href="#contact">ติดต่อ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="sec-label">ไลเซนส์</div>
+    <h1>ซื้อแล้ว แต่ยังไม่เห็นอีเมลรหัสไลเซนส์?</h1>
+    <p class="lede">
+      ใส่อีเมลที่ใช้ตอนแจ้งการชำระเงิน แล้วดูได้ทันทีว่าส่งรหัสให้แล้วหรือยัง
+      ถ้าส่งแล้วแต่หาไม่เจอ ส่วนใหญ่อีเมลจะไปอยู่ในกล่องสแปมหรืออีเมลขยะ
+    </p>
+
+    <section class="card" aria-labelledby="ask-label">
+      <form id="lookup" novalidate>
+        <label id="ask-label" for="email">อีเมลที่ใช้ตอนแจ้งการชำระเงิน</label>
+        <div class="ask">
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
+                 placeholder="เช่น somchai@gmail.com" required>
+          <button class="btn" id="go" type="submit">เช็กสถานะ</button>
+        </div>
+        <p class="fineprint">
+          หน้านี้แสดงเฉพาะสถานะของอีเมลที่คุณพิมพ์ และปิดบังที่อยู่อีเมลบางส่วนไว้ ไม่แสดงรายชื่อผู้ซื้อคนอื่น
+        </p>
+      </form>
+      <div class="result" id="result" hidden aria-live="polite"></div>
+    </section>
+
+    <h2>หาอีเมลรหัสไม่เจอ</h2>
+    <ol class="tips">
+      <li><strong>เปิดกล่องสแปมหรืออีเมลขยะ</strong> — Gmail อยู่ที่ “สแปม” และแท็บ “โปรโมชัน”,
+          Outlook และ Hotmail อยู่ที่ “อีเมลขยะ” (Junk)</li>
+      <li><strong>ค้นหาในกล่องอีเมล</strong> ด้วยคำว่า <strong>natthaphat_official</strong> หรือ <strong>ไลเซนส์</strong></li>
+      <li><strong>ถ้าเจอในสแปม</strong> กด “ไม่ใช่สแปม” และเพิ่ม natthaphat_official@outlook.com
+          ในรายชื่อติดต่อ ครั้งต่อไปจะเข้ากล่องขาเข้าตามปกติ</li>
+      <li><strong>เช็กว่าพิมพ์อีเมลถูก</strong> — ถ้าด้านบนขึ้นว่าไม่พบ อาจพิมพ์อีเมลในแบบฟอร์มคลาดไปหนึ่งตัวอักษร</li>
+    </ol>
+
+    <p class="note">
+      ซื้อแบบ “รับรหัสทันที” รหัสจะขึ้นบนหน้าซื้อทันทีที่ส่งสลิป ส่วนแบบ “ส่งทางอีเมลภายใน 1 วัน”
+      ผู้พัฒนาตรวจสลิปและส่งรหัสให้ทางอีเมล โดยปกติภายใน 1 วัน ถ้าผ่านไปเกิน 1 วันแล้วสถานะยังไม่เปลี่ยน หรือส่งแล้วแต่หาอย่างไรก็ไม่เจอ
+      ติดต่อได้เลย ผู้พัฒนาจะส่งให้อีกครั้ง
+    </p>
+
+    <h2 id="contact">ติดต่อผู้พัฒนา</h2>
+    <div class="actions">
+      <a class="btn" id="resend"
+         href="mailto:natthaphat_official@outlook.com?subject=%E0%B8%82%E0%B8%AD%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%AA%E0%B9%88%E0%B8%87%E0%B8%A3%E0%B8%AB%E0%B8%B1%E0%B8%AA%E0%B9%84%E0%B8%A5%E0%B9%80%E0%B8%8B%E0%B8%99%E0%B8%AA%E0%B9%8C%E0%B8%AD%E0%B8%B5%E0%B8%81%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87">ขอให้ส่งรหัสอีกครั้ง</a>
+      <a class="btn btn-secondary" href="./sgs-auto-typer.html">กลับไปหน้า SGS Auto-Typer</a>
+    </div>
+    <p class="fineprint">
+      อีเมลไปที่ natthaphat_official@outlook.com — บอกชื่อ อีเมลที่ใช้ตอนแจ้งชำระเงิน และโปรแกรมที่ซื้อ
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>เครื่องมือครู · โปรแกรมช่วยงานคะแนนสำหรับคุณครู</span>
+    <span><a href="./index.html">เครื่องมือครูทั้งหมด</a> · <a href="./sgs-auto-typer.html">SGS Auto-Typer</a> · <a href="./gradecheck.html">GradeCheck</a></span>
+  </div>
+</footer>
+
+<script>
+  // The shop's Apps Script web app (tracking/shop/) -- the same URL as
+  // SHOP_ENDPOINT in buy.html. Until this is a real deployment the form still
+  // shows, and a lookup explains that the check is not open yet instead of
+  // pretending to search.
+  var STATUS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwE4SAse73Uo5EotnIfEj3VDbDe0nHQBX49r-xZo6xYsi7TT5GO-aSMq6M2MfcyCU9Q/exec';
+  var STATUS_LIVE = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(STATUS_ENDPOINT);
+
+  var form = document.getElementById('lookup');
+  var input = document.getElementById('email');
+  var button = document.getElementById('go');
+  var result = document.getElementById('result');
+
+  // Everything shown here is built with textContent, never innerHTML: the
+  // answer comes from a spreadsheet other people's form entries go into.
+  function el(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  var dateFmt = new Intl.DateTimeFormat('th-TH', {
+    day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+  });
+  function when(iso) {
+    var d = iso ? new Date(iso) : null;
+    return d && !isNaN(d.getTime()) ? dateFmt.format(d) : '';
+  }
+
+  function show(nodes) {
+    result.textContent = '';
+    nodes.forEach(function (n) { result.appendChild(n); });
+    result.hidden = false;
+  }
+  function message(text, flag) { show([el('p', 'message' + (flag ? ' flag' : ''), text)]); }
+
+  function render(answer) {
+    if (!answer || !answer.ok) {
+      message(answer && answer.error === 'busy'
+        ? 'ตอนนี้มีคนเช็กพร้อมกันหลายคน ลองใหม่อีกครั้งในอีกหนึ่งนาที'
+        : 'เช็กไม่สำเร็จ ลองใหม่อีกครั้ง หรือติดต่อผู้พัฒนาด้านล่าง', true);
+      return;
+    }
+    var orders = Array.isArray(answer.orders) ? answer.orders : [];
+    var nodes = [el('p', 'for', 'ผลสำหรับ ' + String(answer.email || ''))];
+    if (!orders.length) {
+      nodes.push(el('p', 'message',
+        'ไม่พบคำสั่งซื้อจากอีเมลนี้ ลองตรวจตัวสะกด หรือใช้อีเมลอื่นที่อาจใช้ตอนแจ้งการชำระเงิน ' +
+        'ถ้าเพิ่งส่งแบบฟอร์มไปไม่กี่นาที ลองใหม่อีกครั้งภายหลัง'));
+      show(nodes);
+      return;
+    }
+    orders.forEach(function (o) {
+      var sent = o.sent === true;
+      var box = el('div', 'order ' + (sent ? 'sent' : 'waiting'));
+      box.appendChild(el('div', 'icon', sent ? '☑️' : '⏳'));
+      var text = el('div');
+      var product = String(o.product || 'ไลเซนส์');
+      if (sent) {
+        text.appendChild(el('strong', null, 'ส่งรหัสแล้ว — ' + product));
+        var at = when(o.sentAt);
+        text.appendChild(el('span', null, (at ? 'ส่งเมื่อ ' + at + ' · ' : '') +
+          'หากไม่พบอีเมลในกล่องขาเข้า โปรดตรวจสอบกล่องสแปมหรือกล่องอีเมลขยะ'));
+      } else {
+        text.appendChild(el('strong', null, 'ได้รับแจ้งการชำระเงินแล้ว — ' + product));
+        text.appendChild(el('span', null, 'กำลังตรวจสอบการโอน จะส่งรหัสทางอีเมลโดยปกติภายใน 1 วัน'));
+      }
+      var sub = when(o.submitted);
+      if (sub) text.appendChild(el('span', null, 'แจ้งชำระเงินเมื่อ ' + sub));
+      box.appendChild(text);
+      nodes.push(box);
+    });
+    show(nodes);
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var email = input.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      message('พิมพ์อีเมลให้ครบ เช่น somchai@gmail.com', true);
+      input.focus();
+      return;
+    }
+    if (!STATUS_LIVE) {
+      message('ระบบเช็กสถานะยังไม่เปิดใช้งาน ระหว่างนี้ลองหาในกล่องสแปมตามขั้นตอนด้านล่าง หรือติดต่อผู้พัฒนาได้เลย');
+      return;
+    }
+    button.disabled = true;
+    message('กำลังเช็ก…');
+    // A string body is sent as text/plain, which needs no CORS preflight --
+    // Apps Script cannot answer one. POST keeps the address out of the URL,
+    // and so out of browser history and server logs.
+    fetch(STATUS_ENDPOINT, { method: 'POST', body: JSON.stringify({ action: 'status', email: email }), credentials: 'omit' })
+      .then(function (r) { return r.json(); })
+      .then(render)
+      .catch(function () { render(null); })
+      .then(function () { button.disabled = false; });
+  });
+</script>
+</body>
+</html>

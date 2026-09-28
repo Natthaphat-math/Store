@@ -66,3 +66,26 @@ by how many downloads came from each.
 - `data/thailand-provinces.geojson` is geoBoundaries `THA ADM1` (OpenStreetMap,
   ODbL), simplified to 6% with mapshaper and rewound so outer rings run
   clockwise, which is what D3 expects. Each feature keeps only its ISO code.
+
+### Buying and the licence status page
+
+`buy.html` sells SGS Auto-Typer licences by PromptPay. The QR is generated
+with the amount already in it, from the K PLUS e-wallet ID in the seller's
+own QR. The buyer uploads their slip and chooses one of two routes:
+- **Instant (+5฿):** the QR on the slip is checked with EasySlip, and the
+  keys appear on the page and are emailed.
+- **Manual:** the slip is saved for the seller to check. Ticking อนุมัติ in
+  the orders sheet signs and emails the keys.
+
+`license-status.html` answers "I paid, where is my key?" for one email at a
+time. It is linked from the SGS page (menu, price section, FAQ, contact,
+footer), the GradeCheck payment note and footer, and the store home footer.
+
+Both talk to one Apps Script web app, `tracking/shop/`. It signs the same
+keys as `licensing/generate_license.py`, with the private key held in Script
+Properties, and reads and writes a private orders spreadsheet. The QR
+libraries are vendored in `vendor/`: jsQR (Apache-2.0) and qrcode-generator
+(MIT). Until the endpoints in the two pages are set, the buy page points to
+the Tally form and the status page says the check is not open yet.
+Setup: `tracking/shop/README.md`. Tests:
+`node projects/store-page/tracking/shop/test-shop.mjs`.

@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ซื้อไลเซนส์ SGS Auto-Typer — เครื่องมือครู</title>
+<meta name="description" content="ซื้อไลเซนส์ SGS Auto-Typer ด้วย PromptPay รับรหัสทันทีหลังส่งสลิป หรือแบบตรวจสลิปเองภายใน 1 วัน">
+<meta name="theme-color" content="#faf8f4">
+<link rel="canonical" href="https://natthaphat-math.github.io/Store/buy.html">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+<style>
+  :root{
+    --paper:#faf8f4; --paper-2:#f2eee7; --card:#ffffff;
+    --ink:#17181a; --ink-2:#3f434a; --ink-3:#6b7079;
+    --rule:#e2ddd3; --rule-2:#d3ccbf;
+    --green:#155c46; --green-2:#0f4635; --green-tint:#e8f0ec;
+    --flag:#a63a24; --flag-tint:#fbeeea; --amber-tint:#fbf3e2;
+    --shadow:0 1px 2px rgba(23,24,26,.05), 0 8px 24px -12px rgba(23,24,26,.18);
+    --font-th:"Sukhumvit Set","IBM Plex Sans Thai","Noto Sans Thai","Leelawadee UI","Thonburi","Tahoma",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-th);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{line-height:1.35;margin:0;font-weight:650;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px}
+  @media (max-width:600px){.wrap{padding:0 16px}}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.9);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--rule)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:62px}
+  .mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:650;font-size:17px}
+  .mark .glyph{width:26px;height:26px;border-radius:7px;background:var(--green);display:grid;place-items:center;flex:none}
+  .mark .glyph svg{width:15px;height:15px;display:block}
+  .nav{display:flex;gap:18px;font-size:15px;color:var(--ink-2)}
+  .nav a{text-decoration:none}
+  .nav a:hover{color:var(--green)}
+
+  main{padding:44px 0 72px}
+  .sec-label{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);font-weight:650;margin-bottom:12px}
+  h1{font-size:clamp(28px,4.2vw,38px);letter-spacing:-.025em;margin-bottom:12px}
+  .lede{color:var(--ink-2);max-width:58ch}
+
+  .step{margin-top:28px;background:var(--card);border:1px solid var(--rule-2);border-radius:14px;box-shadow:var(--shadow);padding:24px}
+  @media (max-width:600px){.step{padding:18px}}
+  .step h2{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .step h2 .n{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:14px;flex:none}
+  .step[aria-disabled="true"]{opacity:.5;pointer-events:none}
+
+  .choices{display:grid;gap:10px}
+  .choice{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--rule-2);border-radius:12px;padding:14px 16px;cursor:pointer;background:#fff}
+  .choice:hover{border-color:var(--ink-3)}
+  .choice input{margin-top:6px;accent-color:var(--green);width:18px;height:18px;flex:none}
+  .choice .t{flex:1}
+  .choice strong{display:block}
+  .choice span{display:block;font-size:14.5px;color:var(--ink-3)}
+  .choice .price{font-weight:680;font-size:18px;white-space:nowrap;color:var(--ink)}
+  .choice:has(input:checked){border-color:var(--green);background:var(--green-tint)}
+  .choice.best .t strong::after{content:"คุ้มที่สุด";margin-left:8px;font-size:12px;font-weight:600;color:var(--green-2);background:#d5e8de;border-radius:999px;padding:2px 9px;vertical-align:2px}
+  .sub{font-weight:620;margin:20px 0 10px}
+
+  label.f{display:block;font-weight:600;margin:0 0 6px}
+  input[type=email]{width:100%;font:inherit;font-size:16px;padding:11px 14px;border-radius:10px;border:1px solid var(--rule-2);background:#fff;color:var(--ink)}
+  input[type=email]:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+  .field + .field{margin-top:14px}
+  .hint{font-size:14px;color:var(--ink-3);margin-top:6px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:620;font-size:16px;text-decoration:none;cursor:pointer;padding:11px 20px;border-radius:10px;border:1px solid transparent;background:var(--green);color:#fff;box-shadow:var(--shadow)}
+  .btn:hover{background:var(--green-2)}
+  .btn[disabled]{opacity:.6;cursor:progress}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--rule-2);box-shadow:none}
+  .btn-secondary:hover{background:#fff;border-color:var(--ink-3)}
+  .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+
+  .pay{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center}
+  @media (max-width:600px){.pay{grid-template-columns:1fr;justify-items:center;text-align:center}}
+  .qr{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:12px;width:232px}
+  .qr img,.qr canvas{display:block;width:206px;height:206px;image-rendering:pixelated}
+  .amount{font-size:34px;font-weight:700;letter-spacing:-.02em}
+  .payee{color:var(--ink-2)}
+  .note{margin-top:14px;font-size:14.5px;color:var(--ink-3);border-inline-start:2px solid var(--rule-2);padding-inline-start:14px}
+
+  .drop{display:block;border:2px dashed var(--rule-2);border-radius:12px;padding:22px;text-align:center;cursor:pointer;background:var(--paper)}
+  .drop:hover{border-color:var(--green)}
+  .drop input{display:none}
+  .drop strong{display:block}
+  .drop span{font-size:14.5px;color:var(--ink-3)}
+
+  .msg{margin-top:16px;border-radius:12px;padding:14px 16px;font-size:15.5px;background:var(--paper-2);color:var(--ink-2)}
+  .msg.ok{background:var(--green-tint);color:var(--green-2)}
+  .msg.wait{background:var(--amber-tint);color:#6b4a00}
+  .msg.bad{background:var(--flag-tint);color:var(--flag)}
+  .msg[hidden],.result[hidden]{display:none}
+  .keybox{margin-top:12px;border:1px solid #cfe0d7;background:#fff;border-radius:12px;padding:14px 16px}
+  .keybox strong{display:block;margin-bottom:6px}
+  .keybox code{display:block;font-family:var(--mono);font-size:13px;word-break:break-all;background:var(--paper-2);border-radius:8px;padding:10px 12px}
+  .keybox .btn{margin-top:10px;padding:8px 14px;font-size:14.5px}
+
+  footer{padding:30px 0 40px;border-top:1px solid var(--rule)}
+  .foot{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:14px;color:var(--ink-3)}
+  .foot a{text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="./index.html">
+      <span class="glyph" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5l4.5 4.5L17 5"/></svg></span>
+      เครื่องมือครู
+    </a>
+    <nav class="nav">
+      <a href="./sgs-auto-typer.html">SGS Auto-Typer</a>
+      <a href="./license-status.html">เช็กสถานะรหัส</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="sec-label">ซื้อไลเซนส์</div>
+    <h1>SGS Auto-Typer · ไลเซนส์จ่ายครั้งเดียว</h1>
+    <p class="lede">
+      ชำระผ่าน PromptPay แล้วส่งสลิป รหัสเดียวใช้ได้ทั้งเครื่อง Windows และ Mac ของคุณครูเอง ใช้ได้ตลอดไป
+      โหมดผลการเรียนใช้ฟรีอยู่แล้ว ไม่ต้องซื้อ
+    </p>
+
+    <!-- 1. what and how -->
+    <section class="step" id="step1">
+      <h2><span class="n">1</span>เลือกไลเซนส์</h2>
+      <div class="choices" id="products">
+        <label class="choice best"><input type="radio" name="product" value="all3" checked>
+          <span class="t"><strong>ครบทั้ง 3 โหมด</strong><span>คุณลักษณะอันพึงประสงค์ + การอ่าน คิดวิเคราะห์ และเขียน + สมรรถนะ 5 ด้าน</span></span>
+          <span class="price" data-price="all3"></span></label>
+        <label class="choice"><input type="radio" name="product" value="sgs">
+          <span class="t"><strong>คุณลักษณะ + การอ่าน</strong><span>คุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน</span></span>
+          <span class="price" data-price="sgs"></span></label>
+        <label class="choice"><input type="radio" name="product" value="competency">
+          <span class="t"><strong>สมรรถนะ 5 ด้าน</strong><span>สมรรถนะสำคัญของผู้เรียน 5 ด้าน (ไฟล์ Excel ของโรงเรียน)</span></span>
+          <span class="price" data-price="competency"></span></label>
+      </div>
+
+      <p class="sub">รับรหัสแบบไหน</p>
+      <div class="choices" id="methods">
+        <label class="choice"><input type="radio" name="method" value="instant" checked>
+          <span class="t"><strong>รับรหัสทันที</strong><span>ระบบตรวจสลิปอัตโนมัติ รหัสขึ้นบนหน้านี้และส่งทางอีเมลภายในไม่กี่วินาที (+5 บาท ค่าตรวจสลิป)</span></span></label>
+        <label class="choice"><input type="radio" name="method" value="manual">
+          <span class="t"><strong>ส่งทางอีเมลภายใน 1 วัน</strong><span>ผู้พัฒนาตรวจสลิปเอง แล้วส่งรหัสให้ทางอีเมล ราคาปกติ</span></span></label>
+      </div>
+    </section>
+
+    <!-- 2. where to send it -->
+    <section class="step" id="step2">
+      <h2><span class="n">2</span>อีเมลสำหรับรับรหัส</h2>
+      <div class="field">
+        <label class="f" for="email">อีเมล</label>
+        <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="เช่น somchai@gmail.com">
+      </div>
+      <div class="field">
+        <label class="f" for="email2">พิมพ์อีเมลอีกครั้ง</label>
+        <input id="email2" type="email" inputmode="email" autocomplete="off" placeholder="กันพิมพ์ผิด">
+        <p class="hint">รหัสจะส่งไปที่อีเมลนี้ และใช้เช็กสถานะรหัสภายหลังได้</p>
+      </div>
+      <div class="row"><button class="btn" id="toPay" type="button">ไปขั้นตอนชำระเงิน</button></div>
+      <p class="msg bad" id="emailMsg" hidden></p>
+    </section>
+
+    <!-- 3. pay -->
+    <section class="step" id="step3" aria-disabled="true">
+      <h2><span class="n">3</span>สแกนจ่ายด้วย PromptPay</h2>
+      <div class="pay">
+        <div class="qr" id="qr" aria-label="QR PromptPay"></div>
+        <div>
+          <p class="amount" id="amount"></p>
+          <p class="payee">ชื่อบัญชี: นาย ณัฐภาส ทองโสม</p>
+          <p class="payee">ธนาคารกสิกรไทย (K PLUS) · รับเงินได้จากทุกธนาคาร</p>
+          <div class="row"><a class="btn btn-secondary" id="saveQr" download="promptpay-sgs-auto-typer.gif" href="#">บันทึกรูป QR</a></div>
+        </div>
+      </div>
+      <p class="note">
+        ใช้มือถือเปิดหน้านี้อยู่? กด “บันทึกรูป QR” แล้วเปิดแอปธนาคาร เลือกสแกนจากรูปในเครื่อง
+        ยอดเงินกรอกไว้ให้แล้ว โอนตามยอดนี้พอดี แล้วเก็บสลิปไว้สำหรับขั้นตอนถัดไป
+      </p>
+    </section>
+
+    <!-- 4. slip -->
+    <section class="step" id="step4" aria-disabled="true">
+      <h2><span class="n">4</span>ส่งสลิป</h2>
+      <label class="drop" for="slip">
+        <input id="slip" type="file" accept="image/*">
+        <strong>เลือกรูปสลิปจากเครื่อง</strong>
+        <span>รูปสลิปจากแอปธนาคาร หรือภาพหน้าจอที่เห็น QR บนสลิปครบ</span>
+      </label>
+      <p class="msg" id="slipMsg" hidden aria-live="polite"></p>
+      <div class="result" id="keys" hidden></div>
+    </section>
+
+    <p class="note" style="margin-top:28px">
+      มีปัญหาตอนซื้อ หรือโอนแล้วแต่หน้านี้ขัดข้อง? <a href="./license-status.html">เช็กสถานะรหัส</a>
+      หรือส่งอีเมลถึง natthaphat_official@outlook.com พร้อมสลิป ผู้พัฒนาจะส่งรหัสให้
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>เครื่องมือครู · โปรแกรมช่วยงานคะแนนสำหรับคุณครู</span>
+    <span><a href="./sgs-auto-typer.html">SGS Auto-Typer</a> · <a href="./license-status.html">เช็กสถานะรหัส</a></span>
+  </div>
+</footer>
+
+<script src="./vendor/qrcode.min.js"></script>
+<script src="./vendor/jsQR.min.js"></script>
+<script>
+  // The shop's Apps Script web app (tracking/shop/). Until this is a real
+  // deployment the page still shows prices and the QR, and step 4 points to
+  // the old payment form instead of taking a slip it cannot send anywhere.
+  var SHOP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwE4SAse73Uo5EotnIfEj3VDbDe0nHQBX49r-xZo6xYsi7TT5GO-aSMq6M2MfcyCU9Q/exec';
+  var SHOP_LIVE = /^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(SHOP_ENDPOINT);
+  var FALLBACK_FORM = 'https://tally.so/r/rjeLyv';
+
+  // Must match PRODUCTS in tracking/shop/Config.gs -- the server checks the
+  // amount against its own copy, this one is only what the teacher sees.
+  var PRICES = {
+    all3: { instant: 125, manual: 119 },
+    sgs: { instant: 105, manual: 99 },
+    competency: { instant: 55, manual: 49 },
+  };
+  // The K PLUS PromptPay e-wallet ID from the seller's own QR.
+  var PROMPTPAY_ID = '004999007182735';
+
+  var $ = function (id) { return document.getElementById(id); };
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function chosen(name) { return document.querySelector('input[name="' + name + '"]:checked').value; }
+  function price() { return PRICES[chosen('product')][chosen('method')]; }
+  function baht(n) { return n.toLocaleString('th-TH') + ' บาท'; }
+
+  // ---- prices follow the method
+  function showPrices() {
+    var method = chosen('method');
+    document.querySelectorAll('[data-price]').forEach(function (node) {
+      node.textContent = baht(PRICES[node.getAttribute('data-price')][method]);
+    });
+    if ($('step3').getAttribute('aria-disabled') === 'false') drawQr();
+  }
+  document.querySelectorAll('input[name=product],input[name=method]').forEach(function (r) {
+    r.addEventListener('change', showPrices);
+  });
+  showPrices();
+
+  // ---- PromptPay QR with the amount in it (EMVCo, as the bank apps read it)
+  function tlv(tag, value) { return tag + ('0' + value.length).slice(-2) + value; }
+  function crc16(text) {
+    var crc = 0xffff;
+    for (var i = 0; i < text.length; i++) {
+      crc ^= text.charCodeAt(i) << 8;
+      for (var b = 0; b < 8; b++) crc = crc & 0x8000 ? ((crc << 1) ^ 0x1021) & 0xffff : (crc << 1) & 0xffff;
+    }
+    return ('000' + crc.toString(16).toUpperCase()).slice(-4);
+  }
+  function promptPayPayload(amount) {
+    var id = PROMPTPAY_ID;
+    // 01 phone, 02 national ID or tax ID, 03 e-wallet ID -- told apart by length.
+    var sub = id.length === 15 ? '03' : id.length === 13 ? '02' : '01';
+    var body = tlv('00', '01') + tlv('01', '12') +
+      tlv('29', tlv('00', 'A000000677010111') + tlv(sub, id)) +
+      tlv('53', '764') + tlv('54', amount.toFixed(2)) + tlv('58', 'TH') + '6304';
+    return body + crc16(body);
+  }
+  function drawQr() {
+    var amount = price();
+    var qr = qrcode(0, 'M');
+    qr.addData(promptPayPayload(amount));
+    qr.make();
+    var box = $('qr');
+    box.textContent = '';
+    var img = new Image();
+    img.alt = 'QR PromptPay ' + baht(amount);
+    img.src = qr.createDataURL(8, 16);
+    box.appendChild(img);
+    $('saveQr').href = img.src;
+    $('amount').textContent = baht(amount);
+  }
+
+  // ---- email, twice
+  function email() { return $('email').value.trim(); }
+  $('toPay').addEventListener('click', function () {
+    var msg = $('emailMsg');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email())) {
+      msg.textContent = 'พิมพ์อีเมลให้ครบ เช่น somchai@gmail.com'; msg.hidden = false; $('email').focus(); return;
+    }
+    if (email().toLowerCase() !== $('email2').value.trim().toLowerCase()) {
+      msg.textContent = 'อีเมลสองช่องไม่ตรงกัน ตรวจตัวสะกดอีกครั้ง'; msg.hidden = false; $('email2').focus(); return;
+    }
+    msg.hidden = true;
+    $('step3').setAttribute('aria-disabled', 'false');
+    $('step4').setAttribute('aria-disabled', 'false');
+    drawQr();
+    $('step3').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ---- the slip
+  function say(text, kind) {
+    var m = $('slipMsg');
+    m.className = 'msg' + (kind ? ' ' + kind : '');
+    m.textContent = text;
+    m.hidden = false;
+  }
+
+  function loadImage(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () { resolve(img); };
+      img.onerror = reject;
+      img.src = url;
+    });
+  }
+
+  // Read the QR on the slip. Slips put a small QR in a corner, so the image
+  // is tried at a couple of sizes before giving up.
+  function readSlipQr(img) {
+    var sizes = [1600, 1000, 2400];
+    for (var i = 0; i < sizes.length; i++) {
+      var scale = Math.min(1, sizes[i] / Math.max(img.naturalWidth, img.naturalHeight));
+      var w = Math.round(img.naturalWidth * scale), h = Math.round(img.naturalHeight * scale);
+      var c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      var ctx = c.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      var found = jsQR(ctx.getImageData(0, 0, w, h).data, w, h, { inversionAttempts: 'attemptBoth' });
+      if (found && found.data) return found.data.trim();
+    }
+    return '';
+  }
+
+  // A smaller JPEG for the manual route: enough to read, quick to send.
+  function compress(img) {
+    var scale = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+    var c = document.createElement('canvas');
+    c.width = Math.round(img.naturalWidth * scale);
+    c.height = Math.round(img.naturalHeight * scale);
+    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+    return c.toDataURL('image/jpeg', 0.85).split(',')[1];
+  }
+
+  function send(body) {
+    // text/plain (a plain string body) needs no CORS preflight, which Apps
+    // Script cannot answer.
+    return fetch(SHOP_ENDPOINT, { method: 'POST', body: JSON.stringify(body), credentials: 'omit' })
+      .then(function (r) { return r.json(); });
+  }
+
+  function showKeys(res) {
+    var box = $('keys');
+    box.textContent = '';
+    (res.keys || []).forEach(function (k, i) {
+      var card = el('div', 'keybox');
+      card.appendChild(el('strong', null, (res.keys.length > 1 ? 'รหัสที่ ' + (i + 1) + ' — ' : 'รหัส — ') + String(k.label || '')));
+      card.appendChild(el('code', null, String(k.key || '')));
+      var copy = el('button', 'btn btn-secondary', 'คัดลอกรหัส');
+      copy.type = 'button';
+      copy.addEventListener('click', function () {
+        navigator.clipboard.writeText(String(k.key)).then(function () { copy.textContent = 'คัดลอกแล้ว ✓'; });
+      });
+      card.appendChild(copy);
+      box.appendChild(card);
+    });
+    box.appendChild(el('p', 'note', 'เปิดโปรแกรม กดปุ่ม “ปลดล็อก” มุมขวาบน แล้ววางรหัส' +
+      ((res.keys || []).length > 1 ? ' ใส่ทีละรหัสจนครบ' : '') +
+      ' · ส่งรหัสเดียวกันไปที่ ' + String(res.email || 'อีเมลของคุณ') + ' แล้ว (ถ้าไม่เห็น ดูในกล่องสแปม)'));
+    box.hidden = false;
+  }
+
+  function answer(res) {
+    if (res && res.ok && res.status === 'issued') {
+      say('ชำระเงินเรียบร้อย ☑️ นี่คือรหัสไลเซนส์ของคุณ', 'ok');
+      showKeys(res);
+    } else if (res && res.ok && res.status === 'pending') {
+      say('ได้รับสลิปแล้ว ⏳ ' + (res.reason ? '(' + res.reason + ') ' : '') +
+        'ผู้พัฒนาจะตรวจและส่งรหัสไปที่ ' + String(res.email || 'อีเมลของคุณ') +
+        ' โดยปกติภายใน 1 วัน เช็กสถานะได้ที่หน้า “เช็กสถานะรหัส”', 'wait');
+    } else {
+      var why = {
+        used: 'สลิปนี้ถูกใช้รับรหัสไปแล้ว ถ้าเป็นของคุณเอง เช็กสถานะรหัสด้วยอีเมลที่ใช้ครั้งนั้น',
+        busy: 'ตอนนี้มีคนส่งพร้อมกันหลายคน ลองใหม่อีกครั้งในอีกหนึ่งนาที',
+        unreadable: 'อ่าน QR บนสลิปไม่ได้ ลองรูปสลิปที่ชัดและเห็น QR ครบ',
+        too_big: 'รูปใหญ่เกินไป ลองภาพหน้าจอสลิปแทน',
+      }[res && res.error] || 'ส่งไม่สำเร็จ ลองใหม่อีกครั้ง หรือส่งสลิปทางอีเมล natthaphat_official@outlook.com';
+      say(why, 'bad');
+    }
+  }
+
+  $('slip').addEventListener('change', function () {
+    var file = this.files && this.files[0];
+    this.value = '';
+    if (!file) return;
+    if (!SHOP_LIVE) {
+      say('ระบบรับสลิปอัตโนมัติยังไม่เปิดใช้งาน ระหว่างนี้แจ้งการชำระเงินผ่านแบบฟอร์มเดิมได้ที่ ' + FALLBACK_FORM, 'wait');
+      return;
+    }
+    var method = chosen('method');
+    var base = { email: email(), product: chosen('product') };
+    $('keys').hidden = true;
+    say('กำลังอ่านสลิป…');
+    loadImage(file).then(function (img) {
+      var payload = readSlipQr(img);
+      if (method === 'instant') {
+        if (!payload) {
+          say('อ่าน QR บนสลิปไม่ได้ ลองรูปสลิปที่ชัดกว่านี้ หรือเลือก “ส่งทางอีเมลภายใน 1 วัน” แล้วส่งรูปเดิมได้เลย', 'bad');
+          return null;
+        }
+        say('กำลังตรวจสลิปกับธนาคาร… ใช้เวลาไม่กี่วินาที');
+        return send(Object.assign({ action: 'instant', slipPayload: payload }, base));
+      }
+      say('กำลังส่งสลิป…');
+      return send(Object.assign({ action: 'manual', slipImage: compress(img), slipType: 'image/jpeg', slipPayload: payload }, base));
+    }).then(function (res) {
+      if (res) answer(res);
+    }).catch(function () {
+      say('ส่งไม่สำเร็จ ตรวจอินเทอร์เน็ตแล้วลองใหม่ หรือส่งสลิปทางอีเมล natthaphat_official@outlook.com', 'bad');
+    });
+  });
+</script>
+</body>
+</html>
