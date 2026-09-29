@@ -373,6 +373,12 @@
   .price-row strong{white-space:nowrap}
   .price-row.best{background:#eaf3ee}
   .price-row.upgrade{color:var(--ink-3);font-size:14.5px}
+  /* Two prices a row: the manual route, then the instant one. */
+  .price-table.by-method .price-row{display:grid;grid-template-columns:1fr 5.6em 5.6em;align-items:center}
+  .price-table.by-method .price-row > :not(:first-child){text-align:right}
+  .price-table.by-method .price-row.head{font-size:13px;line-height:1.35;color:var(--ink-3);padding-top:10px;padding-bottom:10px}
+  .price-table.by-method .price-row.head span{white-space:nowrap}
+  @media (max-width:480px){.price-table.by-method .price-row{grid-template-columns:1fr 5.3em 5.3em;gap:10px;padding-left:14px;padding-right:14px}}
   .row-cta{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;max-width:640px}
   .row-cta span{font-size:14.5px;color:var(--ink-3)}
   /* Under the price table: the one place a teacher who has just paid looks. */
@@ -808,11 +814,11 @@
         <div class="chips"><span class="chip">ทดลองฟรี 3 ครั้ง</span></div>
       </div>
 
-      <div class="price-table" aria-label="ราคาไลเซนส์">
-        <div class="price-row"><span>คุณลักษณะอันพึงประสงค์ + การอ่าน คิดวิเคราะห์ และเขียน</span><strong>99 บาท</strong></div>
-        <div class="price-row"><span>สมรรถนะสำคัญของผู้เรียน 5 ด้าน</span><strong>49 บาท</strong></div>
-        <div class="price-row best"><span>ทั้งสามโหมด</span><strong>119 บาท</strong></div>
-        <div class="price-row upgrade"><span>อยากได้รหัสทันทีหลังโอน (ระบบตรวจสลิปอัตโนมัติ)</span><strong>+5 บาท</strong></div>
+      <div class="price-table by-method" aria-label="ราคาไลเซนส์">
+        <div class="price-row head"><span>แบบ</span><span>ทางอีเมล<br>ภายใน 1 วัน</span><span>รับรหัส<br>ทันที</span></div>
+        <div class="price-row"><span>คุณลักษณะอันพึงประสงค์ + การอ่าน คิดวิเคราะห์ และเขียน</span><strong>99 บาท</strong><strong>105 บาท</strong></div>
+        <div class="price-row"><span>สมรรถนะสำคัญของผู้เรียน 5 ด้าน</span><strong>49 บาท</strong><strong>55 บาท</strong></div>
+        <div class="price-row best"><span>ทั้งสามโหมด</span><strong>119 บาท</strong><strong>125 บาท</strong></div>
       </div>
 
       <div class="row-cta">
