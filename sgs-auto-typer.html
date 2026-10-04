@@ -89,8 +89,8 @@
   @media (max-width:820px){.nav a:not(.btn-sm){display:none}}
 
   /* ---------- hero ---------- */
-  .hero{padding:76px 0 68px;border-bottom:1px solid var(--rule)}
-  .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:64px;align-items:center}
+  .hero{padding:56px 0 64px;border-bottom:1px solid var(--rule)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:48px;align-items:center}
   @media (max-width:940px){.hero{padding:52px 0 56px}.hero-grid{grid-template-columns:1fr;gap:44px}}
   .eyebrow{
     font-size:13.5px;letter-spacing:.14em;text-transform:uppercase;
@@ -100,15 +100,41 @@
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--rule-2);flex:none}
   h1{font-size:clamp(38px,5.2vw,58px);letter-spacing:-.03em;font-weight:680;margin-bottom:18px}
   .lede{font-size:clamp(18px,2.1vw,21px);color:var(--ink-2);line-height:1.72;max-width:33ch}
-  .hero .lede{margin-bottom:30px}
+  .hero .lede{margin-bottom:24px;max-width:44ch}
 
-  .offer{
-    display:inline-flex;flex-direction:column;gap:2px;
-    border:1px solid #cfe0d7;background:var(--green-tint);
-    border-radius:12px;padding:14px 20px;margin-bottom:26px;
+  /* The four modes as labels rather than a sentence: the one free mode
+     reads at a glance, the other three share one short line. */
+  .mode-tags{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .mode-tags li{
+    display:inline-flex;align-items:baseline;gap:8px;
+    border:1px solid var(--rule-2);background:#fff;border-radius:999px;
+    padding:4px 12px;font-size:14px;line-height:1.5;
   }
-  .offer strong{font-size:18px;color:var(--green-2);font-weight:680;letter-spacing:-.01em}
-  .offer span{font-size:14.5px;color:#3d5f52}
+  .mode-tags b{font-weight:620;color:var(--ink)}
+  .mode-tags span{font-size:13px;color:var(--ink-3)}
+  .mode-tags li.free{border-color:#cfe0d7;background:var(--green-tint)}
+  .mode-tags li.free b{color:var(--green-2)}
+  .mode-tags li.free span{color:var(--green);font-weight:620}
+
+  /* What comes with it, under the download buttons. A check per line, drawn
+     in CSS so nothing extra is fetched. */
+  .perks{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:8px;max-width:46ch}
+  .perks li{position:relative;padding-inline-start:28px;font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+  .perks li::before{
+    content:"";position:absolute;inset-inline-start:2px;top:.42em;
+    width:16px;height:16px;border-radius:50%;background:var(--green-tint);
+  }
+  .perks li::after{
+    content:"";position:absolute;inset-inline-start:7.5px;top:calc(.42em + 3.5px);
+    width:4px;height:7px;border:solid var(--green);border-width:0 2px 2px 0;transform:rotate(45deg);
+  }
+  .perks b{color:var(--ink);font-weight:620}
+  .perks a{color:var(--green-2);font-weight:600;text-decoration-color:#b9cfc4;text-underline-offset:3px}
+  .perks a:hover{text-decoration-color:var(--green)}
+  .perks.wide{
+    max-width:none;margin-top:26px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 28px;
+    background:#fff;border:1px solid var(--rule);border-radius:14px;padding:20px 22px;
+  }
 
   .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
   .btn{
@@ -529,10 +555,12 @@
   .video.panel figcaption{color:#b9bcc1;font-size:14.5px;line-height:1.7;margin-top:12px}
   .platform-head + .video.panel{margin-top:18px}
   .video.panel + .steps{margin-top:30px}
-  .hero h1{max-width:17ch}
   .hero .fineprint{max-width:60ch}
-  .hero .shot{margin-top:46px}
-  @media (max-width:940px){.hero .shot{margin-top:34px}}
+  /* Copy on the left, the intro video beside it, so the first screen on a
+     laptop shows what the app looks like next to what it does. One column
+     under 940px, video after the buttons. */
+  .hero h1{font-size:clamp(34px,3.7vw,46px);max-width:20ch}
+  .hero .shot{margin:0}
   .spec{width:100%;border-collapse:collapse;margin-top:34px;font-size:15px}
   .spec th,.spec td{text-align:left;vertical-align:top;padding:12px 18px 12px 0;border-bottom:1px solid var(--rule)}
   .spec th{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
@@ -610,12 +638,10 @@
   .geo-more .spec{margin-top:14px;font-size:14.5px}
   .geo-more .spec td:last-child,.geo-more .spec th:last-child{text-align:right;padding-right:0}
   #geo-privacy{scroll-margin-top:86px}
-  /* The map sits in the hero, between the download buttons and the intro
-     video, so it is one of the first things a visitor sees. */
-  .hero .reach{margin-top:64px;padding-top:56px;border-top:1px solid var(--rule)}
-  @media (max-width:940px){.hero .reach{margin-top:44px;padding-top:40px}}
-  .hero .reach .geo-card{margin-top:32px}
-  .hero .reach + .shot{margin-top:56px}
+  /* The map has its own section just above the download cards: proof that
+     other teachers use it, next to where the decision is made. */
+  .reach{background:var(--paper-2);border-top:1px solid var(--rule)}
+  .reach .geo-card{margin-top:32px}
 </style>
 
 <!-- Sets the flag before the first paint, so the walkthroughs never flash
@@ -647,18 +673,20 @@
 </header>
 
   <section class="hero" id="top">
-    <div class="wrap">
-      <div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
         <div class="eyebrow">โปรแกรมสำหรับคุณครูและงานวัดผล</div>
         <h1>พิมพ์คะแนนลง SGS ให้อัตโนมัติ จากไฟล์ที่คุณครูมีอยู่แล้ว</h1>
         <p class="lede">
           SGS Auto-Typer อ่านคะแนนจากไฟล์ Excel, Google ชีต หรือคลิปบอร์ดของคุณครู
           แล้วพิมพ์ลงหน้ากรอกคะแนนของ SGS ให้ทีละช่อง โดยจำลองการกดแป้นพิมพ์จริง
         </p>
-        <div class="offer">
-          <strong>โหมดผลการเรียน ใช้ฟรีถาวร</strong>
-          <span>และมีโหมดคุณลักษณะอันพึงประสงค์ โหมดการอ่าน คิดวิเคราะห์ และเขียน และโหมดใหม่ สมรรถนะ 5 ด้าน ให้ทดลองใช้ด้วย</span>
-        </div>
+        <ul class="mode-tags" aria-label="โหมดในโปรแกรม">
+          <li class="free"><b>ผลการเรียน</b><span>ฟรีถาวร</span></li>
+          <li><b>คุณลักษณะอันพึงประสงค์</b><span>ทดลองฟรี 3 ครั้ง</span></li>
+          <li><b>การอ่าน คิดวิเคราะห์ และเขียน</b><span>ทดลองฟรี 3 ครั้ง</span></li>
+          <li><b>สมรรถนะ 5 ด้าน</b><span>ทดลองฟรี 3 ครั้ง</span></li>
+        </ul>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-macOS.zip" data-jump="install-mac">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
@@ -670,58 +698,16 @@
           </a>
           <a class="btn btn-secondary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/mock-form.html">หน้าทดสอบสำหรับซ้อม</a>
         </div>
+        <ul class="perks" aria-label="สิ่งที่ได้">
+          <li>ใช้ได้ทั้ง <b>Windows และ Mac</b> รหัสไลเซนส์เดียวใช้ได้ทั้งสองระบบ</li>
+          <li><a href="#how">หน้าทดสอบให้ซ้อม</a> ก่อนใช้กับคะแนนจริง</li>
+          <li><a href="#install">วิธีติดตั้งพร้อมภาพทีละขั้น</a> และวิดีโอ</li>
+          <li>ใช้คู่กับ <a href="./gradecheck.html">GradeCheck</a> ตรวจทานคะแนน Excel กับ SGS ก่อนประกาศผล</li>
+        </ul>
         <p class="fineprint">
-          Windows 10 หรือ 11 (64 บิต) · macOS 13 (Ventura) ขึ้นไป ทั้งชิป Apple และ Intel ·
-          ไลเซนส์รหัสเดียวใช้ได้ทั้งสองระบบ
+          Windows 10 หรือ 11 (64 บิต) · macOS 13 (Ventura) ขึ้นไป ทั้งชิป Apple และ Intel
         </p>
         <p class="geo-notice">เมื่อกดดาวน์โหลด เว็บนี้จะบันทึกตำแหน่งโดยประมาณระดับจังหวัดจาก IP (ไม่เก็บ IP) เพื่อนับสถิติ · <a href="#geo-privacy">รายละเอียด</a></p>
-      </div>
-
-      <div class="reach" id="reach">
-        <div class="sec-label">ผู้ใช้ทั่วประเทศ</div>
-        <h2>คุณครูจังหวัดไหนดาวน์โหลดไปใช้แล้วบ้าง</h2>
-        <p class="sec-intro" id="geo-intro">
-          นับจากการดาวน์โหลดในประเทศไทย ทั้ง 77 จังหวัด
-        </p>
-
-        <div class="geo-card">
-          <div class="geo-map" id="geo-map">
-            <p class="geo-status" id="geo-status">กำลังโหลดแผนที่…</p>
-            <div class="geo-tip" id="geo-tip" hidden></div>
-          </div>
-
-          <div class="geo-side">
-            <h3 id="geo-headline">กำลังโหลดตัวเลข…</h3>
-            <p>แตะหรือชี้ที่จังหวัดเพื่อดูจำนวนครั้ง สีเข้มคือจังหวัดที่ดาวน์โหลดกันมากเมื่อเทียบกับจังหวัดอื่น</p>
-
-            <ul class="geo-legend">
-              <li><i style="background:var(--heat-0)"></i>ยังไม่มีคนดาวน์โหลด</li>
-              <li><i style="background:var(--heat-1)"></i>มีคนดาวน์โหลดบ้างแล้ว</li>
-              <li><i style="background:var(--heat-2)"></i>ดาวน์โหลดกันต่อเนื่อง</li>
-              <li><i style="background:var(--heat-3)"></i>ใช้กันเยอะที่สุด</li>
-            </ul>
-
-            <div class="geo-top" id="geo-top" hidden></div>
-
-            <details class="geo-more" id="geo-more" hidden>
-              <summary>ดูตัวเลขทุกจังหวัด</summary>
-              <table class="spec">
-                <thead><tr><th>จังหวัด</th><th>ดาวน์โหลด</th></tr></thead>
-                <tbody id="geo-table"></tbody>
-              </table>
-            </details>
-          </div>
-        </div>
-
-        <p class="note" id="geo-privacy">
-          <strong>ข้อมูลที่เก็บเมื่อกดดาวน์โหลด</strong> —
-          หน้านี้ส่ง IP ของคุณไปที่ ipapi.co เพื่อหาตำแหน่งโดยประมาณ
-          ถ้าอยู่ในประเทศไทย จะบันทึกเฉพาะจังหวัด ชื่อเมืองหรืออำเภอโดยประมาณ พิกัดแบบหยาบ (ปัดเหลือราว 10 กม.) และเวลาที่กด
-          ไม่เก็บ IP ชื่อ อีเมล หรือข้อมูลที่ระบุตัวคุณ และแผนที่นี้แสดงแค่ยอดรวมรายจังหวัด
-          ถ้าเบราว์เซอร์เปิด Global Privacy Control หรือ Do Not Track ไว้ หน้านี้จะไม่บันทึกอะไรเลย
-          อยากให้ลบข้อมูลหรือสอบถามเพิ่ม <a href="#contact">ติดต่อผู้พัฒนา</a> ได้
-          · ขอบเขตจังหวัดจาก geoBoundaries / © ผู้ร่วมพัฒนา OpenStreetMap (ODbL)
-        </p>
       </div>
 
       <figure class="shot bare video">
@@ -1353,6 +1339,55 @@
     </div>
   </section>
 
+  <section class="reach" id="reach">
+    <div class="wrap">
+      <div class="sec-label">ผู้ใช้ทั่วประเทศ</div>
+      <h2>คุณครูจังหวัดไหนดาวน์โหลดไปใช้แล้วบ้าง</h2>
+      <p class="sec-intro" id="geo-intro">
+        นับจากการดาวน์โหลดในประเทศไทย ทั้ง 77 จังหวัด
+      </p>
+
+      <div class="geo-card">
+        <div class="geo-map" id="geo-map">
+          <p class="geo-status" id="geo-status">กำลังโหลดแผนที่…</p>
+          <div class="geo-tip" id="geo-tip" hidden></div>
+        </div>
+
+        <div class="geo-side">
+          <h3 id="geo-headline">กำลังโหลดตัวเลข…</h3>
+          <p>แตะหรือชี้ที่จังหวัดเพื่อดูจำนวนครั้ง สีเข้มคือจังหวัดที่ดาวน์โหลดกันมากเมื่อเทียบกับจังหวัดอื่น</p>
+
+          <ul class="geo-legend">
+            <li><i style="background:var(--heat-0)"></i>ยังไม่มีคนดาวน์โหลด</li>
+            <li><i style="background:var(--heat-1)"></i>มีคนดาวน์โหลดบ้างแล้ว</li>
+            <li><i style="background:var(--heat-2)"></i>ดาวน์โหลดกันต่อเนื่อง</li>
+            <li><i style="background:var(--heat-3)"></i>ใช้กันเยอะที่สุด</li>
+          </ul>
+
+          <div class="geo-top" id="geo-top" hidden></div>
+
+          <details class="geo-more" id="geo-more" hidden>
+            <summary>ดูตัวเลขทุกจังหวัด</summary>
+            <table class="spec">
+              <thead><tr><th>จังหวัด</th><th>ดาวน์โหลด</th></tr></thead>
+              <tbody id="geo-table"></tbody>
+            </table>
+          </details>
+        </div>
+      </div>
+
+      <p class="note" id="geo-privacy">
+        <strong>ข้อมูลที่เก็บเมื่อกดดาวน์โหลด</strong> —
+        หน้านี้ส่ง IP ของคุณไปที่ ipapi.co เพื่อหาตำแหน่งโดยประมาณ
+        ถ้าอยู่ในประเทศไทย จะบันทึกเฉพาะจังหวัด ชื่อเมืองหรืออำเภอโดยประมาณ พิกัดแบบหยาบ (ปัดเหลือราว 10 กม.) และเวลาที่กด
+        ไม่เก็บ IP ชื่อ อีเมล หรือข้อมูลที่ระบุตัวคุณ และแผนที่นี้แสดงแค่ยอดรวมรายจังหวัด
+        ถ้าเบราว์เซอร์เปิด Global Privacy Control หรือ Do Not Track ไว้ หน้านี้จะไม่บันทึกอะไรเลย
+        อยากให้ลบข้อมูลหรือสอบถามเพิ่ม <a href="#contact">ติดต่อผู้พัฒนา</a> ได้
+        · ขอบเขตจังหวัดจาก geoBoundaries / © ผู้ร่วมพัฒนา OpenStreetMap (ODbL)
+      </p>
+    </div>
+  </section>
+
   <section id="download">
     <div class="wrap">
       <div class="sec-label">ดาวน์โหลด</div>
@@ -1381,6 +1416,13 @@
         </div>
       </div>
       <p class="geo-notice">เมื่อกดดาวน์โหลด เว็บนี้จะบันทึกตำแหน่งโดยประมาณระดับจังหวัดจาก IP (ไม่เก็บ IP) เพื่อนับสถิติ · <a href="#geo-privacy">รายละเอียด</a></p>
+      <ul class="perks wide" aria-label="สิ่งที่ได้">
+        <li>ใช้ได้ทั้ง <b>Windows และ Mac</b> รหัสไลเซนส์เดียวใช้ได้ทั้งสองระบบ</li>
+        <li><b>ครบ 4 โหมด</b> รวม<a href="#modes">ผลการเรียนและสมรรถนะ 5 ด้าน</a></li>
+        <li><a href="#how">หน้าทดสอบให้ซ้อม</a> ก่อนใช้กับคะแนนจริง</li>
+        <li><a href="#install">วิธีติดตั้งพร้อมภาพทีละขั้น</a> และวิดีโอ</li>
+        <li>ใช้คู่กับ <a href="./gradecheck.html">GradeCheck</a> ตรวจทานคะแนน Excel กับ SGS ก่อนประกาศผล</li>
+      </ul>
 
       <div class="dl-grid">
         <div class="dl">

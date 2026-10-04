@@ -42,11 +42,27 @@ resolves to the newest published build, so a new release needs no edit here:
 | SGS Auto-Typer | `Natthaphat-math/sgs-auto-typer-releases` |
 | GradeCheck | `Natthaphat-math/gradecheck-releases` |
 
+### The SGS page's first screen
+
+- Copy on the left, the intro video on the right; one column under 940px,
+  with the video after the buttons.
+- The four modes are labels under the intro (ผลการเรียน free, the other three
+  three free tries each), not a sentence.
+- A short "what you get" list sits under the download buttons: Windows and
+  Mac on one licence, the practice page, the install pictures, and GradeCheck.
+  The download section repeats it with the four modes added. It names no
+  other product.
+- `tracking/test-sgs-page.mjs` checks this in Chromium at 390px and 1280px,
+  with every outside request faked:
+  `node projects/store-page/tracking/test-sgs-page.mjs`. Set `D3_FILE` to a
+  local `d3.min.js` to include the map drawing; without it that check is
+  skipped and the run says so.
+
 ### Thailand downloads map
 
-`sgs-auto-typer.html` has a "ผู้ใช้ทั่วประเทศ" block in the hero, between
-the download buttons and the intro video: a map of the 77 provinces coloured
-by how many downloads came from each.
+`sgs-auto-typer.html` has a "ผู้ใช้ทั่วประเทศ" section just above the
+download cards: a map of the 77 provinces coloured by how many downloads came
+from each.
 
 - A click on either app download button asks `ipapi.co` for the visitor's
   approximate location. If it is Thailand, the province (plus city and
