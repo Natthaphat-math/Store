@@ -59,6 +59,14 @@ resolves to the newest published build, so a new release needs no edit here:
   กดเริ่มแล้วไม่พิมพ์, คะแนนลงไม่ถูก, ไลเซนส์และการชำระเงิน. Each card shows
   how many questions it holds; update that count when a question is added.
   Answers only restate what the page already says elsewhere.
+- "ไฟล์ที่รองรับ และการตั้งค่าที่ปรับได้" is four cards in the FAQ style
+  instead of a table: the file kinds, then the settings grouped as ความเร็ว,
+  การเลื่อนช่อง and เบราว์เซอร์. Each setting shows its default as a green
+  pill and when to change it underneath.
+- The four mode cards use the Mac 2.4.0 captures in
+  `images/macos/mac-2.4.0/` (PNG plus WebP). The intro video's poster is
+  still the 1.2.1 frame, because it is a frame of that video. Windows
+  captures of 2.4.0 are still to come, for a Windows / Mac switch.
 - Each FAQ question is one `<details>`, all closed, and the version
   history shows the newest three with the rest folded under
   "ดูเวอร์ชั่นก่อนหน้า". A link to an id inside a fold opens it. A new

@@ -731,6 +731,35 @@
   .privacy[open] summary span{display:none}
   .privacy p{margin-top:8px}
   .map-credit{font-size:12.5px;color:var(--ink-3);margin-top:10px}
+
+  /* ---------- files and settings as cards ---------- */
+  /* Same card as the FAQ. Each setting: its name, the default as a pill,
+     and when to change it -- the three table columns, stacked, so nothing
+     squeezes into a 120px column on a phone. */
+  .spec-grid{margin-top:34px}
+  .spec-card{padding-bottom:10px}
+  .set{padding:14px 0}
+  .set + .set{border-top:1px solid var(--rule)}
+  .set-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .set h4{font-size:16px;font-weight:620;margin:0;line-height:1.5}
+  .set-default{
+    font-size:13px;font-weight:620;color:var(--green-2);background:var(--green-tint);
+    border-radius:999px;padding:2px 10px;white-space:nowrap;font-variant-numeric:tabular-nums;
+  }
+  .set-default .lbl{font-weight:500;color:#3d5f52}
+  .set p{font-size:15px;color:var(--ink-2);line-height:1.7;margin-top:4px}
+  .set-file{font-size:15px;color:var(--ink-2);line-height:1.7;padding:11px 0}
+  .set-file + .set-file{border-top:1px solid var(--rule)}
+  .set-file strong{color:var(--ink);font-weight:650;margin-inline-end:6px}
+  @media (max-width:600px){.set{padding:11px 0}.set p{margin-top:2px}.spec-card .faq-head{padding-bottom:10px}}
+  .set-note{font-size:14px;color:var(--ink-3);border-top:1px solid var(--rule);padding:12px 0 6px;line-height:1.65}
+
+  /* สมรรถนะ: its 2.4.0 capture beside the text on a laptop, above it on a
+     phone, like the three cards over it. */
+  .dl.mode-new{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;align-items:center}
+  .dl.mode-new .mode-shot{margin:0}
+  .mode-new-text{display:flex;flex-direction:column;gap:14px}
+  @media (max-width:900px){.dl.mode-new{grid-template-columns:1fr;gap:16px}}
 </style>
 
 <!-- Sets the flag before the first paint, so the walkthroughs never flash
@@ -869,9 +898,9 @@
         <div class="dl">
           <figure class="mode-shot">
             <picture>
-              <source srcset="./images/macos/v.1.2.1-sgs-mode1.webp" type="image/webp">
-              <img src="./images/macos/v.1.2.1-sgs-mode1.png" width="1896" height="1900"
-                   loading="lazy" alt="โหมดผลการเรียน หน้าต่างเป็นสีเหลือง">
+              <source srcset="./images/macos/mac-2.4.0/mac-2.4.0-mode1.webp" type="image/webp">
+              <img src="./images/macos/mac-2.4.0/mac-2.4.0-mode1.png" width="2236" height="2062"
+                   loading="lazy" alt="โหมดผลการเรียน เวอร์ชั่น 2.4.0 บน Mac หน้าต่างเป็นสีเหลือง">
             </picture>
           </figure>
           <div class="os"><h3>ผลการเรียน</h3></div>
@@ -884,9 +913,9 @@
         <div class="dl">
           <figure class="mode-shot">
             <picture>
-              <source srcset="./images/macos/v.1.2.1-sgs-mode2.webp" type="image/webp">
-              <img src="./images/macos/v.1.2.1-sgs-mode2.png" width="1896" height="1900"
-                   loading="lazy" alt="โหมดคุณลักษณะอันพึงประสงค์ หน้าต่างเป็นสีชมพู">
+              <source srcset="./images/macos/mac-2.4.0/mac-2.4.0-mode2.webp" type="image/webp">
+              <img src="./images/macos/mac-2.4.0/mac-2.4.0-mode2.png" width="2236" height="2062"
+                   loading="lazy" alt="โหมดคุณลักษณะอันพึงประสงค์ เวอร์ชั่น 2.4.0 บน Mac หน้าต่างเป็นสีชมพู">
             </picture>
           </figure>
           <div class="os"><h3>คุณลักษณะอันพึงประสงค์</h3></div>
@@ -899,9 +928,9 @@
         <div class="dl">
           <figure class="mode-shot">
             <picture>
-              <source srcset="./images/macos/v.1.2.1-sgs-mode3.webp" type="image/webp">
-              <img src="./images/macos/v.1.2.1-sgs-mode3.png" width="1896" height="1900"
-                   loading="lazy" alt="โหมดการอ่าน คิดวิเคราะห์ และเขียน หน้าต่างเป็นสีฟ้า">
+              <source srcset="./images/macos/mac-2.4.0/mac-2.4.0-mode3.webp" type="image/webp">
+              <img src="./images/macos/mac-2.4.0/mac-2.4.0-mode3.png" width="2236" height="2062"
+                   loading="lazy" alt="โหมดการอ่าน คิดวิเคราะห์ และเขียน เวอร์ชั่น 2.4.0 บน Mac หน้าต่างเป็นสีฟ้า">
             </picture>
           </figure>
           <div class="os"><h3>การอ่าน คิดวิเคราะห์ และเขียน</h3></div>
@@ -914,6 +943,14 @@
       </div>
 
       <div class="dl mode-new">
+        <figure class="mode-shot">
+          <picture>
+            <source srcset="./images/macos/mac-2.4.0/mac-2.4.0-mode4.webp" type="image/webp">
+            <img src="./images/macos/mac-2.4.0/mac-2.4.0-mode4.png" width="2236" height="2062"
+                 loading="lazy" alt="โหมดสมรรถนะสำคัญของผู้เรียน 5 ด้าน เวอร์ชั่น 2.4.0 บน Mac หน้าต่างเป็นสีม่วง มีตารางชุดคะแนน A ถึง E">
+          </picture>
+        </figure>
+        <div class="mode-new-text">
         <div class="os"><h3>สมรรถนะสำคัญของผู้เรียน 5 ด้าน <span class="chip new">ใหม่ใน 2.0.0</span></h3></div>
         <p>
           โหมดเดียวที่ไม่ได้พิมพ์ลง SGS แต่พิมพ์ลง<strong>ไฟล์ Excel ของโรงเรียน</strong>
@@ -926,6 +963,7 @@
           หรือข้ามไว้ให้คุณครูกรอกเอง ก่อนกดเริ่ม ให้คลิกช่องแรกของนักเรียนคนแรกในไฟล์ Excel
         </p>
         <div class="chips"><span class="chip">ทดลองฟรี 3 ครั้ง</span></div>
+        </div>
       </div>
 
       <div class="price-table by-method" aria-label="ราคาไลเซนส์">
@@ -1379,27 +1417,73 @@
       <div class="sec-label">รายละเอียด</div>
       <h2>ไฟล์ที่รองรับ และการตั้งค่าที่ปรับได้</h2>
 
-      <ul class="plain">
-        <li><strong>.xlsx</strong> — อ่านได้โดยตรง รองรับหลายชีต</li>
-        <li><strong>.csv</strong> — รวมถึงไฟล์ที่ส่งออกจาก Google ชีต ทั้งแบบ UTF-8 และ Windows-874/TIS-620</li>
-        <li><strong>.tsv</strong> — ข้อมูลที่คัดลอกจาก Google ชีตแล้ววางในไฟล์ข้อความ</li>
-        <li><strong>คลิปบอร์ด</strong> — คัดลอกช่วงเซลล์มาวางตรง ๆ ไม่ต้องบันทึกเป็นไฟล์</li>
-        <li>ไฟล์ <strong>.xls</strong> เวอร์ชั่นเก่ายังไม่รองรับ ให้เปิดใน Excel แล้วบันทึกใหม่เป็น .xlsx หรือ .csv</li>
-      </ul>
-
-      <table class="spec">
-        <thead><tr><th>การตั้งค่า</th><th>ค่าเริ่มต้น</th><th>ปรับเมื่อไร</th></tr></thead>
-        <tbody>
-          <tr><td>หน่วงเวลาต่อตัวอักษร</td><td>15 ms</td><td>เพิ่มเป็น 60–120 ms ถ้าตัวเลขตกหล่นหรือหน้าเว็บช้า</td></tr>
-          <tr><td>หน่วงเวลาระหว่างช่อง</td><td>60 ms</td><td>เพิ่มเป็น 150–300 ms ถ้าหน้าเว็บใช้เวลาโหลดช่องถัดไป</td></tr>
-          <tr><td>ปุ่มเลื่อนช่อง</td><td>Tab</td><td>เปลี่ยนเป็น Enter ถ้าหน้า SGS ใช้ Enter</td></tr>
-          <tr><td>เลือกข้อความเดิมก่อนพิมพ์ทับ</td><td>เฉพาะช่องแรก</td><td>หน้า SGS เลือกให้เองเมื่อกด Tab มาถึงช่อง เปลี่ยนเป็น “ทุกช่อง” ถ้าคะแนนถูกพิมพ์ต่อท้ายของเดิม</td></tr>
-          <tr><td>ลำดับการพิมพ์</td><td>กรอกคะแนนนักเรียนทีละคน</td><td>เปลี่ยนเป็นทีละคอลัมน์ ถ้าหน้าเว็บวิ่งลงคอลัมน์</td></tr>
-          <tr><td>นับถอยหลัง</td><td>10 วินาที</td><td>ปรับได้ที่ลูกศรข้างปุ่มเริ่มพิมพ์ ลดลงได้ถ้าสลับหน้าต่างทัน</td></tr>
-          <tr><td>เบราว์เซอร์</td><td>ตรวจให้อัตโนมัติ</td><td>เลือกเองเมื่อโปรแกรมตรวจผิด หรือใช้ Safari ที่เปิด “กด Tab เพื่อไฮไลต์ทุกรายการ” ไว้</td></tr>
-          <tr><td>หยุดตรวจสอบหลังนักเรียนคนแรก</td><td>เปิด</td><td>ใช้กับคุณลักษณะฯ และการอ่านฯ ปิดได้เมื่อมั่นใจแล้วว่าเบราว์เซอร์ที่ใช้ถูกต้อง</td></tr>
-        </tbody>
-      </table>
+      <div class="faq-grid spec-grid">
+        <div class="faq-card spec-card" id="spec-files">
+          <div class="faq-head">
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>
+            <h3>ไฟล์ที่รองรับ</h3>
+            <span class="faq-count">4 แบบ</span>
+          </div>
+          <p class="set-file"><strong>.xlsx</strong> อ่านได้โดยตรง รองรับหลายชีต</p>
+          <p class="set-file"><strong>.csv</strong> รวมถึงไฟล์ที่ส่งออกจาก Google ชีต ทั้งแบบ UTF-8 และ Windows-874/TIS-620</p>
+          <p class="set-file"><strong>.tsv</strong> ข้อมูลที่คัดลอกจาก Google ชีตแล้ววางในไฟล์ข้อความ</p>
+          <p class="set-file"><strong>คลิปบอร์ด</strong> คัดลอกช่วงเซลล์มาวางตรง ๆ ไม่ต้องบันทึกเป็นไฟล์</p>
+          <p class="set-note">ไฟล์ <strong>.xls</strong> เวอร์ชั่นเก่ายังไม่รองรับ ให้เปิดใน Excel แล้วบันทึกใหม่เป็น .xlsx หรือ .csv</p>
+        </div>
+        <div class="faq-card spec-card" id="spec-speed">
+          <div class="faq-head">
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 13l4-4M12 3v2"/></svg></span>
+            <h3>ความเร็ว</h3>
+            <span class="faq-count">3 ค่า</span>
+          </div>
+          <div class="set">
+            <div class="set-top"><h4>หน่วงเวลาต่อตัวอักษร</h4><span class="set-default"><span class="lbl">ค่าเริ่มต้น</span> 15 ms</span></div>
+            <p>เพิ่มเป็น 60–120 ms ถ้าตัวเลขตกหล่นหรือหน้าเว็บช้า</p>
+          </div>
+          <div class="set">
+            <div class="set-top"><h4>หน่วงเวลาระหว่างช่อง</h4><span class="set-default"><span class="lbl">ค่าเริ่มต้น</span> 60 ms</span></div>
+            <p>เพิ่มเป็น 150–300 ms ถ้าหน้าเว็บใช้เวลาโหลดช่องถัดไป</p>
+          </div>
+          <div class="set">
+            <div class="set-top"><h4>นับถอยหลัง</h4><span class="set-default"><span class="lbl">ค่าเริ่มต้น</span> 10 วินาที</span></div>
+            <p>ปรับได้ที่ลูกศรข้างปุ่มเริ่มพิมพ์ ลดลงได้ถ้าสลับหน้าต่างทัน</p>
+          </div>
+        </div>
+        <div class="faq-card spec-card" id="spec-move">
+          <div class="faq-head">
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h12M12 6l6 6-6 6M20 5v14"/></svg></span>
+            <h3>การเลื่อนช่อง</h3>
+            <span class="faq-count">3 ค่า</span>
+          </div>
+          <div class="set">
+            <div class="set-top"><h4>ปุ่มเลื่อนช่อง</h4><span class="set-default"><span class="lbl">ค่าเริ่มต้น</span> Tab</span></div>
+            <p>เปลี่ยนเป็น Enter ถ้าหน้า SGS ใช้ Enter</p>
+          </div>
+          <div class="set">
+            <div class="set-top"><h4>ลำดับการพิมพ์</h4><span class="set-default"><span class="lbl">ค่าเริ่มต้น</span> ทีละคน</span></div>
+            <p>กรอกคะแนนนักเรียนทีละคนเป็นค่าเริ่มต้น เปลี่ยนเป็นทีละคอลัมน์ ถ้าหน้าเว็บวิ่งลงคอลัมน์</p>
+          </div>
+          <div class="set">
+            <div class="set-top"><h4>เลือกข้อความเดิมก่อนพิมพ์ทับ</h4><span class="set-default"><span class="lbl">ค่าเริ่มต้น</span> เฉพาะช่องแรก</span></div>
+            <p>หน้า SGS เลือกให้เองเมื่อกด Tab มาถึงช่อง เปลี่ยนเป็น “ทุกช่อง” ถ้าคะแนนถูกพิมพ์ต่อท้ายของเดิม</p>
+          </div>
+        </div>
+        <div class="faq-card spec-card" id="spec-browser">
+          <div class="faq-head">
+            <span class="faq-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+            <h3>เบราว์เซอร์</h3>
+            <span class="faq-count">2 ค่า</span>
+          </div>
+          <div class="set">
+            <div class="set-top"><h4>เบราว์เซอร์</h4><span class="set-default"><span class="lbl">ค่าเริ่มต้น</span> ตรวจให้อัตโนมัติ</span></div>
+            <p>เลือกเองเมื่อโปรแกรมตรวจผิด หรือใช้ Safari ที่เปิด “กด Tab เพื่อไฮไลต์ทุกรายการ” ไว้</p>
+          </div>
+          <div class="set">
+            <div class="set-top"><h4>หยุดตรวจสอบหลังนักเรียนคนแรก</h4><span class="set-default"><span class="lbl">ค่าเริ่มต้น</span> เปิด</span></div>
+            <p>ใช้กับคุณลักษณะฯ และการอ่านฯ ปิดได้เมื่อมั่นใจแล้วว่าเบราว์เซอร์ที่ใช้ถูกต้อง</p>
+          </div>
+        </div>
+      </div>
       <p class="fineprint">สลับภาษาไทย/อังกฤษได้จากปุ่ม TH / EN มุมขวาบน และจะถูกจำไว้ให้ครั้งต่อไป</p>
     </div>
   </section>
@@ -1481,7 +1565,7 @@
             <details class="qa">
               <summary><h4>คะแนนตกหล่นบางตัว</h4></summary>
               <div class="qa-body">
-              <p>หน้าเว็บช้ากว่าที่พิมพ์ เพิ่มหน่วงเวลาต่อตัวอักษรเป็น 180–250 ms และระหว่างช่องเป็น 300–400 ms แล้วลองใหม่กับหน้าทดสอบ</p>
+              <p>หน้าเว็บช้ากว่าที่พิมพ์ เพิ่มหน่วงเวลาต่อตัวอักษรเป็น 60–120 ms และระหว่างช่องเป็น 150–300 ms แล้วลองใหม่กับหน้าทดสอบ ถ้ายังตกหล่น เพิ่มต่อเป็น 180–250 ms และ 300–400 ms</p>
               </div>
             </details>
             <details class="qa">
