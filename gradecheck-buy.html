@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ซื้อไลเซนส์ SGS Auto-Typer — เครื่องมือครู</title>
-<meta name="description" content="ซื้อไลเซนส์ SGS Auto-Typer ด้วย PromptPay รับรหัสทันทีหลังส่งสลิป หรือแบบตรวจสลิปเองภายใน 1 วัน">
+<title>ซื้อไลเซนส์ GradeCheck — เครื่องมือครู</title>
+<meta name="description" content="ซื้อไลเซนส์ GradeCheck ด้วย PromptPay ตรวจได้ทุกห้องเรียนไม่จำกัด รับรหัสทันทีหลังส่งสลิป หรือแบบตรวจสลิปเองภายใน 1 วัน">
 <meta name="theme-color" content="#faf8f4">
-<link rel="canonical" href="https://natthaphat-math.github.io/Store/buy.html">
+<link rel="canonical" href="https://natthaphat-math.github.io/Store/gradecheck-buy.html">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
 <style>
@@ -113,7 +113,7 @@
       เครื่องมือครู
     </a>
     <nav class="nav">
-      <a href="./sgs-auto-typer.html">SGS Auto-Typer</a>
+      <a href="./gradecheck.html">GradeCheck</a>
       <a href="./license-status.html">เช็กสถานะรหัส</a>
     </nav>
   </div>
@@ -122,25 +122,19 @@
 <main>
   <div class="wrap">
     <div class="sec-label">ซื้อไลเซนส์</div>
-    <h1>SGS Auto-Typer · ไลเซนส์จ่ายครั้งเดียว</h1>
+    <h1>GradeCheck · ไลเซนส์จ่ายครั้งเดียว</h1>
     <p class="lede">
-      ชำระผ่าน PromptPay แล้วส่งสลิป รหัสเดียวใช้ได้ทั้งเครื่อง Windows และ Mac ของคุณครูเอง ใช้ได้ตลอดไป
-      โหมดผลการเรียนใช้ฟรีอยู่แล้ว ไม่ต้องซื้อ
+      ชำระผ่าน PromptPay แล้วส่งสลิป ตรวจได้ทุกห้องเรียนไม่จำกัด
+      รหัสเดียวใช้ได้ทั้งเครื่อง Windows และ Mac ของคุณครูเอง ใช้ได้ตลอดไป
     </p>
 
     <!-- 1. what and how -->
     <section class="step" id="step1">
       <h2><span class="n">1</span>เลือกไลเซนส์</h2>
       <div class="choices" id="products">
-        <label class="choice best"><input type="radio" name="product" value="all3" checked>
-          <span class="t"><strong>ครบทั้ง 3 โหมด</strong><span>คุณลักษณะอันพึงประสงค์ + การอ่าน คิดวิเคราะห์ และเขียน + สมรรถนะ 5 ด้าน</span></span>
-          <span class="price" data-price="all3"></span></label>
-        <label class="choice"><input type="radio" name="product" value="sgs">
-          <span class="t"><strong>คุณลักษณะ + การอ่าน</strong><span>คุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน</span></span>
-          <span class="price" data-price="sgs"></span></label>
-        <label class="choice"><input type="radio" name="product" value="competency">
-          <span class="t"><strong>สมรรถนะ 5 ด้าน</strong><span>สมรรถนะสำคัญของผู้เรียน 5 ด้าน (ไฟล์ Excel ของโรงเรียน)</span></span>
-          <span class="price" data-price="competency"></span></label>
+        <label class="choice"><input type="radio" name="product" value="gradecheck" checked>
+          <span class="t"><strong>GradeCheck ไลเซนส์เต็มรูปแบบ</strong><span>ตรวจได้ทุกห้องเรียน ไม่จำกัด หลังจากใช้ฟรีครบ 3 ห้องเรียนแรก</span></span>
+          <span class="price" data-price="gradecheck"></span></label>
       </div>
 
       <p class="sub">รับรหัสแบบไหน</p>
@@ -209,7 +203,7 @@
 <footer>
   <div class="wrap foot">
     <span>เครื่องมือครู · โปรแกรมช่วยงานคะแนนสำหรับคุณครู</span>
-    <span><a href="./sgs-auto-typer.html">SGS Auto-Typer</a> · <a href="./license-status.html">เช็กสถานะรหัส</a></span>
+    <span><a href="./gradecheck.html">GradeCheck</a> · <a href="./license-status.html">เช็กสถานะรหัส</a></span>
   </div>
 </footer>
 
@@ -220,14 +214,12 @@
   window.SHOP = {
     // Must match PRODUCTS in tracking/shop/Config.gs.
     prices: {
-      all3: { instant: 125, manual: 119 },
-      sgs: { instant: 105, manual: 99 },
-      competency: { instant: 55, manual: 49 },
+      gradecheck: { instant: 55, manual: 49 },
     },
-    app: 'SGS Auto-Typer',
-    slug: 'sgs-auto-typer',
-    howTo: 'เปิดโปรแกรม กดปุ่ม “ปลดล็อก” มุมขวาบน แล้ววางรหัส',
-    fallback: 'https://tally.so/r/rjeLyv',
+    app: 'GradeCheck',
+    slug: 'gradecheck',
+    howTo: 'เปิด GradeCheck ไปที่เมนู “ช่วยเหลือ” → “กรอกรหัสปลดล็อก...” วางรหัส แล้วกด “เปิดใช้งาน”',
+    fallback: 'https://tally.so/r/VLebpE',
   };
 </script>
 <script src="./shop.js"></script>
