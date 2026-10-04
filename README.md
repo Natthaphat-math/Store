@@ -52,6 +52,14 @@ resolves to the newest published build, so a new release needs no edit here:
   Mac on one licence, the practice page, the install pictures, and GradeCheck.
   The download section repeats it with the four modes added. It names no
   other product.
+- On a phone the header shows ดาวน์โหลด and a เมนู button, a `<details>`
+  that holds every other link. It works with no script; a small script
+  closes it after a link, a tap outside, or Esc.
+- The FAQ is one `<details>` per question, all closed, and the version
+  history shows the newest three with the rest folded under
+  "ดูเวอร์ชั่นก่อนหน้า". A link to an id inside a fold opens it. A new
+  version goes at the top as before; move the fourth into the fold and
+  update the count in its summary.
 - `tracking/test-sgs-page.mjs` checks this in Chromium at 390px and 1280px,
   with every outside request faked:
   `node projects/store-page/tracking/test-sgs-page.mjs`. Set `D3_FILE` to a
