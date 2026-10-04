@@ -60,6 +60,16 @@ resolves to the newest published build, so a new release needs no edit here:
   "ดูเวอร์ชั่นก่อนหน้า". A link to an id inside a fold opens it. A new
   version goes at the top as before; move the fourth into the fold and
   update the count in its summary.
+- A script in `<head>` sets `html[data-os]` to `win`, `mac`, `phone` or
+  `other`. On Windows or Mac, that system's download goes first, in the
+  hero and in the download cards, and the other button turns secondary.
+  The buttons are moved, not rebuilt, so the install jump and the province
+  count still fire. On a phone or tablet the hero says the app runs on a
+  computer and offers "ส่งลิงก์หน้านี้ไปเปิดบนคอม" (share sheet, or copy the
+  link). With no script, both buttons stay as they are.
+- The privacy text under the map is a `<details>` (one line, "ดูรายละเอียด");
+  both "รายละเอียด" links open it. The geoBoundaries / OpenStreetMap credit
+  stays visible under it, as the ODbL asks.
 - `tracking/test-sgs-page.mjs` checks this in Chromium at 390px and 1280px,
   with every outside request faked:
   `node projects/store-page/tracking/test-sgs-page.mjs`. Set `D3_FILE` to a

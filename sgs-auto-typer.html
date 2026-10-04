@@ -692,12 +692,50 @@
   .changelog details.older > summary .ver{color:var(--green-2)}
   .changelog details.older > details{border-bottom:0;border-top:1px solid var(--rule)}
   .changelog details.older > details summary{padding-inline-start:0}
+
+  /* ---------- the visitor's own download first ---------- */
+  /* Set by the script at the end from html[data-os]. On a phone neither zip
+     runs, so the hero says so and offers to send the link to a computer. */
+  .on-phone{display:none}
+  html[data-os="phone"] .on-phone{
+    display:grid;gap:12px;justify-items:start;margin:0 0 18px;
+    border:1px solid var(--rule-2);background:#fff;border-radius:12px;padding:14px 16px;
+  }
+  .on-phone p{font-size:15px;line-height:1.65;color:var(--ink-2)}
+  .on-phone strong{display:block;color:var(--ink)}
+  .on-phone .btn{font:inherit;font-weight:620;font-size:15px;padding:10px 16px;cursor:pointer}
+  .send-done{font-size:14px;color:var(--green-2)}
+  .send-done:empty{display:none}
+
+  /* Privacy: one line on show, the rest a tap away. The map credit stays
+     visible, since the licence asks for it next to the map. */
+  .privacy{display:block}
+  .privacy summary{list-style:none;cursor:pointer}
+  .privacy summary::-webkit-details-marker{display:none}
+  .privacy summary span{color:var(--green-2);font-weight:600;margin-inline-start:6px;text-decoration:underline;text-underline-offset:3px}
+  .privacy[open] summary span{display:none}
+  .privacy p{margin-top:8px}
+  .map-credit{font-size:12.5px;color:var(--ink-3);margin-top:10px}
 </style>
 
 <!-- Sets the flag before the first paint, so the walkthroughs never flash
      inline before collapsing. Everything modal is gated behind this class:
      no script, or no <dialog>, and the steps simply stay on the page. -->
 <script>if (window.HTMLDialogElement) document.documentElement.classList.add('has-dialog');</script>
+<!-- Which computer is this? win, mac, phone (phones and tablets, which
+     cannot run the app) or other. Only used to put the matching download
+     first; with no script every button stays as it is. -->
+<script>
+  (function () {
+    var ua = navigator.userAgent || '';
+    var plat = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+    var touchMac = /Mac/.test(plat) && navigator.maxTouchPoints > 1;   // iPadOS asks for the desktop site
+    var os = /Android|iPhone|iPad|iPod|Mobile/i.test(ua) || touchMac ? 'phone'
+           : /Win/i.test(plat) ? 'win'
+           : /Mac/i.test(plat) ? 'mac' : 'other';
+    document.documentElement.dataset.os = os;
+  })();
+</script>
 </head>
 <body>
 
@@ -753,7 +791,16 @@
           <li><b>การอ่าน คิดวิเคราะห์ และเขียน</b><span>ทดลองฟรี 3 ครั้ง</span></li>
           <li><b>สมรรถนะ 5 ด้าน</b><span>ทดลองฟรี 3 ครั้ง</span></li>
         </ul>
-        <div class="cta-row">
+        <div class="on-phone">
+          <p><strong>โปรแกรมนี้ใช้บนคอมพิวเตอร์ Windows หรือ Mac</strong>
+             เปิดหน้านี้บนคอมพิวเตอร์ที่ใช้กรอก SGS แล้วดาวน์โหลดจากตรงนั้น</p>
+          <button class="btn btn-secondary send-link" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>
+            ส่งลิงก์หน้านี้ไปเปิดบนคอม
+          </button>
+          <span class="send-done" role="status" aria-live="polite"></span>
+        </div>
+        <div class="cta-row" data-os-order>
           <a class="btn btn-primary" href="https://github.com/Natthaphat-math/sgs-auto-typer-releases/releases/latest/download/SGS-Auto-Typer-macOS.zip" data-jump="install-mac">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
             ดาวน์โหลดสำหรับ macOS
@@ -1462,15 +1509,17 @@
         </div>
       </div>
 
-      <p class="note" id="geo-privacy">
-        <strong>ข้อมูลที่เก็บเมื่อกดดาวน์โหลด</strong> —
-        หน้านี้ส่ง IP ของคุณไปที่ ipapi.co เพื่อหาตำแหน่งโดยประมาณ
-        ถ้าอยู่ในประเทศไทย จะบันทึกเฉพาะจังหวัด ชื่อเมืองหรืออำเภอโดยประมาณ พิกัดแบบหยาบ (ปัดเหลือราว 10 กม.) และเวลาที่กด
-        ไม่เก็บ IP ชื่อ อีเมล หรือข้อมูลที่ระบุตัวคุณ และแผนที่นี้แสดงแค่ยอดรวมรายจังหวัด
-        ถ้าเบราว์เซอร์เปิด Global Privacy Control หรือ Do Not Track ไว้ หน้านี้จะไม่บันทึกอะไรเลย
-        อยากให้ลบข้อมูลหรือสอบถามเพิ่ม <a href="#contact">ติดต่อผู้พัฒนา</a> ได้
-        · ขอบเขตจังหวัดจาก geoBoundaries / © ผู้ร่วมพัฒนา OpenStreetMap (ODbL)
-      </p>
+      <details class="note privacy" id="geo-privacy">
+        <summary><strong>ข้อมูลที่เก็บเมื่อกดดาวน์โหลด</strong> <span>ดูรายละเอียด</span></summary>
+        <p>
+          หน้านี้ส่ง IP ของคุณไปที่ ipapi.co เพื่อหาตำแหน่งโดยประมาณ
+          ถ้าอยู่ในประเทศไทย จะบันทึกเฉพาะจังหวัด ชื่อเมืองหรืออำเภอโดยประมาณ พิกัดแบบหยาบ (ปัดเหลือราว 10 กม.) และเวลาที่กด
+          ไม่เก็บ IP ชื่อ อีเมล หรือข้อมูลที่ระบุตัวคุณ และแผนที่นี้แสดงแค่ยอดรวมรายจังหวัด
+          ถ้าเบราว์เซอร์เปิด Global Privacy Control หรือ Do Not Track ไว้ หน้านี้จะไม่บันทึกอะไรเลย
+          อยากให้ลบข้อมูลหรือสอบถามเพิ่ม <a href="#contact">ติดต่อผู้พัฒนา</a> ได้
+        </p>
+      </details>
+      <p class="map-credit">ขอบเขตจังหวัดจาก geoBoundaries / © ผู้ร่วมพัฒนา OpenStreetMap (ODbL)</p>
     </div>
   </section>
 
@@ -1480,7 +1529,7 @@
       <h2>ดาวน์โหลดแล้วเริ่มใช้ได้เลย</h2>
       <p class="sec-intro">ไม่ต้องสมัครสมาชิก ไม่ต้องกรอกอีเมล โหมดผลการเรียนใช้ได้ฟรีไม่จำกัด</p>
 
-      <div class="dl-grid">
+      <div class="dl-grid" data-os-order>
         <div class="dl">
           <div class="os">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
@@ -2562,6 +2611,10 @@
       }
     }
     window.addEventListener('hashchange', reveal);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (a && a.getAttribute('href') === location.hash) reveal();
+    });
     reveal();
 
     // The phone menu: close after choosing, on a tap outside, or on Esc.
@@ -2571,6 +2624,47 @@
     document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
+    });
+  })();
+</script>
+
+<script>
+  // The visitor's own computer first. Moving a node keeps its listeners, so
+  // the install jump and the province count still fire on every button.
+  (function () {
+    var os = document.documentElement.dataset.os;
+    var key = os === 'mac' ? 'macOS' : os === 'win' ? 'Windows' : null;
+    if (key) {
+      document.querySelectorAll('[data-os-order]').forEach(function (box) {
+        var mine = null, other = null;
+        Array.prototype.forEach.call(box.children, function (el) {
+          var a = el.matches('a[href*="SGS-Auto-Typer-"]') ? el : el.querySelector('a[href*="SGS-Auto-Typer-"]');
+          if (!a) return;
+          if (a.href.indexOf('SGS-Auto-Typer-' + key + '.zip') !== -1) mine = el; else other = el;
+        });
+        if (!mine || !other) return;
+        box.insertBefore(mine, box.firstElementChild);
+        var otherBtn = other.matches('a') ? other : other.querySelector('a');
+        otherBtn.classList.remove('btn-primary');
+        otherBtn.classList.add('btn-secondary');
+      });
+    }
+
+    // Phones: hand the link to a computer. The share sheet reaches LINE and
+    // email; without it, copy the link instead.
+    var send = document.querySelector('.send-link');
+    var done = document.querySelector('.send-done');
+    if (!send) return;
+    var url = location.href.split('#')[0];
+    send.addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share({ title: document.title, url: url }).catch(function () {});
+        return;
+      }
+      var copied = navigator.clipboard && navigator.clipboard.writeText
+        ? navigator.clipboard.writeText(url) : Promise.reject();
+      copied.then(function () { done.textContent = 'คัดลอกลิงก์แล้ว วางในไลน์หรืออีเมลถึงตัวเองได้เลย'; },
+                  function () { done.textContent = 'ลิงก์หน้านี้: ' + url; });
     });
   })();
 </script>
