@@ -55,7 +55,11 @@ resolves to the newest published build, so a new release needs no edit here:
 - On a phone the header shows ดาวน์โหลด and a เมนู button, a `<details>`
   that holds every other link. It works with no script; a small script
   closes it after a link, a tap outside, or Esc.
-- The FAQ is one `<details>` per question, all closed, and the version
+- The FAQ is four cards, grouped by what went wrong: ก่อนเริ่มใช้,
+  กดเริ่มแล้วไม่พิมพ์, คะแนนลงไม่ถูก, ไลเซนส์และการชำระเงิน. Each card shows
+  how many questions it holds; update that count when a question is added.
+  Answers only restate what the page already says elsewhere.
+- Each FAQ question is one `<details>`, all closed, and the version
   history shows the newest three with the rest folded under
   "ดูเวอร์ชั่นก่อนหน้า". A link to an id inside a fold opens it. A new
   version goes at the top as before; move the fourth into the fold and
