@@ -760,6 +760,26 @@
   .dl.mode-new .mode-shot{margin:0}
   .mode-new-text{display:flex;flex-direction:column;gap:14px}
   @media (max-width:900px){.dl.mode-new{grid-template-columns:1fr;gap:16px}}
+
+  /* วิธีใช้งาน: six steps as a numbered path. Number beside the title rather
+     than above it, so each step is two short lines on a phone; three
+     columns on a laptop. A thin line joins the numbers on a phone. */
+  .flow{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 36px}
+  .flow-step{display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;padding:22px 0;border-top:1px solid var(--rule);position:relative}
+  .flow-step .n{
+    display:grid;place-items:center;width:32px;height:32px;border-radius:50%;
+    background:var(--green-tint);color:var(--green-2);font-size:14.5px;font-weight:680;
+    font-variant-numeric:tabular-nums;
+  }
+  .flow-step h3{font-size:17.5px;letter-spacing:-.01em;margin:3px 0 6px}
+  .flow-step p{font-size:15.5px;line-height:1.7;color:var(--ink-2)}
+  @media (max-width:820px){
+    .flow{grid-template-columns:1fr;margin-top:28px}
+    .flow-step{border-top:0;padding:0 0 22px}
+    .flow-step:not(:last-child)::before{
+      content:"";position:absolute;inset-inline-start:15.5px;top:38px;bottom:4px;width:1px;background:var(--rule-2);
+    }
+  }
 </style>
 
 <!-- Sets the flag before the first paint, so the walkthroughs never flash
@@ -1369,41 +1389,53 @@
       <div class="sec-label">วิธีใช้งาน</div>
       <h2>ซ้อมกับหน้าทดสอบก่อน แล้วค่อยใช้กับคะแนนจริง</h2>
       <p class="sec-intro">
-        หน้าทดสอบมาพร้อมกับแอปแล้ว เปิดได้จากปุ่ม <kbd>?</kbd> มุมขวาบน แล้วกดเปิดหน้าทดสอบเพื่อซ้อม
+        หน้าทดสอบมาพร้อมกับแอปแล้ว เปิดคู่มือจากมุมขวาบน (ปุ่ม <kbd>?</kbd> บน Mac หรือปุ่ม “คู่มือการติดตั้งและใช้งาน” บน Windows) แล้วกด “เปิดหน้าทดสอบเพื่อซ้อม”
         ลองให้แอปพิมพ์ลงหน้านั้นจนมั่นใจก่อน
       </p>
-      <div class="steps">
-        <div class="step">
-          <div class="n">1</div>
-          <h3>เปิดหน้ากรอกคะแนนของ SGS</h3>
-          <p>เข้าสู่ระบบ SGS ด้วยตัวเอง เปิดหน้ากรอกคะแนนของห้องที่ต้องการ แล้วตรวจว่าลำดับนักเรียนบนหน้าเว็บตรงกับลำดับในไฟล์</p>
-        </div>
-        <div class="step">
-          <div class="n">2</div>
-          <h3>นำคะแนนเข้าโปรแกรม</h3>
-          <p>เลือกช่วงเซลล์ใน Excel หรือ Google ชีต กด <kbd>⌘C</kbd> แล้วสลับมาที่แอป กดปุ่มวางจากคลิปบอร์ด หรือจะลากไฟล์ .xlsx หรือ .csv เข้าไปก็ได้</p>
-        </div>
-        <div class="step">
-          <div class="n">3</div>
-          <h3>เลือกคอลัมน์ที่จะพิมพ์</h3>
-          <p>เลือกคอลัมน์คะแนนให้เรียงตามลำดับช่องบนหน้า SGS เช่น ก่อนกลางภาค แล้วกลางภาค แล้วปลายภาค</p>
-        </div>
-        <div class="step">
-          <div class="n">4</div>
-          <h3>กดเริ่มพิมพ์</h3>
-          <p>กดเริ่มพิมพ์ แล้วรีบสลับไปที่เบราว์เซอร์และคลิกในช่องคะแนนช่องแรกก่อนหมดเวลานับถอยหลัง ค่าเริ่มต้น 10 วินาที ปรับได้ที่ลูกศรข้างปุ่ม</p>
-        </div>
-        <div class="step">
-          <div class="n">5</div>
-          <h3>ดูความคืบหน้าจากแถบลอย</h3>
-          <p>แถบลอยด้านบนจอบอกว่ากำลังพิมพ์คะแนนของใคร และมีปุ่มหยุดให้กดได้ตลอดเวลา</p>
-        </div>
-        <div class="step">
-          <div class="n">6</div>
-          <h3>ตรวจทานก่อนบันทึก</h3>
-          <p>เมื่อพิมพ์เสร็จ ตรวจทานคะแนนบนหน้า SGS ให้เรียบร้อยก่อนกดบันทึกเสมอ</p>
-        </div>
-      </div>
+      <ol class="flow">
+        <li class="flow-step">
+          <span class="n" aria-hidden="true">1</span>
+          <div>
+            <h3>เปิดหน้ากรอกคะแนนของ SGS</h3>
+            <p>เข้าสู่ระบบ SGS ด้วยตัวเอง เปิดหน้ากรอกคะแนนของห้องที่ต้องการ แล้วตรวจว่าลำดับนักเรียนบนหน้าเว็บตรงกับลำดับในไฟล์</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="n" aria-hidden="true">2</span>
+          <div>
+            <h3>นำคะแนนเข้าโปรแกรม</h3>
+            <p>เลือกช่วงเซลล์ใน Excel หรือ Google ชีต กด <kbd>Ctrl+C</kbd> (Mac ใช้ <kbd>⌘C</kbd>) แล้วสลับมาที่แอป กดปุ่มวางจากคลิปบอร์ด หรือจะลากไฟล์ .xlsx หรือ .csv เข้าไปก็ได้</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="n" aria-hidden="true">3</span>
+          <div>
+            <h3>เลือกคอลัมน์ที่จะพิมพ์</h3>
+            <p>เลือกคอลัมน์คะแนนให้เรียงตามลำดับช่องบนหน้า SGS เช่น ก่อนกลางภาค แล้วกลางภาค แล้วปลายภาค</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="n" aria-hidden="true">4</span>
+          <div>
+            <h3>กดเริ่มพิมพ์</h3>
+            <p>กดเริ่มพิมพ์ แล้วรีบสลับไปที่เบราว์เซอร์และคลิกในช่องคะแนนช่องแรกก่อนหมดเวลานับถอยหลัง ค่าเริ่มต้น 10 วินาที ปรับได้ที่ลูกศรข้างปุ่ม</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="n" aria-hidden="true">5</span>
+          <div>
+            <h3>ดูความคืบหน้าจากแถบลอย</h3>
+            <p>แถบลอยด้านบนจอบอกว่ากำลังพิมพ์คะแนนของใคร และมีปุ่มหยุดให้กดได้ตลอดเวลา</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="n" aria-hidden="true">6</span>
+          <div>
+            <h3>ตรวจทานก่อนบันทึก</h3>
+            <p>เมื่อพิมพ์เสร็จ ตรวจทานคะแนนบนหน้า SGS ให้เรียบร้อยก่อนกดบันทึกเสมอ</p>
+          </div>
+        </li>
+      </ol>
 
       <p class="note">
         โปรแกรมนี้เป็นตัวช่วยพิมพ์แทนคุณครูเท่านั้น ใช้กับคะแนนของห้องที่คุณครูรับผิดชอบและมีสิทธิ์กรอกอยู่แล้ว
@@ -1524,7 +1556,7 @@
             <details class="qa">
               <summary><h4>อยากลองก่อนใช้กับคะแนนจริง</h4></summary>
               <div class="qa-body">
-              <p>กดปุ่ม <kbd>?</kbd> มุมขวาบน แล้วกดเปิดหน้าทดสอบเพื่อซ้อม หน้าทดสอบมาพร้อมกับแอปแล้ว</p>
+              <p>เปิดคู่มือจากมุมขวาบน (ปุ่ม <kbd>?</kbd> บน Mac หรือปุ่ม “คู่มือการติดตั้งและใช้งาน” บน Windows) แล้วกด “เปิดหน้าทดสอบเพื่อซ้อม” หน้าทดสอบมาพร้อมกับแอปแล้ว</p>
               </div>
             </details>
         </div>

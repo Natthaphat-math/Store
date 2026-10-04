@@ -65,8 +65,13 @@ resolves to the newest published build, so a new release needs no edit here:
   pill and when to change it underneath.
 - The four mode cards use the Mac 2.4.0 captures in
   `images/macos/mac-2.4.0/` (PNG plus WebP). The intro video's poster is
-  still the 1.2.1 frame, because it is a frame of that video. Windows
-  captures of 2.4.0 are still to come, for a Windows / Mac switch.
+  still the 1.2.1 frame, because it is a frame of that video.
+- วิธีใช้งาน is an `<ol class="flow">`: number beside the title, three
+  columns on a laptop, a single joined path on a phone. Its text names both
+  apps' ways in: Ctrl+C / ⌘C, and the practice page from "?" on Mac or
+  "คู่มือการติดตั้งและใช้งาน" on Windows.
+- Windows 2.4.0 captures of all four modes are in
+  `images/windows/win-2.4.0/`, not yet used by a page.
 - Each FAQ question is one `<details>`, all closed, and the version
   history shows the newest three with the rest folded under
   "ดูเวอร์ชั่นก่อนหน้า". A link to an id inside a fold opens it. A new
