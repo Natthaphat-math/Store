@@ -42,6 +42,24 @@ resolves to the newest published build, so a new release needs no edit here:
 | SGS Auto-Typer | `Natthaphat-math/sgs-auto-typer-releases` |
 | GradeCheck | `Natthaphat-math/gradecheck-releases` |
 
+### The home page
+
+`index.html` is the first page a visitor sees, so both programs sit in its
+first screen: two cards with a current screenshot each
+(`images/home/`, 1100px wide, WebP plus PNG), tagged ① กรอก and ② ตรวจ.
+
+- A strip under the hero shows SGS Auto-Typer's download and province
+  counts, read from the same web app as the SGS page's map (only read; this
+  page sends nothing), and both programs' latest versions. If the count
+  does not load, the two numbers stay hidden rather than show zero. Update
+  the version numbers here with each release.
+- "ใช้คู่กันอย่างไร" says the two are two steps of one job, usable apart.
+- The detail cards carry the four SGS modes and both price lists, a short
+  FAQ answers what a first visitor asks, and the phone menu matches the SGS
+  page's. Nothing opens in a new tab.
+- `tracking/test-home-page.mjs` checks it at 390px and 1280px:
+  `node projects/store-page/tracking/test-home-page.mjs`.
+
 ### The SGS page's first screen
 
 - Copy on the left, the intro video on the right; one column under 940px,
