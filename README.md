@@ -63,15 +63,15 @@ resolves to the newest published build, so a new release needs no edit here:
   instead of a table: the file kinds, then the settings grouped as ความเร็ว,
   การเลื่อนช่อง and เบราว์เซอร์. Each setting shows its default as a green
   pill and when to change it underneath.
-- The four mode cards use the Mac 2.4.0 captures in
-  `images/macos/mac-2.4.0/` (PNG plus WebP). The intro video's poster is
+- The four mode cards carry both apps' 2.4.0 captures,
+  `images/windows/win-2.4.0/` and `images/macos/mac-2.4.0/` (PNG plus WebP).
+  `#modes[data-shots]` picks one: the visitor's own system (Windows when
+  unknown, and with no script), with a Windows / Mac switch above the cards. The intro video's poster is
   still the 1.2.1 frame, because it is a frame of that video.
 - วิธีใช้งาน is an `<ol class="flow">`: number beside the title, three
   columns on a laptop, a single joined path on a phone. Its text names both
   apps' ways in: Ctrl+C / ⌘C, and the practice page from "?" on Mac or
   "คู่มือการติดตั้งและใช้งาน" on Windows.
-- Windows 2.4.0 captures of all four modes are in
-  `images/windows/win-2.4.0/`, not yet used by a page.
 - Each FAQ question is one `<details>`, all closed, and the version
   history shows the newest three with the rest folded under
   "ดูเวอร์ชั่นก่อนหน้า". A link to an id inside a fold opens it. A new

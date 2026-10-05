@@ -780,6 +780,22 @@
       content:"";position:absolute;inset-inline-start:15.5px;top:38px;bottom:4px;width:1px;background:var(--rule-2);
     }
   }
+
+  /* Mode pictures from both apps. Windows shows by default (most school
+     computers, and what a page with no script gets); the script picks the
+     visitor's own system and the switch flips it. A hidden picture's lazy
+     image is never fetched. */
+  #modes .pic-mac{display:none}
+  #modes[data-shots="mac"] .pic-mac{display:block}
+  #modes[data-shots="mac"] .pic-win{display:none}
+  .shot-switch{display:inline-flex;align-items:center;gap:4px;margin-top:22px;
+    background:#fff;border:1px solid var(--rule-2);border-radius:999px;padding:4px}
+  .shot-switch[hidden]{display:none}
+  .shot-switch span{font-size:13.5px;color:var(--ink-3);padding:0 8px 0 10px}
+  .shot-switch button{font:inherit;font-size:14px;font-weight:620;cursor:pointer;
+    border:0;border-radius:999px;padding:6px 14px;background:transparent;color:var(--ink-2)}
+  .shot-switch button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .shot-switch button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
 </style>
 
 <!-- Sets the flag before the first paint, so the walkthroughs never flash
@@ -911,13 +927,23 @@
       <div class="sec-label">โหมดการทำงาน</div>
       <h2>สี่โหมด สำหรับสามหน้าใน SGS และไฟล์ Excel ของโรงเรียน</h2>
       <p class="sec-intro">
-        เลือกโหมดได้จากแถบด้านบนของหน้าต่าง โหมดเป็นตัวกำหนดว่าไฟล์ของคุณครูต้องมีอะไรบ้าง
+        เลือกโหมดได้ในขั้นที่ 1 ของหน้าต่าง โหมดเป็นตัวกำหนดว่าไฟล์ของคุณครูต้องมีอะไรบ้าง
       </p>
+      <div class="shot-switch" role="group" aria-label="ดูภาพหน้าจอของ" hidden>
+        <span>ภาพหน้าจอจาก</span>
+        <button type="button" data-shots="win" aria-pressed="true">Windows</button>
+        <button type="button" data-shots="mac" aria-pressed="false">Mac</button>
+      </div>
 
       <div class="dl-grid three">
         <div class="dl">
           <figure class="mode-shot">
-            <picture>
+            <picture class="pic-win">
+              <source srcset="./images/windows/win-2.4.0/win-2.4.0-mode1.webp" type="image/webp">
+              <img src="./images/windows/win-2.4.0/win-2.4.0-mode1.png" width="1151" height="927"
+                   loading="lazy" alt="โหมดผลการเรียน เวอร์ชั่น 2.4.0 บน Windows หน้าต่างเป็นสีเหลือง">
+            </picture>
+            <picture class="pic-mac">
               <source srcset="./images/macos/mac-2.4.0/mac-2.4.0-mode1.webp" type="image/webp">
               <img src="./images/macos/mac-2.4.0/mac-2.4.0-mode1.png" width="2236" height="2062"
                    loading="lazy" alt="โหมดผลการเรียน เวอร์ชั่น 2.4.0 บน Mac หน้าต่างเป็นสีเหลือง">
@@ -932,7 +958,12 @@
         </div>
         <div class="dl">
           <figure class="mode-shot">
-            <picture>
+            <picture class="pic-win">
+              <source srcset="./images/windows/win-2.4.0/win-2.4.0-mode2.webp" type="image/webp">
+              <img src="./images/windows/win-2.4.0/win-2.4.0-mode2.png" width="1151" height="927"
+                   loading="lazy" alt="โหมดคุณลักษณะอันพึงประสงค์ เวอร์ชั่น 2.4.0 บน Windows หน้าต่างเป็นสีชมพู">
+            </picture>
+            <picture class="pic-mac">
               <source srcset="./images/macos/mac-2.4.0/mac-2.4.0-mode2.webp" type="image/webp">
               <img src="./images/macos/mac-2.4.0/mac-2.4.0-mode2.png" width="2236" height="2062"
                    loading="lazy" alt="โหมดคุณลักษณะอันพึงประสงค์ เวอร์ชั่น 2.4.0 บน Mac หน้าต่างเป็นสีชมพู">
@@ -947,7 +978,12 @@
         </div>
         <div class="dl">
           <figure class="mode-shot">
-            <picture>
+            <picture class="pic-win">
+              <source srcset="./images/windows/win-2.4.0/win-2.4.0-mode3.webp" type="image/webp">
+              <img src="./images/windows/win-2.4.0/win-2.4.0-mode3.png" width="1151" height="927"
+                   loading="lazy" alt="โหมดการอ่าน คิดวิเคราะห์ และเขียน เวอร์ชั่น 2.4.0 บน Windows หน้าต่างเป็นสีฟ้า">
+            </picture>
+            <picture class="pic-mac">
               <source srcset="./images/macos/mac-2.4.0/mac-2.4.0-mode3.webp" type="image/webp">
               <img src="./images/macos/mac-2.4.0/mac-2.4.0-mode3.png" width="2236" height="2062"
                    loading="lazy" alt="โหมดการอ่าน คิดวิเคราะห์ และเขียน เวอร์ชั่น 2.4.0 บน Mac หน้าต่างเป็นสีฟ้า">
@@ -964,7 +1000,12 @@
 
       <div class="dl mode-new">
         <figure class="mode-shot">
-          <picture>
+          <picture class="pic-win">
+              <source srcset="./images/windows/win-2.4.0/win-2.4.0-mode4.webp" type="image/webp">
+              <img src="./images/windows/win-2.4.0/win-2.4.0-mode4.png" width="1267" height="1006"
+                   loading="lazy" alt="โหมดสมรรถนะสำคัญของผู้เรียน 5 ด้าน เวอร์ชั่น 2.4.0 บน Windows หน้าต่างเป็นสีม่วง">
+            </picture>
+            <picture class="pic-mac">
             <source srcset="./images/macos/mac-2.4.0/mac-2.4.0-mode4.webp" type="image/webp">
             <img src="./images/macos/mac-2.4.0/mac-2.4.0-mode4.png" width="2236" height="2062"
                  loading="lazy" alt="โหมดสมรรถนะสำคัญของผู้เรียน 5 ด้าน เวอร์ชั่น 2.4.0 บน Mac หน้าต่างเป็นสีม่วง มีตารางชุดคะแนน A ถึง E">
@@ -2859,6 +2900,27 @@
         ? navigator.clipboard.writeText(url) : Promise.reject();
       copied.then(function () { done.textContent = 'คัดลอกลิงก์แล้ว วางในไลน์หรืออีเมลถึงตัวเองได้เลย'; },
                   function () { done.textContent = 'ลิงก์หน้านี้: ' + url; });
+    });
+  })();
+</script>
+
+<script>
+  // Mode pictures: the visitor's own system first, and a switch for the other.
+  (function () {
+    var modes = document.getElementById('modes');
+    var sw = modes && modes.querySelector('.shot-switch');
+    if (!sw) return;
+    function show(which) {
+      modes.dataset.shots = which;
+      sw.querySelectorAll('button').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.shots === which));
+      });
+    }
+    show(document.documentElement.dataset.os === 'mac' ? 'mac' : 'win');
+    sw.hidden = false;
+    sw.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-shots]');
+      if (b) show(b.dataset.shots);
     });
   })();
 </script>
