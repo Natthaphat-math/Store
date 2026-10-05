@@ -93,6 +93,33 @@ resolves to the newest published build, so a new release needs no edit here:
   local `d3.min.js` to include the map drawing; without it that check is
   skipped and the run says so.
 
+### Practice page
+
+`practice.html` is the practice target for SGS Auto-Typer, opened in the
+browser instead of downloading `mock-form.html`. Three tabs, one per SGS page
+the app types into (`#grades`, `#traits`, `#reading`); สมรรถนะ types into
+Excel, so it has none.
+
+- Each row has the same Tab stops as the real page, so the counts both apps
+  carry (TypingMode.swift / modes.py) land exactly: ผลการเรียน runs straight
+  on; คุณลักษณะ is tick box, Q1-Q10, หมายเหตุ (รวม and ผลการประเมิน are not
+  stops); การอ่าน is tick box, Q1-Q5, ผลการประเมิน, หมายเหตุ. "มีช่องคั่นหลัง
+  ปลายภาค" adds one box after ปลายภาค, the หลังกลางภาค case that needs 2.
+- "คัดลอกข้อมูลตัวอย่าง" puts a made-up class on the clipboard as
+  tab-separated text with headers the app recognises. The values are fixed,
+  so the page can mark each box right or wrong; การอ่าน's sample has one ร
+  to show a skipped student.
+- The result line says, as the app types: nothing yet, so far so good,
+  boxes moved from student N (a value in a box that must stay empty), values
+  that differ from the sample, or all done.
+- No tracking at all, unlike the SGS page: no map, no download count.
+- Its test types the apps' own keystrokes, with the right count and one
+  short, for every page and both browser behaviours:
+  `node projects/store-page/tracking/test-practice-page.mjs`.
+
+The apps still carry their own `mock-form.html`; pointing the in-app button
+here needs an app release.
+
 ### Thailand downloads map
 
 `sgs-auto-typer.html` has a "ผู้ใช้ทั่วประเทศ" section just above the

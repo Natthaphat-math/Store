@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>หน้าทดสอบสำหรับซ้อม — SGS Auto-Typer</title>
+<meta name="description" content="หน้าจำลองช่องกรอกคะแนนของ SGS สามหน้า ผลการเรียน คุณลักษณะอันพึงประสงค์ และการอ่าน คิดวิเคราะห์ และเขียน ใช้ซ้อมกับ SGS Auto-Typer ก่อนใช้กับคะแนนจริง เปิดในเบราว์เซอร์ได้เลย ไม่ต้องดาวน์โหลด">
+<meta name="theme-color" content="#faf8f4">
+<link rel="canonical" href="https://natthaphat-math.github.io/Store/practice.html">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="เครื่องมือครู">
+<meta property="og:locale" content="th_TH">
+<meta property="og:title" content="หน้าทดสอบสำหรับซ้อม — SGS Auto-Typer">
+<meta property="og:description" content="ซ้อมให้โปรแกรมพิมพ์คะแนนลงหน้าจำลองของ SGS ก่อนใช้กับคะแนนจริง เปิดในเบราว์เซอร์ได้เลย">
+<meta property="og:url" content="https://natthaphat-math.github.io/Store/practice.html">
+<meta property="og:image" content="https://natthaphat-math.github.io/Store/images/og-sgs.png">
+<!-- This page is a practice target, so it carries no tracking of any kind:
+     no download count, no map, no analytics. Everything typed stays in this
+     tab. Every value written into the page goes in with textContent or as an
+     input's value, never as markup. -->
+<style>
+  :root{
+    --paper:#faf8f4; --paper-2:#f2eee7; --card:#fff;
+    --ink:#17181a; --ink-2:#3f434a; --ink-3:#6b7079;
+    --rule:#e2ddd3; --rule-2:#d3ccbf;
+    --green:#155c46; --green-2:#0f4635; --green-tint:#e8f0ec;
+    --flag:#a63a24; --flag-tint:#fbeeea; --amber:#8a6412; --amber-tint:#fbf3df;
+    --shadow:0 1px 2px rgba(23,24,26,.05), 0 8px 24px -12px rgba(23,24,26,.18);
+    --font-th:"Sukhumvit Set","IBM Plex Sans Thai","Noto Sans Thai","Leelawadee UI","Thonburi","Tahoma",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-th);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{margin:0;line-height:1.35;font-weight:650;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:var(--green-2)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  @media (max-width:600px){.wrap{padding:0 16px}}
+
+  header{border-bottom:1px solid var(--rule);background:rgba(250,248,244,.92)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+  .mark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:650}
+  .glyph{width:26px;height:26px;border-radius:7px;background:var(--green);display:grid;place-items:center}
+  .glyph svg{width:15px;height:15px}
+  .bar nav{display:flex;gap:18px;font-size:14.5px}
+  .bar nav a{text-decoration:none;color:var(--ink-2)}
+  .bar nav a:hover{color:var(--green)}
+
+  .intro{padding:34px 0 8px}
+  .eyebrow{font-size:13px;letter-spacing:.12em;color:var(--ink-3);font-weight:600;margin-bottom:10px}
+  h1{font-size:clamp(28px,3.4vw,38px);letter-spacing:-.02em;margin-bottom:10px}
+  .lede{color:var(--ink-2);max-width:62ch;font-size:16.5px}
+  .on-phone{display:none;margin-top:16px;border:1px solid var(--rule-2);background:#fff;border-radius:12px;padding:12px 14px;font-size:15px}
+  html[data-os="phone"] .on-phone{display:block}
+
+  /* ---------- the three pages ---------- */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;border-bottom:1px solid var(--rule);padding-bottom:12px}
+  .tabs button{
+    font:inherit;font-size:15.5px;font-weight:620;cursor:pointer;
+    border:1px solid var(--rule-2);background:#fff;color:var(--ink-2);
+    border-radius:999px;padding:8px 16px;
+  }
+  .tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .tabs button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  .tabs .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-inline-end:8px;vertical-align:1px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0 0}
+  @media (max-width:860px){.steps{grid-template-columns:1fr}}
+  .step{background:#fff;border:1px solid var(--rule-2);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start}
+  .step .n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--green-tint);color:var(--green-2);font-weight:680;font-size:14px}
+  .step h3{font-size:16px;margin:2px 0 4px}
+  .step p{font-size:14.5px;color:var(--ink-2);line-height:1.65}
+  .step .btn{margin-top:10px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:620;font-size:15px;cursor:pointer;
+    border-radius:9px;padding:9px 16px;border:1px solid transparent;text-decoration:none;
+  }
+  .btn-primary{background:var(--green);color:#fff}
+  .btn-primary:hover{background:var(--green-2)}
+  .btn-secondary{background:#fff;color:var(--ink);border-color:var(--rule-2)}
+  .btn-secondary:hover{border-color:var(--ink-3)}
+  .btn svg{width:16px;height:16px}
+  .copied{display:block;font-size:13.5px;color:var(--green-2);margin-top:6px;min-height:1.4em}
+
+  .sample{margin-top:12px}
+  .sample summary{cursor:pointer;font-size:14px;color:var(--green-2);font-weight:600}
+  .sample table{border-collapse:collapse;margin-top:8px;font-size:13.5px;font-variant-numeric:tabular-nums}
+  .sample th,.sample td{border-bottom:1px solid var(--rule);padding:4px 12px 4px 0;text-align:left;white-space:nowrap}
+  .sample th{color:var(--ink-3);font-weight:600}
+
+  /* ---------- the result line ---------- */
+  .result{
+    margin-top:18px;border-radius:12px;padding:12px 16px;font-size:15.5px;line-height:1.6;
+    border:1px solid var(--rule-2);background:#fff;display:flex;gap:12px;align-items:flex-start;
+  }
+  .result .icon{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--paper-2);color:var(--ink-3)}
+  .result.ok{border-color:#cfe0d7;background:var(--green-tint)}
+  .result.ok .icon{background:var(--green);color:#fff}
+  .result.warn{border-color:#ecd9a8;background:var(--amber-tint)}
+  .result.warn .icon{background:var(--amber);color:#fff}
+  .result.bad{border-color:#efc9bf;background:var(--flag-tint)}
+  .result.bad .icon{background:var(--flag);color:#fff}
+  .result strong{display:block}
+  .result span.more{color:var(--ink-2);font-size:14.5px}
+
+  /* ---------- the mock SGS page ---------- */
+  .sheet{margin-top:16px;background:#fff;border:1px solid var(--rule-2);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .sheet-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;padding:12px 16px;background:#eaf4f1;border-bottom:1px solid var(--rule)}
+  .sheet-head h2{font-size:16.5px}
+  .sheet-head .opts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:14px;color:var(--ink-2)}
+  .sheet-head select,.sheet-head input[type=number]{font:inherit;font-size:14px;padding:3px 6px;border:1px solid var(--rule-2);border-radius:6px;background:#fff}
+  .sheet-head label{display:inline-flex;align-items:center;gap:6px}
+  .scroll{overflow-x:auto}
+  table.grid{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+  .grid th{font-size:12.5px;color:var(--ink-3);font-weight:600;text-align:center;padding:8px 4px;border-bottom:1px solid var(--rule);background:#fbfaf7;white-space:nowrap}
+  .grid th.left,.grid td.left{text-align:left;padding-left:12px}
+  .grid td{border-bottom:1px solid var(--paper-2);padding:5px 4px;text-align:center;white-space:nowrap}
+  .grid td.name{color:var(--ink-2);min-width:150px}
+  .grid td.calc{color:var(--ink-3);min-width:46px}
+  .grid input[type=text]{
+    width:46px;font:inherit;font-size:14px;text-align:center;padding:4px 2px;
+    border:1px solid var(--rule-2);border-radius:6px;background:#fff;
+  }
+  .grid input.wide{width:64px}
+  .grid input.remark{width:110px;text-align:left;padding-left:6px}
+  .grid input:focus{outline:2px solid var(--green);outline-offset:0;border-color:var(--green)}
+  .grid input.must-empty{background:#faf9f6}
+  .grid input.right{background:var(--green-tint);border-color:#a9cbbb}
+  .grid input.wrong{background:var(--flag-tint);border-color:#d9907e;color:var(--flag);font-weight:650}
+  .grid input.stray{background:var(--flag-tint);border-color:#d9907e;color:var(--flag);font-weight:650}
+  .grid tr.active td{background:#f6faf8}
+  .grid tr.skip td.name::after{content:" · ข้ามไว้";color:var(--amber);font-size:12.5px}
+  .grid input.start{animation:pulse 1.6s ease-in-out infinite;border-color:var(--green)}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(21,92,70,.45)}50%{box-shadow:0 0 0 5px rgba(21,92,70,0)}}
+  @media (prefers-reduced-motion:reduce){.grid input.start{animation:none;box-shadow:0 0 0 3px rgba(21,92,70,.35)}}
+  .grid input[type=checkbox]{width:16px;height:16px}
+  .start-tip{font-size:13px;color:var(--green-2);padding:8px 16px 0}
+
+  .tools{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:14px;font-size:14px;color:var(--ink-2)}
+  .tools label{display:inline-flex;align-items:center;gap:6px}
+  .tools input[type=number]{font:inherit;font-size:14px;width:70px;padding:3px 6px;border:1px solid var(--rule-2);border-radius:6px}
+  .stats{margin-top:12px;font-size:14px;color:var(--ink-2)}
+  .stats summary{cursor:pointer;color:var(--green-2);font-weight:600}
+  .stats dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px 18px;margin:10px 0 0}
+  .stats dt{font-size:13px;color:var(--ink-3)}
+  .stats dd{margin:0;font-weight:650}
+
+  .note{margin:26px 0 40px;font-size:14px;color:var(--ink-3);border-inline-start:2px solid var(--rule-2);padding-inline-start:14px;max-width:72ch}
+  footer{border-top:1px solid var(--rule);padding:22px 0 34px;font-size:14px;color:var(--ink-3)}
+  footer a{color:var(--ink-2)}
+</style>
+<script>
+  (function () {
+    var ua = navigator.userAgent || '';
+    var plat = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+    var touchMac = /Mac/.test(plat) && navigator.maxTouchPoints > 1;
+    document.documentElement.dataset.os = /Android|iPhone|iPad|iPod|Mobile/i.test(ua) || touchMac ? 'phone'
+      : /Win/i.test(plat) ? 'win' : /Mac/i.test(plat) ? 'mac' : 'other';
+  })();
+</script>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="./index.html">
+      <span class="glyph" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5l4.5 4.5L17 5"/></svg></span>
+      เครื่องมือครู
+    </a>
+    <nav>
+      <a href="./sgs-auto-typer.html">SGS Auto-Typer</a>
+      <a href="./sgs-auto-typer.html#download">ดาวน์โหลด</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <div class="eyebrow">SGS AUTO-TYPER · หน้าทดสอบ</div>
+    <h1>ซ้อมกับหน้านี้ก่อน แล้วค่อยใช้กับคะแนนจริง</h1>
+    <p class="lede">
+      หน้านี้จำลองช่องกรอกคะแนนของ SGS สามหน้า ให้โปรแกรมพิมพ์ลงที่นี่ก่อน แล้วดูผลตรวจด้านล่างว่าคะแนนลงครบและตรงช่อง
+      สิ่งที่พิมพ์อยู่ในหน้านี้เท่านั้น ไม่ถูกส่งไปไหน และหายไปเมื่อปิดหน้า
+    </p>
+    <p class="on-phone"><strong>ใช้หน้านี้บนคอมพิวเตอร์</strong> เครื่องเดียวกับที่ติดตั้ง SGS Auto-Typer ไว้</p>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="หน้าใน SGS">
+    <button role="tab" id="tab-grades" aria-controls="panel" data-page="grades" aria-selected="true"><span class="dot" style="background:#e5b842"></span>ผลการเรียน</button>
+    <button role="tab" id="tab-traits" aria-controls="panel" data-page="traits" aria-selected="false" tabindex="-1"><span class="dot" style="background:#e48aa6"></span>คุณลักษณะอันพึงประสงค์</button>
+    <button role="tab" id="tab-reading" aria-controls="panel" data-page="reading" aria-selected="false" tabindex="-1"><span class="dot" style="background:#6fa3d8"></span>การอ่าน คิดวิเคราะห์ และเขียน</button>
+  </div>
+
+  <section id="panel" role="tabpanel" aria-labelledby="tab-grades">
+    <div class="steps">
+      <div class="step">
+        <span class="n" aria-hidden="true">1</span>
+        <div>
+          <h3>คัดลอกข้อมูลตัวอย่าง</h3>
+          <p id="copy-hint"></p>
+          <button class="btn btn-primary" type="button" id="copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+            คัดลอกข้อมูลตัวอย่าง
+          </button>
+          <span class="copied" id="copied" role="status" aria-live="polite"></span>
+          <details class="sample">
+            <summary>ดูข้อมูลตัวอย่าง</summary>
+            <div class="scroll"><table id="sample-table"></table></div>
+          </details>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n" aria-hidden="true">2</span>
+        <div>
+          <h3>วางในโปรแกรม แล้วกดเริ่มพิมพ์</h3>
+          <p id="paste-hint"></p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="n" aria-hidden="true">3</span>
+        <div>
+          <h3>คลิกช่องแรกที่มีไฟกระพริบ</h3>
+          <p>ก่อนหมดเวลานับถอยหลัง คลิกช่องแรกของนักเรียนคนแรกในตารางด้านล่าง แล้วรอโปรแกรมพิมพ์ ผลตรวจจะขึ้นเองระหว่างพิมพ์</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="result" id="result" role="status" aria-live="polite">
+      <span class="icon" aria-hidden="true">·</span>
+      <div><strong id="result-title"></strong><span class="more" id="result-more"></span></div>
+    </div>
+
+    <div class="sheet">
+      <div class="sheet-head">
+        <h2 id="sheet-title"></h2>
+        <div class="opts">
+          <label>จำนวนนักเรียน
+            <select id="count">
+              <option>5</option><option selected>10</option><option>20</option><option>30</option><option>40</option>
+            </select>
+          </label>
+          <label id="extra-wrap"><input type="checkbox" id="extra"> มีช่องคั่นหลังปลายภาค (แบบหน้าหลังกลางภาค)</label>
+        </div>
+      </div>
+      <p class="start-tip" id="start-tip">คลิกช่องที่มีไฟกระพริบ แล้วปล่อยให้โปรแกรมพิมพ์</p>
+      <div class="scroll"><table class="grid" id="grid"></table></div>
+    </div>
+
+    <div class="tools">
+      <button class="btn btn-secondary" type="button" id="clear">ล้างช่องทั้งหมด</button>
+      <label><input type="checkbox" id="lag"> จำลองหน้าเว็บช้า</label>
+      <label>หน่วง <input type="number" id="lag-ms" min="0" max="600" step="10" value="120"> มิลลิวินาทีต่อการพิมพ์</label>
+    </div>
+    <details class="stats">
+      <summary>สถิติการพิมพ์</summary>
+      <dl>
+        <div><dt>ช่องที่มีค่า</dt><dd id="st-filled">0</dd></div>
+        <div><dt>จำนวนการพิมพ์</dt><dd id="st-keys">0</dd></div>
+        <div><dt>ห่างกันเฉลี่ย</dt><dd id="st-avg">–</dd></div>
+        <div><dt>ห่างกันน้อยสุด</dt><dd id="st-min">–</dd></div>
+      </dl>
+    </details>
+  </section>
+
+  <p class="note">
+    ตารางนี้ไม่ได้หน้าตาเหมือน SGS ทุกอย่าง แต่ลำดับช่องที่ปุ่ม Tab ผ่านเหมือนหน้าจริง
+    ในหน้าคุณลักษณะฯ และการอ่านฯ มีช่องติ๊กหน้าชื่อนักเรียน ซึ่ง Chrome และ Edge กด Tab ผ่าน แต่ Safari ข้ามไป
+    โปรแกรมดูเบราว์เซอร์ให้เอง และหยุดถามหลังนักเรียนคนแรก ถ้าคะแนนเลื่อนช่อง ให้ตอบตามที่เห็นบนหน้านี้
+  </p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="./sgs-auto-typer.html">SGS Auto-Typer</a> · <a href="./sgs-auto-typer.html#faq">ปัญหาที่พบบ่อย</a> · <a href="./index.html">เครื่องมือครูทั้งหมด</a>
+  </div>
+</footer>
+
+<script>
+"use strict";
+(function () {
+  const $ = (id) => document.getElementById(id);
+
+  // ---------- sample classes ----------
+  // Made-up names and scores, the same every time, so a teacher who pastes
+  // the sample can be told exactly which box is right or wrong.
+  const FIRST = ["สมชาย", "สมหญิง", "ปิติ", "ชูใจ", "มานี", "มานะ", "วีระ", "ดวงใจ", "ประเสริฐ", "กมลา",
+    "ธนพล", "พิมพ์ชนก", "อนันต์", "สุดารัตน์", "ภูมิ", "นภา", "ณัฐวุฒิ", "รัตนา", "กิตติ", "อรอุมา"];
+  const LAST = ["ใจดี", "เรียนดี", "มานะ", "ตั้งใจ", "รักเรียน", "ขยันยิ่ง", "สุขใจ", "ศรีสุข", "มั่นคง", "แก้วใส"];
+  function name(i) { return FIRST[i % FIRST.length] + " " + LAST[(i * 3 + Math.floor(i / FIRST.length)) % LAST.length]; }
+  function rnd(i, salt) { const x = Math.sin((i + 1) * 12.9898 + salt * 78.233) * 43758.5453; return x - Math.floor(x); }
+  const GRADES = ["4", "3.5", "3", "2.5", "2", "1.5", "1", "0"];
+  function levelOf(g) { const n = Number(g); if (!isFinite(n)) return null; return n >= 3 ? 3 : n >= 2 ? 2 : 1; }
+
+  const PAGES = {
+    grades: {
+      title: "บันทึกผลการเรียน",
+      copyHint: "เลขที่ ชื่อ และคะแนนก่อนกลางภาค กลางภาค ปลายภาค",
+      pasteHint: "ในโปรแกรมเลือกโหมด ผลการเรียน กดปุ่ม วางข้อมูลที่คัดลอกมา เลือกสามคอลัมน์คะแนนตามลำดับ แล้วกดเริ่มพิมพ์",
+      header: ["เลขที่", "ชื่อ-สกุล", "ก่อนกลางภาค", "กลางภาค", "ปลายภาค"],
+      row(i) {
+        return [String(i + 1), name(i), String(10 + Math.floor(rnd(i, 1) * 21)),
+          String(8 + Math.floor(rnd(i, 2) * 13)), String(12 + Math.floor(rnd(i, 3) * 19))];
+      },
+      expected(row) { return row.slice(2); },
+    },
+    traits: {
+      title: "บันทึกผลการประเมินคุณลักษณะ",
+      copyHint: "เลขที่ ชื่อ และระดับคุณลักษณะ 1 2 หรือ 3 ของนักเรียนแต่ละคน",
+      pasteHint: "ในโปรแกรมเลือกโหมด คุณลักษณะอันพึงประสงค์ แบบอัตโนมัติ กดปุ่ม วางข้อมูลที่คัดลอกมา เลือกคอลัมน์ ระดับ แล้วกดเริ่มพิมพ์ โปรแกรมพิมพ์ระดับนั้นซ้ำครบ 8 ช่อง",
+      header: ["เลขที่", "ชื่อ-สกุล", "ระดับ"],
+      row(i) { const r = rnd(i, 4); return [String(i + 1), name(i), r < .55 ? "3" : r < .85 ? "2" : "1"]; },
+      expected(row) { return Array(8).fill(row[2]); },
+    },
+    reading: {
+      title: "บันทึกผลการประเมินการอ่าน คิด วิเคราะห์ เขียน",
+      copyHint: "เลขที่ ชื่อ และเกรดของวิชา โปรแกรมคิดระดับจากเกรดให้เอง มีนักเรียนหนึ่งคนติด ร ไว้ให้เห็นว่าถูกข้าม",
+      pasteHint: "ในโปรแกรมเลือกโหมด การอ่าน คิดวิเคราะห์ และเขียน แบบอัตโนมัติ เลือกจำนวนช่อง 5 หรือ 3 ช่อง กดปุ่ม วางข้อมูลที่คัดลอกมา เลือกคอลัมน์ เกรด แล้วกดเริ่มพิมพ์",
+      header: ["เลขที่", "ชื่อ-สกุล", "เกรด"],
+      row(i) { return [String(i + 1), name(i), i === 3 ? "ร" : GRADES[Math.floor(rnd(i, 5) * GRADES.length)]]; },
+      // Filled later, once we know whether the school fills 3 or 5.
+      expected(row, width) { const l = levelOf(row[2]); return l === null ? null : Array(width).fill(String(l)); },
+    },
+  };
+
+  // ---------- state ----------
+  let page = "grades";
+  let rows = [];          // sample rows for the current page and count
+  let keyTimes = [];
+  let started = false;
+
+  function count() { return Number($("count").value) || 10; }
+  function sampleRows() { const n = count(); const out = []; for (let i = 0; i < n; i++) out.push(PAGES[page].row(i)); return out; }
+
+  // ---------- building the page ----------
+  function el(tag, props, text) {
+    const e = document.createElement(tag);
+    if (props) Object.assign(e, props);
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function input(cls, role) {
+    const i = el("input", { type: "text", autocomplete: "off", spellcheck: false });
+    i.className = cls || "";
+    i.dataset.role = role;
+    i.inputMode = role === "note" ? "text" : "decimal";
+    return i;
+  }
+
+  // The order of focusable things in each row is the whole point of this
+  // page: it matches what SGS puts between one student's boxes and the
+  // next, as measured for the apps (see TypingMode / modes.py):
+  //   ผลการเรียน   no tick box; score boxes run straight on. 1 Tab.
+  //   คุณลักษณะ    tick box, Q1-Q10, หมายเหตุ. รวม and ผลการประเมิน are
+  //                not stops. From Q8: 4 Tabs in Safari, 5 with the tick box.
+  //   การอ่าน      tick box, Q1-Q5, ผลการประเมิน (a stop), หมายเหตุ. From Q5:
+  //                3 / 4; from Q3: 5 / 6.
+  function build() {
+    rows = sampleRows();
+    const grid = $("grid");
+    grid.textContent = "";
+    const thead = el("thead"), hr = el("tr");
+    const tbody = el("tbody");
+    const P = PAGES[page];
+    const extra = page === "grades" && $("extra").checked;
+    const heads = page === "grades"
+      ? ["เลขที่", "ชื่อ-สกุล", "ก่อนกลางภาค", "กลางภาค", "ปลายภาค"].concat(extra ? ["ช่องคั่น"] : []).concat(["รวม"])
+      : page === "traits"
+        ? ["", "เลขที่", "ชื่อ-สกุล", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "รวม", "ผลการประเมิน", "หมายเหตุ"]
+        : ["", "เลขที่", "ชื่อ-สกุล", "1", "2", "3", "4", "5", "รวม", "ผลการประเมิน", "หมายเหตุ"];
+    heads.forEach((h, i) => {
+      const th = el("th", null, h);
+      if (h === "ชื่อ-สกุล") th.className = "left";
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr);
+
+    rows.forEach((r, i) => {
+      const tr = el("tr");
+      tr.dataset.row = String(i);
+      if (page !== "grades") {
+        const td = el("td");
+        td.appendChild(el("input", { type: "checkbox", tabIndex: 0, title: "เลือกนักเรียน" }));
+        tr.appendChild(td);
+      }
+      tr.appendChild(el("td", null, r[0]));
+      const nm = el("td", null, r[1]); nm.className = "name left"; tr.appendChild(nm);
+      const cell = (node) => { const td = el("td"); td.appendChild(node); tr.appendChild(td); };
+      const calc = () => { const td = el("td", null, ""); td.className = "calc"; tr.appendChild(td); return td; };
+      if (page === "grades") {
+        for (let q = 0; q < 3; q++) cell(input("wide", "q" + q));
+        if (extra) cell(input("wide must-empty", "extra"));
+        calc();
+      } else if (page === "traits") {
+        for (let q = 0; q < 10; q++) cell(input(q >= 8 ? "must-empty" : "", "q" + q));
+        calc(); calc();
+        cell(input("remark must-empty", "note"));
+      } else {
+        for (let q = 0; q < 5; q++) cell(input("", "q" + q));
+        calc();
+        cell(input("must-empty", "result"));
+        cell(input("remark must-empty", "note"));
+      }
+      tbody.appendChild(tr);
+    });
+    grid.append(thead, tbody);
+
+    $("sheet-title").textContent = P.title;
+    $("copy-hint").textContent = P.copyHint;
+    $("paste-hint").textContent = P.pasteHint;
+    $("extra-wrap").hidden = page !== "grades";
+    const first = grid.querySelector('input[type="text"]');
+    if (first) first.classList.add("start");
+    $("start-tip").hidden = false;
+    started = false;
+    keyTimes = [];
+    buildSample();
+    check();
+  }
+
+  function buildSample() {
+    const t = $("sample-table");
+    t.textContent = "";
+    const hr = el("tr");
+    PAGES[page].header.forEach((h) => hr.appendChild(el("th", null, h)));
+    const thead = el("thead"); thead.appendChild(hr);
+    const tbody = el("tbody");
+    rows.forEach((r) => { const tr = el("tr"); r.forEach((v) => tr.appendChild(el("td", null, v))); tbody.appendChild(tr); });
+    t.append(thead, tbody);
+  }
+
+  // ---------- copying the sample ----------
+  function tsv() { return [PAGES[page].header].concat(rows).map((r) => r.join("\t")).join("\n"); }
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise((ok, fail) => {
+      const ta = el("textarea"); ta.value = text;
+      ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      const done = document.execCommand && document.execCommand("copy");
+      ta.remove();
+      done ? ok() : fail();
+    });
+  }
+  $("copy").addEventListener("click", () => {
+    copyText(tsv()).then(
+      () => { $("copied").textContent = "คัดลอกแล้ว " + rows.length + " คน กลับไปที่โปรแกรมแล้วกด วางข้อมูลที่คัดลอกมา"; },
+      () => { $("copied").textContent = "คัดลอกไม่ได้ เปิด ดูข้อมูลตัวอย่าง แล้วเลือกตารางคัดลอกเองได้"; });
+  });
+
+  // ---------- checking ----------
+  function rowInputs(tr) {
+    const all = [...tr.querySelectorAll('input[type="text"]')];
+    const by = (role) => all.filter((i) => i.dataset.role === role)[0];
+    const qs = all.filter((i) => /^q\d$/.test(i.dataset.role));
+    return { all, qs, by };
+  }
+  function mark(i, cls) { i.classList.remove("right", "wrong", "stray"); if (cls) i.classList.add(cls); }
+
+  function check() {
+    const trs = [...$("grid").querySelectorAll("tbody tr")];
+    let filledRows = 0, stray = [], wrongRows = [], skipped = [], any = false;
+    // การอ่าน: does the class fill 3 boxes or 5? Read it off what was typed.
+    let width = 8;
+    if (page === "grades") width = 3;
+    if (page === "reading") {
+      const usesFive = trs.some((tr) => { const q = rowInputs(tr).qs; return q[3].value.trim() || q[4].value.trim(); });
+      width = usesFive ? 5 : 3;
+    }
+    trs.forEach((tr, i) => {
+      const { all, qs } = rowInputs(tr);
+      tr.classList.remove("skip");
+      const values = qs.map((q) => q.value.trim());
+      const typed = all.some((x) => x.value.trim() !== "");
+      if (typed) any = true;
+      const expect = page === "reading" ? PAGES.reading.expected(rows[i], width) : PAGES[page].expected(rows[i]);
+      if (expect === null) { tr.classList.add("skip"); skipped.push(i + 1); }
+      // Boxes that must stay empty: the extras, and การอ่าน's 4 and 5 when
+      // the class fills three.
+      all.forEach((x, k) => {
+        const role = x.dataset.role;
+        const q = /^q(\d)$/.exec(role);
+        const mustEmpty = !q || Number(q[1]) >= width || expect === null;
+        if (mustEmpty) {
+          if (x.value.trim()) { mark(x, "stray"); stray.push(i + 1); } else mark(x, null);
+        }
+      });
+      if (expect) {
+        let rowFilled = true, rowWrong = false;
+        for (let k = 0; k < width; k++) {
+          const v = values[k];
+          if (!v) { rowFilled = false; mark(qs[k], null); continue; }
+          if (Number(v) === Number(expect[k]) && v !== "") mark(qs[k], "right");
+          else { mark(qs[k], "wrong"); rowWrong = true; }
+        }
+        if (rowFilled) filledRows++;
+        if (rowWrong) wrongRows.push(i + 1);
+      }
+      // A calculated column, like SGS's own, so the page feels alive.
+      const calcs = tr.querySelectorAll("td.calc");
+      const typedNums = values.slice(0, width).filter((v) => v !== "").map(Number).filter(isFinite);
+      if (calcs[0]) calcs[0].textContent = typedNums.length
+        ? (page === "grades" ? String(typedNums.reduce((a, b) => a + b, 0)) : (typedNums.reduce((a, b) => a + b, 0) / typedNums.length).toFixed(2))
+        : "";
+      if (calcs[1]) calcs[1].textContent = typedNums.length ? String(Math.round(typedNums.reduce((a, b) => a + b, 0) / typedNums.length)) : "";
+    });
+
+    const expectedRows = rows.length - skipped.length;
+    const res = $("result");
+    const title = $("result-title"), more = $("result-more");
+    res.className = "result";
+    let icon = "·";
+    const firstStray = stray.length ? Math.min(...stray) : null;
+    if (!any) {
+      title.textContent = "ยังไม่มีคะแนนในตาราง";
+      more.textContent = "ทำตามสามขั้นด้านบน ผลตรวจจะขึ้นตรงนี้ระหว่างที่โปรแกรมพิมพ์";
+    } else if (firstStray !== null) {
+      res.classList.add("bad"); icon = "!";
+      title.textContent = "คะแนนเลื่อนช่อง ตั้งแต่นักเรียนคนที่ " + firstStray;
+      more.textContent = "มีคะแนนลงในช่องที่ควรว่าง (สีแดง) แปลว่าจำนวนครั้งที่กด Tab ระหว่างนักเรียนไม่ตรงกับเบราว์เซอร์นี้ "
+        + "กด Esc ให้โปรแกรมหยุด ล้างช่องทั้งหมด แล้วลองใหม่ ตอนโปรแกรมถามหลังนักเรียนคนแรก ให้ตอบตามที่เห็นในตาราง";
+    } else if (wrongRows.length) {
+      res.classList.add("bad"); icon = "!";
+      title.textContent = "คะแนนไม่ตรงกับข้อมูลตัวอย่าง " + wrongRows.length + " คน (คนที่ " + wrongRows.slice(0, 5).join(", ") + (wrongRows.length > 5 ? " …" : "") + ")";
+      more.textContent = "ถ้าคุณครูใช้ไฟล์ของตัวเอง ไม่ใช่ข้อมูลตัวอย่าง ข้อนี้ไม่ต้องกังวล ดูแค่ว่าไม่มีช่องสีแดงที่ควรว่าง";
+    } else if (filledRows < expectedRows) {
+      res.classList.add("warn"); icon = "…";
+      title.textContent = "พิมพ์แล้ว " + filledRows + " จาก " + expectedRows + " คน";
+      more.textContent = "ยังไม่มีอะไรผิด รอให้โปรแกรมพิมพ์จนครบ";
+    } else {
+      res.classList.add("ok"); icon = "✓";
+      title.textContent = "ครบและตรงช่องทั้ง " + filledRows + " คน";
+      more.textContent = (skipped.length ? "นักเรียนคนที่ " + skipped.join(", ") + " ถูกข้ามไว้ เพราะอ่านค่าไม่ได้ (เช่น ติด ร) ซึ่งถูกต้องแล้ว · " : "")
+        + (page === "reading" ? "กรอกแบบ " + width + " ช่อง · " : "")
+        + "พร้อมใช้กับหน้า SGS จริงแล้ว อย่าลืมตรวจทานก่อนกดบันทึกทุกครั้ง";
+    }
+    res.querySelector(".icon").textContent = icon;
+    stats();
+  }
+
+  // ---------- typing ----------
+  let checkTimer = null;
+  $("grid").addEventListener("input", (e) => {
+    if (!e.target.matches('input[type="text"]')) return;
+    keyTimes.push(performance.now());
+    // Block the main thread, the way a slow web form does.
+    if ($("lag").checked) {
+      const until = performance.now() + (Number($("lag-ms").value) || 0);
+      while (performance.now() < until) { /* spin */ }
+    }
+    clearTimeout(checkTimer);
+    checkTimer = setTimeout(check, 120);
+  });
+  $("grid").addEventListener("focusin", (e) => {
+    document.querySelectorAll(".grid tr.active").forEach((tr) => tr.classList.remove("active"));
+    const tr = e.target.closest("tr"); if (tr) tr.classList.add("active");
+    if (!started && e.target.matches('input[type="text"]')) {
+      started = true;
+      const s = $("grid").querySelector("input.start"); if (s) s.classList.remove("start");
+      $("start-tip").hidden = true;
+    }
+  });
+
+  function stats() {
+    const inputs = [...$("grid").querySelectorAll('input[type="text"]')];
+    $("st-filled").textContent = String(inputs.filter((i) => i.value.trim()).length);
+    $("st-keys").textContent = String(keyTimes.length);
+    const gaps = [];
+    for (let i = 1; i < keyTimes.length; i++) { const g = keyTimes[i] - keyTimes[i - 1]; if (g < 3000) gaps.push(g); }
+    $("st-avg").textContent = gaps.length ? Math.round(gaps.reduce((a, b) => a + b, 0) / gaps.length) + " ms" : "–";
+    $("st-min").textContent = gaps.length ? Math.round(Math.min(...gaps)) + " ms" : "–";
+  }
+
+  // ---------- tabs ----------
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  function select(name, focus) {
+    if (!PAGES[name]) name = "grades";
+    page = name;
+    tabs.forEach((t) => {
+      const on = t.dataset.page === name;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      if (on) { $("panel").setAttribute("aria-labelledby", t.id); if (focus) t.focus(); }
+    });
+    $("copied").textContent = "";
+    build();
+  }
+  tabs.forEach((t) => t.addEventListener("click", () => {
+    history.replaceState(null, "", "#" + t.dataset.page);
+    select(t.dataset.page);
+  }));
+  document.querySelector('[role="tablist"]').addEventListener("keydown", (e) => {
+    const i = tabs.findIndex((t) => t.getAttribute("aria-selected") === "true");
+    const next = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : null;
+    if (next === null) return;
+    const t = tabs[(next + tabs.length) % tabs.length];
+    history.replaceState(null, "", "#" + t.dataset.page);
+    select(t.dataset.page, true);
+  });
+  window.addEventListener("hashchange", () => select(location.hash.slice(1)));
+
+  $("count").addEventListener("change", build);
+  $("extra").addEventListener("change", build);
+  $("clear").addEventListener("click", () => {
+    $("grid").querySelectorAll('input[type="text"]').forEach((i) => { i.value = ""; });
+    $("grid").querySelectorAll('input[type="checkbox"]').forEach((i) => { i.checked = false; });
+    keyTimes = [];
+    check();
+  });
+
+  select(location.hash.slice(1) || "grades");
+})();
+</script>
+</body>
+</html>
