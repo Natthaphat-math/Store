@@ -52,7 +52,10 @@ first screen: two cards with a current screenshot each
   counts, read from the same web app as the SGS page's map (only read; this
   page sends nothing), and both programs' latest versions. If the count
   does not load, the two numbers stay hidden rather than show zero. Update
-  the version numbers here with each release.
+  the version numbers here with each release: three tests fail if they do
+  not match the apps' VERSION files (test-home-page.mjs, and
+  tests/test_store_page.py in sgs-auto-typer-windows, which CI runs before
+  a Windows release, and in gradebook-validator).
 - "ใช้คู่กันอย่างไร" says the two are two steps of one job, usable apart.
 - The detail cards carry the four SGS modes and both price lists, a short
   FAQ answers what a first visitor asks, and the phone menu matches the SGS
