@@ -63,6 +63,22 @@ first screen: two cards with a current screenshot each
 - `tracking/test-home-page.mjs` checks it at 390px and 1280px:
   `node projects/store-page/tracking/test-home-page.mjs`.
 
+### The GradeCheck page
+
+- "ตรวจอะไรได้บ้าง" names the three checks (ผลการเรียน, คุณลักษณะ, การอ่าน)
+  and says what the SGS PDF holds, with the sample PDF linked. The exact SGS
+  menu that exports it is not named yet.
+- The how-to section carries the real 1.4.0 window
+  (`images/macos/gradecheck-1.4.0/`); the drawn result in the hero is
+  labelled as an example.
+- Same as the SGS page: the visitor's own download first, a phone note with
+  a share button, a phone menu. Plus a "ใช้คู่กับ SGS Auto-Typer" strip and
+  a six-question FAQ.
+- The version in the hero (`span.gc-version`) is checked against
+  `projects/gradebook-validator/VERSION` by that project's tests.
+- `tracking/test-gradecheck-page.mjs` checks it:
+  `node projects/store-page/tracking/test-gradecheck-page.mjs`.
+
 ### The SGS page's first screen
 
 - Copy on the left, the intro video on the right; one column under 940px,
@@ -188,3 +204,20 @@ libraries are vendored in `vendor/`: jsQR (Apache-2.0) and qrcode-generator
 the Tally form and the status page says the check is not open yet.
 Setup: `tracking/shop/README.md`. Tests:
 `node projects/store-page/tracking/shop/test-shop.mjs`.
+
+## Archived copies
+
+`archive/<date>/` holds frozen copies of a page as it was published, for
+anyone who wants to compare it with today's. Each is the page exactly as the
+Store repo served it at that commit, with only these changes:
+
+- a dark banner at the top saying it is a copy, with a link to the live page;
+- images and data load from that same Store commit on raw.githubusercontent.com,
+  so they never change and the copy adds nothing heavy to the site;
+- download buttons lead to the live page instead of downloading, and the
+  download tracking is switched off, so a copy never counts a download;
+- `noindex`, so search engines keep sending people to the live page.
+
+| Copy | Source |
+|---|---|
+| `archive/2026-10-04/sgs-auto-typer.html` | Store commit `ea52fd3` (4 Oct 2026, 16:14 Thai time), the last version before the October redesign |

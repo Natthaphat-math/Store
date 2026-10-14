@@ -269,7 +269,78 @@
   .foot{display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center;justify-content:space-between;font-size:14px;color:var(--ink-3)}
   .foot a{text-decoration:none}
   .foot a:hover{color:var(--green)}
+
+  [hidden]{display:none!important}
+  /* ---------- additions: checks, PDF box, screenshot, pairing, FAQ ---------- */
+  .check-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px}
+  @media (max-width:820px){.check-grid{grid-template-columns:1fr;gap:12px}}
+  .check-card{background:#fff;border:1px solid var(--rule-2);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+  .check-card h3{font-size:17.5px;margin:6px 0 6px;display:inline-block;margin-inline-start:6px}
+  .check-card p{font-size:15px;color:var(--ink-2);line-height:1.7}
+  .check-dot{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:1px}
+  .pdf-box{margin-top:18px;background:var(--green-tint);border:1px solid #cfe0d7;border-radius:14px;padding:16px 20px;max-width:880px}
+  .pdf-box h3{font-size:16.5px;color:var(--green-2);margin-bottom:4px}
+  .pdf-box p{font-size:15px;color:#3d5f52;line-height:1.7}
+  .pdf-box .pdf-links{margin-top:6px}
+  .pdf-box a{color:var(--green-2);font-weight:620}
+  .app-shot{margin:44px auto 0;max-width:820px}
+  .app-shot picture,.app-shot img{display:block;width:100%;height:auto}
+  .app-shot figcaption{margin-top:10px;text-align:center;color:#b9bcc1;font-size:14.5px}
+  .pair{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;background:#fff;border:1px solid var(--rule);border-radius:14px;padding:16px 20px}
+  .pair p{flex:1 1 320px;font-size:15px;color:var(--ink-2);line-height:1.7}
+  .pair strong{color:var(--ink)}
+  .qa-list{margin-top:26px;border-top:1px solid var(--rule);max-width:820px}
+  .qa{border-bottom:1px solid var(--rule)}
+  .qa summary{list-style:none;cursor:pointer;padding:16px 36px 16px 0;position:relative;font-weight:620;font-size:16.5px}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary:hover{color:var(--green-2)}
+  .qa summary::after{content:"";position:absolute;inset-inline-end:8px;top:23px;width:8px;height:8px;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(45deg);transition:transform .18s ease}
+  .qa[open] summary::after{transform:rotate(-135deg);top:27px}
+  .qa > div{padding:0 0 18px;color:var(--ink-2);font-size:15.5px;line-height:1.75}
+  .qa a{color:var(--green-2)}
+  /* phone */
+  .on-phone{display:none}
+  html[data-os="phone"] .on-phone{display:grid;gap:10px;justify-items:start;margin:0 0 16px;border:1px solid var(--rule-2);background:#fff;border-radius:12px;padding:14px 16px}
+  .on-phone p{font-size:15px;line-height:1.65;color:var(--ink-2)}
+  .on-phone strong{display:block;color:var(--ink)}
+  .on-phone .btn{font:inherit;font-weight:620;font-size:15px;padding:10px 16px;cursor:pointer}
+  .send-done{font-size:14px;color:var(--green-2)}
+  .send-done:empty{display:none}
+  .menu{display:none;position:relative}
+  @media (max-width:820px){.menu{display:block}.nav{gap:10px}}
+  .menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;border:1px solid var(--rule-2);border-radius:8px;padding:6px 12px;font-size:14.5px;font-weight:600;color:var(--ink);background:#fff}
+  .menu summary::-webkit-details-marker{display:none}
+  .menu summary svg{width:18px;height:18px}
+  .menu-panel{position:absolute;inset-inline-end:0;top:calc(100% + 10px);width:min(280px,calc(100vw - 40px));display:grid;background:#fff;border:1px solid var(--rule-2);border-radius:12px;box-shadow:var(--shadow);padding:6px}
+  .nav .menu-panel a{display:block;padding:11px 14px;border-radius:8px;font-size:16px;color:var(--ink)}
+  .menu-panel a:hover{background:var(--paper-2);color:var(--green-2)}
+  section[id],div[id]{scroll-margin-top:76px}
+  .hero h1{font-size:clamp(32px,3.6vw,44px);max-width:20ch}
+  /* Phones: the same content, less air. */
+  @media (max-width:600px){
+    section{padding:44px 0}
+    .feature{padding:16px 0}
+    .feature .k{margin-bottom:4px}
+    .feature h3{font-size:17.5px;margin-bottom:4px}
+    .feature p{font-size:15px;line-height:1.65}
+    .features{margin-top:24px}
+    .case{padding:14px 16px}
+    .step{padding:18px 0}
+    .steps{margin-top:26px}
+    .dl{padding:20px 18px}
+    .dl-grid{margin-top:24px}
+    .app-shot{margin-top:26px}
+  }
 </style>
+<script>
+  (function () {
+    var ua = navigator.userAgent || '';
+    var plat = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+    var touchMac = /Mac/.test(plat) && navigator.maxTouchPoints > 1;
+    document.documentElement.dataset.os = /Android|iPhone|iPad|iPod|Mobile/i.test(ua) || touchMac ? 'phone'
+      : /Win/i.test(plat) ? 'win' : /Mac/i.test(plat) ? 'mac' : 'other';
+  })();
+</script>
 </head>
 <body>
 
@@ -284,11 +355,27 @@
     <nav class="nav">
       <a href="./index.html">เครื่องมือครูทั้งหมด</a>
       <a href="#problem">ปัญหาที่แก้</a>
-      <a href="#features">ความสามารถ</a>
+      <a href="#checks">ตรวจอะไรได้บ้าง</a>
       <a href="#how">วิธีใช้งาน</a>
       <a href="#price">ราคา</a>
       <a href="#contact">ติดต่อ</a>
       <a class="btn-sm" href="#download">ดาวน์โหลด</a>
+      <details class="menu">
+        <summary aria-label="เปิดเมนู">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.5 6h13M3.5 10h13M3.5 14h13"/></svg>
+          เมนู
+        </summary>
+        <div class="menu-panel">
+          <a href="#checks">ตรวจอะไรได้บ้าง</a>
+          <a href="#how">วิธีใช้งาน</a>
+          <a href="#price">ราคา</a>
+          <a href="#faq">คำถามที่พบบ่อย</a>
+          <a href="./gradecheck-buy.html">ซื้อไลเซนส์</a>
+          <a href="./license-status.html">เช็กสถานะรหัส</a>
+          <a href="./sgs-auto-typer.html">SGS Auto-Typer</a>
+          <a href="./index.html">เครื่องมือครูทั้งหมด</a>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
@@ -300,7 +387,7 @@
     <div class="wrap hero-grid">
       <div>
         <div class="eyebrow">โปรแกรมสำหรับคุณครูและงานวัดผล</div>
-        <h1>ตรวจทานคะแนนใน SGS<br>ให้ตรงกับไฟล์ Excel ของคุณครู</h1>
+        <h1>ตรวจทานคะแนนใน SGS ให้ตรงกับไฟล์ Excel ของคุณครู</h1>
         <p class="lede">GradeCheck เปรียบเทียบไฟล์คะแนน Excel ของคุณครูกับรายงานคะแนน PDF ที่ออกจากระบบ SGS ทีละช่อง ทีละคน เพื่อให้เจอจุดที่กรอกผิดตั้งแต่ก่อนคะแนนจะถูกประกาศเป็นทางการ</p>
 
         <div class="offer">
@@ -308,7 +395,13 @@
           <span>ไม่ต้องชำระเงิน ไม่ต้องสมัครสมาชิก ดาวน์โหลดแล้วเริ่มตรวจได้เลย</span>
         </div>
 
-        <div class="cta-row">
+        <div class="on-phone">
+          <p><strong>โปรแกรมนี้ใช้บนคอมพิวเตอร์ Windows หรือ Mac</strong>
+             เปิดหน้านี้บนคอมพิวเตอร์ที่เก็บไฟล์คะแนน แล้วดาวน์โหลดจากตรงนั้น</p>
+          <button class="btn btn-secondary send-link" type="button">ส่งลิงก์หน้านี้ไปเปิดบนคอม</button>
+          <span class="send-done" role="status" aria-live="polite"></span>
+        </div>
+        <div class="cta-row" data-os-order>
           <a class="btn btn-primary" href="https://github.com/Natthaphat-math/gradecheck-releases/releases/latest/download/GradeCheck.dmg">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
             ดาวน์โหลดสำหรับ macOS
@@ -318,14 +411,14 @@
             ดาวน์โหลดสำหรับ Windows
           </a>
         </div>
-        <p class="fineprint">ทำงานบนเครื่องของคุณครูแบบออฟไลน์ 100% · ข้อมูลนักเรียนไม่ถูกส่งออกไปที่ใดทั้งสิ้น</p>
+        <p class="fineprint">ทำงานบนเครื่องของคุณครูแบบออฟไลน์ 100% · ข้อมูลนักเรียนไม่ถูกส่งออกไปที่ใดทั้งสิ้น · เวอร์ชั่นล่าสุด <span class="gc-version">1.4.0</span></p>
       </div>
 
       <!-- product visual -->
       <div class="mock" role="img" aria-label="ตัวอย่างหน้าจอผลการตรวจทานของ GradeCheck แสดงรายการคะแนนที่ไม่ตรงกันระหว่างไฟล์ Excel และ SGS">
         <div class="mock-bar">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="mock-title">GradeCheck — ผลการตรวจทาน</span>
+          <span class="mock-title">ตัวอย่างผลการตรวจทาน</span>
         </div>
         <div class="mock-head">
           <h3>ม.2/3 · คณิตศาสตร์พื้นฐาน · ภาคเรียนที่ 1</h3>
@@ -375,6 +468,40 @@
       </div>
     </div>
   </div>
+
+
+  <!-- WHAT IT CHECKS -->
+  <section id="checks">
+    <div class="wrap">
+      <div class="sec-label">ตรวจอะไรได้บ้าง</div>
+      <h2>ตรวจได้ทั้งสามเรื่องในรายงานเดียว</h2>
+      <p class="sec-intro">ติ๊กเลือกได้หลายอย่างพร้อมกัน โปรแกรมตรวจให้ในครั้งเดียว</p>
+      <div class="check-grid">
+        <div class="check-card">
+          <span class="check-dot" style="background:#e5b842"></span>
+          <h3>ผลการเรียน</h3>
+          <p>คะแนนแต่ละช่อง คะแนนรวม และเกรด ตรงกับไฟล์ของคุณครูหรือไม่</p>
+        </div>
+        <div class="check-card">
+          <span class="check-dot" style="background:#e48aa6"></span>
+          <h3>คุณลักษณะอันพึงประสงค์</h3>
+          <p>ระดับแต่ละข้อ ตรงกับไฟล์ของคุณครูหรือไม่</p>
+        </div>
+        <div class="check-card">
+          <span class="check-dot" style="background:#6fa3d8"></span>
+          <h3>การอ่าน คิดวิเคราะห์ และเขียน</h3>
+          <p>ระดับที่ให้ ตรงกับเกรดของนักเรียนใน SGS หรือไม่ ข้อนี้ใช้แค่ไฟล์ PDF จาก SGS ไม่ต้องใช้ไฟล์ของคุณครู</p>
+        </div>
+      </div>
+      <div class="pdf-box">
+        <h3>ไฟล์ PDF จาก SGS คือไฟล์แบบไหน</h3>
+        <p>รายงานของวิชาที่ส่งออกจาก SGS เป็น PDF ทั้งห้อง ที่มีคะแนนแต่ละช่อง คะแนนรวม ร้อยละ เกรด
+           คุณลักษณะข้อ 1–10 และการอ่านข้อ 1–5 ของนักเรียนทุกคน โปรแกรมอ่านตำแหน่งคอลัมน์จากไฟล์เอง ไม่ต้องตั้งค่า</p>
+        <p class="pdf-links"><a href="./files/gradecheck-sample-sgs-export.pdf" download="GradeCheck-ไฟล์จากระบบ-SGS.pdf">ดูไฟล์ PDF ตัวอย่าง</a>
+           · ไฟล์ของคุณครูเป็น Excel หรือ PDF จาก SGS อีกไฟล์ก็ได้</p>
+      </div>
+    </div>
+  </section>
 
   <!-- PROBLEM -->
   <section class="problem" id="problem">
@@ -483,6 +610,14 @@
             <p>อ่านรายการที่ไม่ตรงกันพร้อมค่าจากทั้งสองฝั่ง แก้ให้ถูกต้อง แล้วส่งออกเป็นไฟล์ CSV เก็บไว้เป็นหลักฐาน</p>
           </div>
         </div>
+        <figure class="app-shot">
+          <picture>
+            <source srcset="./images/macos/gradecheck-1.4.0/gradecheck-1.4.0-main.webp" type="image/webp">
+            <img src="./images/macos/gradecheck-1.4.0/gradecheck-1.4.0-main.png" width="2344" height="1880" loading="lazy"
+                 alt="หน้าต่าง GradeCheck เวอร์ชั่น 1.4.0 บน Mac สี่ขั้น เลือกไฟล์ ตรวจสอบคอลัมน์ เลือกสิ่งที่ต้องการตรวจ และผลการตรวจ">
+          </picture>
+          <figcaption>หน้าต่าง GradeCheck 1.4.0 ทุกขั้นอยู่ในหน้าต่างเดียว ไล่จากบนลงล่าง</figcaption>
+        </figure>
       </div>
     </section>
   </div>
@@ -494,7 +629,7 @@
       <h2>ใช้งานฟรีทันที 3 ห้องเรียนแรก</h2>
       <p class="sec-intro">ไม่ต้องชำระเงิน ไม่ต้องสมัครสมาชิก ไม่ต้องกรอกอีเมล ดาวน์โหลด ติดตั้ง แล้วตรวจห้องแรกได้เลยในวันนี้</p>
 
-      <div class="dl-grid three">
+      <div class="dl-grid three" data-os-order>
         <div class="dl">
           <div class="os">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.3 12.9c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.8-.8-3-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.6 2.3 2.8 2.2 1.1 0 1.6-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.5 1.3-2.5-.1 0-2.4-.9-2.4-3.6zM14.1 5.9c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.7-.9 2.8 1 0 2-.5 2.6-1.3z"/></svg>
@@ -524,6 +659,12 @@
                download="GradeCheck-ไฟล์จากระบบ-SGS.pdf">ไฟล์ PDF จาก SGS</a>
           </div>
         </div>
+      </div>
+
+      <div class="pair">
+        <p><strong>ใช้คู่กับ SGS Auto-Typer</strong> กรอกคะแนนลง SGS ให้อัตโนมัติด้วย SGS Auto-Typer แล้วใช้ GradeCheck ตรวจซ้ำก่อนส่ง
+           ใช้แยกกันก็ได้ ไม่ว่าจะกรอกด้วยมือหรือด้วยโปรแกรม</p>
+        <a class="btn btn-secondary" href="./sgs-auto-typer.html">ดู SGS Auto-Typer</a>
       </div>
 
       <p class="note">ครั้งแรกที่เปิดโปรแกรม ระบบปฏิบัติการอาจถามยืนยันเพราะเป็นโปรแกรมจากผู้พัฒนารายย่อย — บน macOS ให้คลิกขวาที่ไอคอนโปรแกรมแล้วเลือก “Open” ส่วนบน Windows ให้เลือก “More info” แล้วกด “Run anyway” หากติดขัดตรงจุดใด ทักมาถามได้เสมอ</p>
@@ -567,6 +708,42 @@
         ได้รหัสแล้ว ในโปรแกรมเลือกเมนู <strong>ช่วยเหลือ → กรอกรหัสปลดล็อก...</strong> วางรหัส แล้วกด “เปิดใช้งาน”
         · ยังไม่เห็นอีเมล? <a href="./license-status.html">เช็กสถานะรหัสไลเซนส์</a>
       </p>
+    </div>
+  </section>
+
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-label">คำถามที่พบบ่อย</div>
+      <h2>ก่อนเริ่มใช้</h2>
+      <div class="qa-list">
+        <details class="qa">
+          <summary>ไฟล์ PDF จาก SGS ต้องเป็นแบบไหน</summary>
+          <div>รายงานของวิชาทั้งห้องที่ส่งออกจาก SGS เป็น PDF มีคะแนนแต่ละช่อง คะแนนรวม ร้อยละ เกรด คุณลักษณะ และการอ่าน
+            หน้าตาเหมือน<a href="./files/gradecheck-sample-sgs-export.pdf" download="GradeCheck-ไฟล์จากระบบ-SGS.pdf">ไฟล์ตัวอย่าง</a> ถ้าโปรแกรมอ่านไฟล์ของคุณครูไม่ออก
+            <a href="#contact">ส่งมาให้ดูได้</a> เพื่อให้รองรับในรุ่นถัดไป</div>
+        </details>
+        <details class="qa">
+          <summary>เทียบ PDF จาก SGS สองไฟล์ได้ไหม</summary>
+          <div>ได้ ไฟล์ฝั่งที่ถือว่าถูกต้องเป็นไฟล์ Excel ของคุณครู หรือ PDF จาก SGS อีกไฟล์ก็ได้ โปรแกรมอ่านทั้งสองแบบเหมือนกัน</div>
+        </details>
+        <details class="qa">
+          <summary>ต้องต่ออินเทอร์เน็ตไหม</summary>
+          <div>ไม่ต้อง โปรแกรมทำงานบนเครื่องของคุณครูทั้งหมด ไม่อัปโหลดไฟล์ไปที่ใด และรหัสไลเซนส์ก็ตรวจในเครื่อง</div>
+        </details>
+        <details class="qa">
+          <summary>โปรแกรมแก้ไฟล์ของฉัน หรือแก้ข้อมูลใน SGS ไหม</summary>
+          <div>ไม่แก้ทั้งสองอย่าง GradeCheck แค่ชี้ให้เห็นทุกจุดที่สองไฟล์ไม่ตรงกัน แล้วให้คุณครูเป็นคนตัดสินใจและแก้ใน SGS เอง</div>
+        </details>
+        <details class="qa">
+          <summary>ฟรี 3 ห้องเรียน นับอย่างไร</summary>
+          <div>นับห้องเรียนที่ไม่เคยตรวจมาก่อน 3 ห้องต่อหนึ่งเครื่อง รวมตลอดไป เปิดไฟล์ชุดเดิมซ้ำไม่นับเพิ่ม</div>
+        </details>
+        <details class="qa">
+          <summary>จ่ายเงินแล้ว แต่ยังไม่ได้รหัส</summary>
+          <div>ส่วนใหญ่อีเมลตกไปอยู่ในกล่องสแปม <a href="./license-status.html">เช็กสถานะรหัส</a>ด้วยอีเมลที่ใช้ตอนชำระเงิน</div>
+        </details>
+      </div>
     </div>
   </section>
 
@@ -620,6 +797,46 @@
     }, { rootMargin: '-45% 0px -50% 0px' });
 
     sections.forEach(function (s) { io.observe(s.el); });
+  })();
+</script>
+
+<script>
+  // The visitor's own computer first; the phone note's share button; the
+  // phone menu. Buttons are moved, not rebuilt.
+  (function () {
+    var os = document.documentElement.dataset.os;
+    var key = os === 'mac' ? 'GradeCheck.dmg' : os === 'win' ? 'GradeCheck-windows.zip' : null;
+    if (key) {
+      document.querySelectorAll('[data-os-order]').forEach(function (box) {
+        var mine = null, other = null;
+        Array.prototype.forEach.call(box.children, function (el) {
+          var a = el.matches('a[href*="gradecheck-releases"]') ? el : el.querySelector('a[href*="gradecheck-releases"]');
+          if (!a) return;
+          if (a.href.indexOf(key) !== -1) mine = el; else other = el;
+        });
+        if (!mine || !other) return;
+        box.insertBefore(mine, box.firstElementChild);
+        var m = mine.matches('a') ? mine : mine.querySelector('a');
+        var o = other.matches('a') ? other : other.querySelector('a');
+        m.classList.remove('btn-secondary'); m.classList.add('btn-primary');
+        o.classList.remove('btn-primary'); o.classList.add('btn-secondary');
+      });
+    }
+    var send = document.querySelector('.send-link'), done = document.querySelector('.send-done');
+    if (send) {
+      var url = location.href.split('#')[0];
+      send.addEventListener('click', function () {
+        if (navigator.share) { navigator.share({ title: document.title, url: url }).catch(function () {}); return; }
+        var p = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(url) : Promise.reject();
+        p.then(function () { done.textContent = 'คัดลอกลิงก์แล้ว วางในไลน์หรืออีเมลถึงตัวเองได้เลย'; },
+               function () { done.textContent = 'ลิงก์หน้านี้: ' + url; });
+      });
+    }
+    var menu = document.querySelector('.menu');
+    if (!menu) return;
+    menu.addEventListener('click', function (e) { if (e.target.closest('.menu-panel a')) menu.open = false; });
+    document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); } });
   })();
 </script>
 </body>
